@@ -1,0 +1,39 @@
+HERO: 
+soldier sapper
+level is military rank
+
+
+PARAMETERS:
+experiance
+levels
+wisdom
+hp=1
+armor=0
+charisma
+
+
+POSSIBLE QUIPMENT:
+granates
+hints
+armor
+extra experiance
+nuke hint framgemnts
+
+
+WHAT HERO DOES:
+
+
+ELEMENTS:
+hero
+walls (impossible to pass)
+bombs/mines to disarm (solve logical problem)
+equipment boxes (various things increasing your parameters,
+                 hints needed for disarm specific bomb type,
+                 specialistic armor gives armor + 1, granates)
+river
+trees
+characters (gives special missions rewarded by extra exp, how they act
+            depends on charisma level)
+doors
+
+
