@@ -1,4 +1,4 @@
-HERO: 
+HERO:
 soldier sapper
 level is military rank
 
@@ -35,5 +35,3 @@ trees
 characters (gives special missions rewarded by extra exp, how they act
             depends on charisma level)
 doors
-
-

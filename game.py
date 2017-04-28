@@ -3,19 +3,14 @@ import sys
 import tty
 import termios
 import random
+import time
 from re import match
-from time import sleep
-from maps_functions import *
-from random import choice
-from time import sleep
-from pop_up import *
+from maps_creator import *
 from hero import *
-from bombs_specification import *
 
 
 COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m', 'G': '\x1b[0;32;42m'+'G'+'\x1b[0m', 'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
 BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N']]
-
 
 HINTS = {
         '0': [("Type the capital of Poland", "Warsaw"), ("Type the capital of France", "Paris"),
@@ -24,115 +19,6 @@ HINTS = {
         '2': ['What the \'int\' abbreviate for?', 'integer']
 }
 
-
-def import_map(map):
-    with open(map, 'r', newline='\n') as map_file:
-        board = []
-        for line in map_file:
-            board.append([char for char in line[:-1]])
-    board = colour_map(board)
-    return board
-
-
-def colour_map(board):
-    global COLOURS
-    COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m',
-               'G': '\x1b[0;32;42m'+'G'+'\x1b[0m',
-               'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
-    for line_i in range(len(board)):
-        for char_i in range(len(board[line_i])):
-            if board[line_i][char_i] in COLOURS.keys():
-                board[line_i][char_i] = COLOURS[board[line_i][char_i]]
-    return board
-
-
-def print_board(board):
-    """printing given board on screen. before that adjust screen size, and clear previous prints"""
-    sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=107))
-    os.system('clear')
-    for line in board:
-        print("".join(line))
-
-
-def create_board(width, height):
-    """creating empty board with frames of 'X'. given height and width. curently not in use"""
-    width = int(width)
-    height = int(height)
-    board = []
-    for line in range(1, height + 1):
-        if line in [1, height]:
-            board.append(["X" for column in range(1, width+1)])
-        else:
-            board.append(["X"] + [" " for column in range(2, width)] + ["X"])
-    return board
-
-
-def create_hero():
-    """creating hero"""
-    os.system('clear')
-    hero = {'exp': 0,
-            'level': 1,
-            'wisdom': 1,
-            'charisma': 1,
-            'mental_strength': 1,
-            'alive': True,
-            'armor': False,
-            'equipment': []}
-    print("\nYou have 10 points to divide between: "
-          "\nwisdom, charisma and mental strength"
-          "\nTo add type: 'w', 'c', 'm': ")
-
-    for i in range(10):
-        player_choice = ''
-        while not match("^[wcm]$", player_choice):
-            print("\n{} more points to divide.".format(10 - i))
-            player_choice = getch().lower()
-            if player_choice == "w":
-                hero['wisdom'] += 1
-            elif player_choice == "c":
-                hero['charisma'] += 1
-            elif player_choice == "m":
-                hero['mental_strength'] += 1
-            else:
-                print("\nWRONG INPUT")
-                sleep(1)
-            os.system('clear')
-            print("\nWisdom: {}".format(hero['wisdom']))
-            print("Charisma: {}".format(hero['charisma']))
-            print("Mental strength: {}".format(hero['mental_strength']))
-
-    return hero
-
-
-class Mapa:
-    def __init__(self, plik):
-        self.board = []
-        self.mines = []
-        self.import_map(plik)
-        self.colour_map(self.board)
-        self.put_mines(20)
-
-    def put_mines(self, quantity):
-        """randomly selecting positions of given quantity of mines. returns a list of tuples (x, y)"""
-        while len(self.mines) < quantity:
-            y = random.randint(0, len(self.board)-1)
-            x = random.randint(0, len(self.board[0])-1)
-            if self.board[y][x] == ' ':
-                self.mines.append((x, y))
-
-    def import_map(self, mapa):
-        with open(mapa, 'r', newline='\n') as map_file:
-            for line in map_file:
-                self.board.append([char for char in line[:-1]])
-
-    def colour_map(self, board):
-        COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m',
-                   'G': '\x1b[0;32;42m'+'G'+'\x1b[0m',
-                   'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
-        for line_i in range(len(self.board)):
-            for char_i in range(len(self.board[line_i])):
-                if self.board[line_i][char_i] in COLOURS.keys():
-                    self.board[line_i][char_i] = COLOURS[self.board[line_i][char_i]]
 
 def hide_mines(actual):
     """hiding all mines, that were printed before by show_neighbours()"""
@@ -189,9 +75,9 @@ def getch():
 
 
 def react(actual, x, y):
-    for mine in actiual.mines:
-        if mine in calc_neighbours(x, y):
-            actiual.mines.remove(mine)
+    for mine in actual.mines:
+        if mine in calc_neighbours(actual, x, y):
+            actual.mines.remove(mine)
 
 
 def move(actual, x, y):
@@ -240,7 +126,7 @@ def show_pop_up(actual, dictionary, level='0'):
 
 def main():
     height, width = 39, 100
-    actual = Mapa('map1.txt')
+    actual = maps_instantions[0]
     pos = 36, 13
     hero = create_hero()
     insert_player(actual, pos[0], pos[1])

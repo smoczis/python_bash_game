@@ -1,5 +1,6 @@
 import random
-import sys, os
+import sys
+import os
 
 
 def print_board(board):
@@ -10,7 +11,8 @@ def print_board(board):
         print("".join(line))
 
 
-class Mapa:
+class Maps:
+    """class for maps"""
     def __init__(self, plik):
         self.board = []
         self.mines = []
@@ -41,6 +43,9 @@ class Mapa:
                     self.board[line_i][char_i] = COLOURS[self.board[line_i][char_i]]
 
 
-plansze = {'pierwsza': Mapa('map1.txt')}
-
-print_board(plansze['pierwsza'].board)
+maps_instantions = []
+"""making maps as Map class instances using every file in /maps directotry which is .txt
+   and storing it to list of instances"""
+for f in os.listdir("maps"):
+    if f.endswith(".txt"):
+        maps_instantions.append(Maps('maps/' + f))
