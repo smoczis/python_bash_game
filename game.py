@@ -54,17 +54,6 @@ def show_neighbours(neighbours):
     return board
 
 
-def hide_mines():
-    """hiding all mines, that were printed before by show_neighbours()"""
-    global mines
-    global board
-    for line_i in range(len(board)):
-        for char_i in range(len(board[line_i])):
-            if board[line_i][char_i] == 'X':
-                board[line_i][char_i] = ' '
-    return board
-
-
 def insert_player(x, y, detector=False):
     """inserting player on board on given position. in future, it may get players atributes, to diverse result"""
     global COLOURS
@@ -78,18 +67,6 @@ def insert_player(x, y, detector=False):
     show_neighbours(neighbours)
     board[y][x] = "@"
     return board
-
-
-def put_mines(quantity):
-    """randomly selecting positions of given quantity of mines. returns a list of tuples (x, y)"""
-    miles = []
-    global board
-    while len(mines) < quantity:
-        y = random.randint(0, len(board)-1)
-        x = random.randint(0, len(board[0])-1)
-        if board[y][x] == ' ':
-            mines.append((x, y))
-    return mines
 
 
 def getch():
@@ -123,12 +100,6 @@ def move(x, y):
     else:
         pass
     return x, y
-
-
-def boom(x, y):
-    """this happening when player steps on mine or bomb explodes"""
-    global board
-    board_backup = board
 
 
 def main():
