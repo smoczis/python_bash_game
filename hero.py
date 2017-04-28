@@ -4,8 +4,6 @@ from time import sleep
 from game import getch
 
 
-
-
 def create_hero():
     """creating hero"""
     os.system('clear')

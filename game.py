@@ -200,7 +200,9 @@ def move(x, y):
 
 def show_pop_up(dictionary, level='0'):
     global board
-    board_copy = board[:]
+    board_copy = []
+    for item in board:
+        board_copy.append(item[:])
     show_hint = choice(dictionary['0'])
     pop_height, pop_width = 5, len(show_hint[0])+4
     help_list = list(show_hint[0])
@@ -215,7 +217,6 @@ def show_pop_up(dictionary, level='0'):
             board_copy[15+line][x_start:x_end] = ["#"] + [" "]*2 + help_list + [" "]*2 + ["#"]
     print_board(board_copy)
     sleep(2)
-    print_board(board)
 
 
 def main():

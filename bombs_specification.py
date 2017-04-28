@@ -17,8 +17,6 @@ board = []
 mines = []
 
 
-
-
 def boom(x, y):
     """this happening when player steps on mine or bomb explodes"""
     global board
