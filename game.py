@@ -4,11 +4,20 @@ import tty
 import termios
 import random
 from maps_functions import *
+from random import choice
+from time import sleep
+from pop_up import *
 
 COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m', 'G': '\x1b[0;32;42m'+'G'+'\x1b[0m', 'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
 BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N']]
 board = []
 mines = []
+HINTS = {
+        '0': [("Type the capital of Poland", "Warsaw"), ("Type the capital of France", "Paris"),
+              ("Dupa cycki lasery", "Dzoana Krupa")],
+        '1': ['Type the factorial of number 3', '6'],
+        '2': ['What the \'int\' abbreviate for?', 'integer']
+}
 
 
 def create_board(width, height):
