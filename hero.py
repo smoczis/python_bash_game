@@ -5,6 +5,7 @@ from game import getch
 
 
 def create_hero():
+    """"""
     os.system('clear')
 
     hero = {'exp': 0, 

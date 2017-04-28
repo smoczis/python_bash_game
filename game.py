@@ -11,26 +11,7 @@ board = []
 mines = []
 
 
-def create_board(width, height):
-    """creating empty board with frames of 'X'. given height and width. curently not in use"""
-    width = int(width)
-    height = int(height)
-    board = []
-    for line in range(1, height + 1):
-        if line in [1, height]:
-            board.append(["X" for column in range(1, width+1)])
-        else:
-            board.append(["X"] + [" " for column in range(2, width)] + ["X"])
-    return board
 
-
-def print_board():
-    """printing given board on screen. before that adjust screen size, and clear previous prints"""
-    global board
-    sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=107))
-    os.system('clear')
-    for line in board:
-        print("".join(line))
 
 
 def calc_neighbours(board, x, y, distance=1):
