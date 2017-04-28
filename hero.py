@@ -1,9 +1,7 @@
 import os
-import sys
-import tty
-import termios
 from re import match
 from time import sleep
+from game import getch
 
 
 def create_hero():
@@ -44,16 +42,4 @@ def create_hero():
     return hero
 
 
-def getch():
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(sys.stdin.fileno())
-        ch = sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
-
-
 hero = create_hero()
-print(hero)
