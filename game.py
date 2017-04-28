@@ -2,10 +2,12 @@ import os
 import sys
 import tty
 import termios
+import random
 from maps_functions import *
 
 COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m', 'G': '\x1b[0;32;42m'+'G'+'\x1b[0m', 'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
 BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N']]
+mines = []
 
 
 def create_board(width, height):
@@ -27,9 +29,44 @@ def print_board(board):
         print("".join(line))
 
 
-def insert_player(board, x, y):
+def show_neighbours(board, x, y):
+    global mines
+    neighbours = []
+    for delta_y in range(-5, 6):
+        for delta_x in range(-5, 6):
+            if y + delta_y in range(len(board)) and x + delta_x in range(len(board[0])):
+                neighbours.append((x + delta_x, y + delta_y))
+    for (x, y) in neighbours:
+        if (x, y) in mines:
+            board[y][x] = "X"
+    return board
+
+
+def hide_mines(board):
+    global mines
+    for line_i in range(len(board)):
+        for char_i in range(len(board[line_i])):
+            if board[line_i][char_i] == 'X':
+                board[line_i][char_i] = ' '
+    return board
+
+
+def insert_player(board, x, y, detector=False):
+    global COLOURS
+    hide_mines(board)
+    show_neighbours(board, x, y)
     board[y][x] = "@"
     return board
+
+
+def put_mines(board, quantity):
+    miles = []
+    while len(mines) < quantity:
+        y = random.randint(0, len(board)-1)
+        x = random.randint(0, len(board[0])-1)
+        if board[y][x] == ' ':
+            mines.append((x, y))
+    return mines
 
 
 def getch():
@@ -63,11 +100,11 @@ def move(board, x, y):
 
 
 def main():
-    wall = ['X', 'G', 'N', 'B']
+    global mines
     height, width = 39, 100
     board = import_map('map1.txt')
+    mines = put_mines(board, 20)
     pos = 36, 13
-    print('\x1b[3;31;41m'+'X'+'\x1b[0m')
     insert_player(board, pos[0], pos[1])
     print_board(board)
     while True:
