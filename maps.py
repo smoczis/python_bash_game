@@ -1,4 +1,5 @@
 def import_map(map):
+    """importing maps from txt files, return board"""
     with open(map, 'r', newline='\n') as map_file:
         board = []
         for line in map_file:
@@ -8,6 +9,8 @@ def import_map(map):
 
 
 def colour_map(board):
+    """changing signs from txt maps to corresponding colours basing on COLOURS dict.
+       returns new colour board"""
     global COLOURS
     COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m',
                'G': '\x1b[0;32;42m'+'G'+'\x1b[0m',
