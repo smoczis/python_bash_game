@@ -4,19 +4,19 @@ from time import sleep
 from game import getch
 
 
-def create_hero():
-    """"""
-    os.system('clear')
 
-    hero = {'exp': 0, 
+
+def create_hero():
+    """creating hero"""
+    os.system('clear')
+    hero = {'exp': 0,
             'level': 1,
             'wisdom': 1,
             'charisma': 1,
             'mental_strength': 1,
             'alive': True,
-            'armor': False, 
-            'equipment': [] }
-
+            'armor': False,
+            'equipment': []}
     print("\nYou have 10 points to divide between: "
           "\nwisdom, charisma and mental strength"
           "\nTo add type: 'w', 'c', 'm': ")
@@ -41,6 +41,3 @@ def create_hero():
             print("Mental strength: {}".format(hero['mental_strength']))
 
     return hero
-
-
-hero = create_hero()

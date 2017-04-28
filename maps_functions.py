@@ -1,3 +1,7 @@
+import sys
+import os
+
+
 def import_map(map):
     with open(map, 'r', newline='\n') as map_file:
         board = []
@@ -9,7 +13,9 @@ def import_map(map):
 
 def colour_map(board):
     global COLOURS
-    COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m', 'G': '\x1b[0;32;42m'+'G'+'\x1b[0m', 'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
+    COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m',
+               'G': '\x1b[0;32;42m'+'G'+'\x1b[0m',
+               'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
     for line_i in range(len(board)):
         for char_i in range(len(board[line_i])):
             if board[line_i][char_i] in COLOURS.keys():
