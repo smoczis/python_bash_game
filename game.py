@@ -8,9 +8,9 @@ from re import match
 from maps_creator import *
 from hero import *
 
+player_objects = {'dynamite': COLOURS['C'], 'flag': COLOURS['F']}
+BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'], COLOURS['T'], COLOURS['S']]
 
-COLOURS = {'X': '\x1b[0;31;41m'+'X'+'\x1b[0m', 'G': '\x1b[0;32;42m'+'G'+'\x1b[0m', 'N': '\x1b[0;34;44m'+'N'+'\x1b[0m'}
-BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N']]
 
 HINTS = {
         '0': [("Type the capital of Poland", "Warsaw"), ("Type the capital of France", "Paris"),
@@ -18,6 +18,8 @@ HINTS = {
         '1': ['Type the factorial of number 3', '6'],
         '2': ['What the \'int\' abbreviate for?', 'integer']
 }
+
+game_on = True
 
 
 def hide_mines(actual):
@@ -48,18 +50,27 @@ def show_neighbours(actual, neighbours):
     return actual.board
 
 
-def insert_player(actual, x, y, detector=False):
-    """inserting player on board on given position. in future, it may get players atributes, to diverse result"""
+def insert_player(actual, detector=False):
+    """inserting player on board on given position. set see distance and makes visible hidden objects in that range
+       also starts a reaction to players steping on / into sth"""
     global COLOURS
+    numbers = [str(x) for x in range(10)]
     if detector:
         see_distance = 5
     else:
         see_distance = 1
     hide_mines(actual)
-    neighbours = calc_neighbours(actual, x, y, see_distance)
+    neighbours = calc_neighbours(actual, actual.player_position[0], actual.player_position[1], see_distance)
     show_neighbours(actual, neighbours)
-    actual.board[y][x] = "@"
-    return actual.board
+    if actual.player_position in actual.mines:
+        boom(actual, actual.player_position[0], actual.player_position[1])
+    elif actual.board[actual.player_position[1]][actual.player_position[0]] in numbers:
+        previous = str(maps_instantions.index(actual))
+        actual = maps_instantions[int(actual.board[actual.player_position[1]][actual.player_position[0]])]
+        actual.start_position(previous)
+    else:
+        actual.board[actual.player_position[1]][actual.player_position[0]] = "@"
+    return actual
 
 
 def getch():
@@ -75,16 +86,82 @@ def getch():
 
 
 def react(actual, x, y):
-    for mine in actual.mines:
-        if mine in calc_neighbours(actual, x, y):
-            actual.mines.remove(mine)
+    """reacting to neighbour item"""
+    global hero
+    for cell in calc_neighbours(actual, x, y):
+        if cell in actual.mines:
+            actual.mines.remove(cell)
+            hero['exp'] += 1
+            break
+        elif (cell[0], cell[1], 'flag') in actual.player_objects:
+            actual.player_objects.remove((cell[0], cell[1], 'flag'))
+            actual.board[cell[1]][cell[0]] = ' '
+            hero['flag'] += 1
+        elif (cell[0], cell[1], 'dynamite') in actual.player_objects:
+            actual.player_objects.remove((cell[0], cell[1], 'dynamite'))
+            actual.board[cell[1]][cell[0]] = ' '
+            hero['dynamite'] += 1
 
 
-def move(actual, x, y):
+def put(item, actual, x, y):
+    """droping item from equipment next to players actual position"""
+    item = item.lower()
+    if hero[item] > 0:
+        actual.board[y][x] = player_objects[item]
+        print_board(actual.board)
+        key = getch()
+        if key == "a" and actual.board[y][x-1] not in BLOCKERS:
+            x -= 1
+        elif key == "d" and actual.board[y][x+1] not in BLOCKERS:
+            x += 1
+        elif key == "w" and actual.board[y-1][x] not in BLOCKERS:
+            y -= 1
+        elif key == "s" and actual.board[y+1][x] not in BLOCKERS:
+            y += 1
+        actual.board[y][x] = player_objects[item]
+        actual.player_objects.append((x, y, item))
+        hero[item] -= 1
+    else:
+        pass
+
+
+def detonate_dynamite(actual):
+    """detonating all dynamite put before"""
+    for cell in actual.player_objects:
+        if cell[2] == 'dynamite':
+            boom(actual, cell[0], cell[1])
+            actual.player_objects.remove(cell)
+
+
+def boom(actual, x, y, power=5):
+    """making explosion in given position, power is radius of near fields to be destroyed"""
+    global game_on
+    field_of_fire = calc_neighbours(actual, x, y, power)
+    field_of_fire.append((x, y))
+    print(field_of_fire, actual.player_position)
+    for i in range(power):
+        for cell in calc_neighbours(actual, x, y, i):
+            actual.board[cell[1]][cell[0]] = '#'
+        print_board(actual.board)
+        sleep(0.05)
+    for cell in field_of_fire:
+        actual.board[cell[1]][cell[0]] = ' '
+        if cell in actual.mines:
+            actual.mines.remove(cell)
+    if actual.player_position in field_of_fire:
+        print('yes')
+        game_on = False
+    print_board(actual.board)
+
+
+def move(actual):
     """moving player basing on previous position on board, using getch()"""
     global BLOCKERS
+    numbers = [str(x) for x in range(10)]
     key = getch()
-    actual.board[y][x] = " "
+    x, y = actual.player_position[:]
+    if actual.board[y][x] not in numbers:
+        actual.board[y][x] = " "
     if key == "a" and actual.board[y][x-1] not in BLOCKERS:
         x -= 1
     elif key == "d" and actual.board[y][x+1] not in BLOCKERS:
@@ -99,16 +176,21 @@ def move(actual, x, y):
         sys.exit()
     elif key == "e":
         react(actual, x, y)
-    else:
-        pass
-    return x, y
+    elif key == "q":
+        put('dynamite', actual, x, y)
+    elif key == "f":
+        put('flag', actual, x, y)
+    elif key == "b":
+        detonate_dynamite(actual)
+    actual.player_position = x, y
+    return actual.player_position
 
 
 def show_pop_up(actual, dictionary, level='0'):
     board_copy = []
     for item in actual.board:
         board_copy.append(item[:])
-    show_hint = choice(dictionary['0'])
+    show_hint = random.choice(dictionary['0'])
     pop_height, pop_width = 5, len(show_hint[0])+4
     help_list = list(show_hint[0])
     x_start = 50 - pop_width//2
@@ -124,17 +206,28 @@ def show_pop_up(actual, dictionary, level='0'):
     sleep(1)
 
 
+def endgame():
+    print('konec')
+
+
 def main():
+    global game_on
+    global footer
+    global hero
     height, width = 39, 100
-    actual = maps_instantions[0]
-    pos = 36, 13
+    map_number = 0
+    actual = maps_instantions[map_number]
     hero = create_hero()
-    insert_player(actual, pos[0], pos[1])
+    footer = create_footer(hero)
+    actual.player_position = 36, 13
     print_board(actual.board)
-    while True:
-        pos = move(actual, pos[0], pos[1])
-        insert_player(actual, pos[0], pos[1], detector=True)
+    while game_on:
+        actual = insert_player(actual, detector=True)
+        footer = create_footer(hero)
         print_board(actual.board)
+        print(actual, actual.player_position, actual.player_objects)
+        move(actual)
+    endgame()
 
 
 if __name__ == '__main__':
