@@ -1,38 +1,33 @@
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-X            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGXX                                 X
-X            XX    GGGGGGGG      GGGGGGGGG    GGGGGGGG   G GGGGG      XX                                 X
-X            XX     GGGGG          GGGGG       GGGGG      GGGGG       XX                                 X
-X            XX                      GG                               XX                                 X
-X            XX                                                       XX                                 X
-X            XX                                                       XX                                 X
-X            XX                                                       XX                                 X
-XXXXXXXXXXXXXXX                                                       XX                                 X
-XXXXXXXXXXXXXXX                                                       XX                                 X
-X                                                                     XX                                 X
-X                                                                     XX                                 X
-X                                                                      BB                                X
-X                                                                      BB                                X
-X                                                                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-X                                                                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-X                                                                                                 NNNNNNNX
-X                                                                                          NNNNNNNNNNNNNNX
-X                                                                                     NNNNNNNNNNNNNNNNNNNX
-X                                                             NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNX
-X                                                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNX
-X                                                       NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNX
-X                                                   NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN X
-X                                                 NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN        X
-X                                               NNNNNNNNNNNNNNNNNNNNNNNNNNNNN                            X
-X        X     X                NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                               X
-XNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                                X
-XNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                         GG G     X
-XNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                            GGGGGGG   X
-XNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                                 GGGGGGGGG  X
-XNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                    GGGG        GGGG        GGGGGGGGGG  X
-XNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNN                            GGGGGG       GGGGGG        GGGGGGGG   X
-X        X     X                                                  GGGGGGGG     GGGGGGGG        GGGGGG    X
-X                                                                  GGGGGG        GGGG           GGGG     X
-X                                                                    GGG           G                     X
-X                                                                                                        X
-X                                                                                                        X
+XXXXXXXXX333XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX333XX
+X            XX                                                                    XX         XX         X
+X            XX                                                                    XX          XX        X
+X   TT       XX       TTT                                                          XX      T T  XX       X
+X     T      XX                                                                    XX            XX      X
+0      T     XX                                       TTT             XX           XX      T T T  XX     X
+0       T    XX                                                       XXXXXXXXXXXXXXXXX            XX    X
+0        T   XX                                                       XX       TT     X    T T T T  XX   X
+XXXXXXXXXXXXXXX                                                       XX TT           X              XX  X
+XXXXXXXXXXXXXXX                   NNNNNNNNN                           XX              X    T T T T T  XX X
+X                                NNNNNNNNNNNNN GGGGG                  XX   TT     TT         T T T     XXX
+X                             NNNNNNNNNNNNNNNNNNNGGG     TT           XXXXXXXXXXXXXXXXX                 XX
+X            GGGGG           NNNNNNNNNNNNNNNNNNNNNG                   XX  TTTT        X      TTTTT      XX
+X             GGGGGG       NNNNNNNNNNNNNNNNNNNNNNNNNN                 XX          TT  X       TTT        X
+XNNNN        GGGGGGGGG    NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN  TT         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XNNNNNNNN  GGGGGGGGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                                           7
+XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNGGGG                    GG                7
+X      NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNGGGGG               GGG                 7
+X     GGGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNGGG               GGG                  7
+X       GGGG  NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN            GGG               GGX
+X         GGG         NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN         GG                GX
+X       GGGGG              NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                          GGX
+X          GGGGG                NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                        GGGX
+X                                           NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                   GGG  GGX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXNNNNNNNNNNNNNNNNNNNN              GGGGGGGGGGGX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         GNNNNNNNNNNNGGGG     GGGGGGGGGGGGGGGX
+0    TT                                     TT     TTT    XX       GGGGGNNNNNNNNNNGGGG  GGGGGGGGGGGGGG GGX
+0         TT                                              XX      GGGGGGGNNNNNNNNNGGGGG        GGGGGG   GX
+0  TT                                         TTT         XX       GGGGGGNNNNNNNNNGGG           GGGG    GX
+0       TT         TT                                     XX         GGGXXXXXXXXXXXXX                   GX
+0                TT                                                                                      X
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
