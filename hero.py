@@ -1,8 +1,7 @@
 import os
 from re import match
 from time import sleep
-from game import getch
-
+from text_in_out import *
 
 hero = {}
 
@@ -42,5 +41,4 @@ def create_hero():
             print("\nWisdom: {}".format(hero['wisdom']))
             print("Charisma: {}".format(hero['charisma']))
             print("Mental strength: {}".format(hero['mental_strength']))
-
     return hero

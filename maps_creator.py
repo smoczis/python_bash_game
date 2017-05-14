@@ -3,14 +3,14 @@ import sys
 import os
 
 
-COLOURS = {'X': '\x1b[0;31;41m' + 'X' + '\x1b[0m',
-           'G': '\x1b[0;32;42m' + 'G' + '\x1b[0m',
-           'N': '\x1b[0;34;44m' + 'N' + '\x1b[0m',
-           'C': '\x1b[0;30;40m' + 'C' + '\x1b[0m',
-           'F': '\x1b[0;37;47m' + 'F' + '\x1b[0m',
-           'T': '\x1b[0;33;43m' + 'T' + '\x1b[0m',
-           'S': '\x1b[0;36;46m' + 'S' + '\x1b[0m'}
-
+COLOURS = {'X': '\x1b[0;37;41m' + ' ' + '\x1b[0m',
+           'G': '\x1b[0;37;42m' + ' ' + '\x1b[0m',
+           'N': '\x1b[0;37;44m' + ' ' + '\x1b[0m',
+           'C': '\x1b[0;37;40m' + ' ' + '\x1b[0m',
+           'F': '\x1b[0;30;47m' + ' ' + '\x1b[0m',
+           'T': '\x1b[0;37;43m' + ' ' + '\x1b[0m',
+           'S': '\x1b[0;37;46m' + ' ' + '\x1b[0m'}
+           #  \x1b is a single char!
 footer = []
 
 
@@ -55,14 +55,14 @@ def print_board(board):
 
 class Maps:
     """class for maps"""
-    def __init__(self, plik):
+    def __init__(self, map_file):
         self.board = []
         self.mines = []
-        self.player_objects = []
-        self.import_map(plik)
+        self.player_objects = {}
+        self.player_position = None
+        self.import_map(map_file)
         self.colour_map(self.board)
         self.put_mines(20)
-        self.player_position = None
 
     def put_mines(self, quantity):
         """randomly selecting positions of given quantity of mines. returns a list of tuples (x, y)"""
@@ -72,14 +72,18 @@ class Maps:
             if self.board[y][x] == ' ':
                 self.mines.append((x, y))
 
-    def start_position(self, previous):
-        for line_i in range(len(self.board)):
-            for char_i in range(len(self.board[0])):
-                if self.board[line_i][char_i] == previous:
-                    self.player_position = char_i, line_i
-
-    def import_map(self, mapa):
-        with open(mapa, 'r', newline='\n') as map_file:
+    def start_position(self, portal, previous):
+        if portal[0] == 'x':
+            for line_i in range(len(self.board)):
+                if self.board[line_i][portal[1]] == previous:
+                    self.player_position = portal[1], line_i
+        else:
+            for char_i in range(len(self.board[portal[1]])):
+                if self.board[portal[1]][char_i] == previous:
+                    self.player_position = char_i, portal[1]
+                    
+    def import_map(self, map_file):
+        with open(map_file, 'r', newline='\n') as map_file:
             for line in map_file:
                 self.board.append([char for char in line[:-1]])
 
