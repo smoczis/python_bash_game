@@ -8,6 +8,7 @@ from hero import *
 from files_operations import *
 from text_in_out import *
 from items import Box
+from hot_cold_game import *
 
 
 PLAYER_OBJ_COLOURS = {'dynamite': COLOURS['C'], 'flag': COLOURS['F']}

@@ -30,16 +30,18 @@ def generate_number(binary=False, even=False):
 
 def guessing_number(random_number, attempts):
     while attempts:
+        printing_result = []
+        pop_up_list = ['You got {} attempts'.format(attempts), '\n', *printing_result]
+        print (*pop_up_list)
         guess_number = input("pick 3 digit number: ")
 
         while not guess_number.isdigit() or len(guess_number) != 3:
             guess_number = input("It is not an integer!")
 
-        print ("You got {} attempts".format(attempts))
+        # print ("You got {} attempts".format(attempts))
         guess_number = list(guess_number)
-        print (guess_number)
+        # print (guess_number)
 
-        printing_result = []
 
         for i, elem in enumerate(guess_number):
             if elem in random_number:
@@ -57,8 +59,9 @@ def guessing_number(random_number, attempts):
             break
         attempts -= 1
     else:
-        print ("You lose!")
-        '''
+        pop_up_list = ['You lose']
+    return pop_up_list
+    '''
      goal = "".join(printing_result)
     if goal == "hothothot":
         print ("Cool")
@@ -68,8 +71,7 @@ def guessing_number(random_number, attempts):
 
 def main():
     number = generate_number(even=True)
-    print (number)
-    guessing_number(number, 10)
+    print (guessing_number(number, 10))
 
 
 if __name__ == "__main__":
