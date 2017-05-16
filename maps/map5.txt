@@ -1,0 +1,33 @@
+ 88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 
+4              D                                                                    D                    6
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+4                                              D               F             F      XX                   6
+4          F                         F         D   F                                XX                   6
+4                   F F  F                     D                                    XX                   6
+4    F          F F                            D                                    XX                   6
+4                             AA F             D                       F F F        XX     FF            6
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXAAXXXXXXXXXXXXXXXX       F        F     F             XX                   6
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX                                    XX                   6
+4             D                          GGGGGXX                                    XX      F            6
+4             D                            GGGXX  FF                      F         XX      FF           6
+4             D                           GGGGXX                                    XX                   6
+XXXXXXXXXXXXXXX                             GGXX                                    XX                   6
+XXXXXXXXXXXXXXX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   F               6
+4      F     XX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                   6
+4            XX                                                                     XX     F    F        6
+4            XX                                                                     XX             F     6
+4            XX                                                                     XX                   6
+4      F     XX                                                                     XX                   6
+4  F F       XX                                                                     XX        F          6
+4            XX                                     G                               XX       F           6
+4            XX                                    GGG                              XX                   6
+4            XX                                   GGGGG                             XXX        F         6
+4            XX                                     GGGG                            XXXX                 6
+4            XX                                     GGG                             XX XX                6
+4        FF BB                                      GGGGG                            CC XX          F    6
+4     FF    BB                G                        GG                            CC  XX              6
+4            XX             GGGGG     GG     GG        GGGG  GG  GG       G         XX    XX             6
+4            XX              GGGG     GGGG GGGGGG    GGGGGGGG  GG GGG    GGG        XX     XX            6
+4            XX                      GGGGGGGGGGGGG                GGGGGGGG          XX      XX           6
+V111111111111XX111111111111111111111VVVVVVVVVVVVVVV111111111111111VVVVVVVV1111111111XX1111111XX1111111111X

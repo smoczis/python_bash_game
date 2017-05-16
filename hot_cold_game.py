@@ -2,7 +2,7 @@
 start menue
 win/lose screen
 map!!!
-hot_cold
+hot_cold with pop_up
 """
 from random import randint, choice
 
