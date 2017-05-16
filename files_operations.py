@@ -10,7 +10,7 @@ def starter():
     if action.upper() == 'N':
         actual = maps_instantions[0]
         hero = create_hero()
-        actual.player_position = 36, 13
+        actual.player_position = 28, 5
     elif action.upper() == 'L':
         game_file = input('Enter file name:')
         game = load(game_file)

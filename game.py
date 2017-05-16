@@ -7,11 +7,13 @@ from maps_creator import *
 from hero import *
 from files_operations import *
 from text_in_out import *
+from items import Box
 
 
 PLAYER_OBJ_COLOURS = {'dynamite': COLOURS['C'], 'flag': COLOURS['F']}
 BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'], COLOURS['T'], COLOURS['S']]
-
+BOOM_PROOF = [COLOURS['N'], COLOURS['V']]
+boxes = []
 
 HINTS = {
         '0': [("Type the capital of Poland", "Warsaw"), ("Type the capital of France", "Paris"),
@@ -24,7 +26,7 @@ game_on = True
 actual = None
 
 
-def pop_up(text_lines, auto_hide=0, ask=False, colour=COLOURS['C']):
+def pop_up(text_lines, auto_hide=0, ask=False, ans_len=False, colour=COLOURS['C']):
     global actual
     global COLOURS
     board_copy = []
@@ -50,7 +52,7 @@ def pop_up(text_lines, auto_hide=0, ask=False, colour=COLOURS['C']):
         result = None
     else:
         if ask:
-            result = get_input(board_copy, x_start + 3, 17 + len(text_lines), '', background=colour)
+            result = get_input(board_copy, x_start + 3, 17 + len(text_lines), '', ans_len=ans_len, background=colour)
         else:
             result = getch()
     return result
@@ -132,6 +134,7 @@ def react(x, y):
     """reacting to neighbour item"""
     global hero
     global actual
+    global boxes
     for cell in calc_neighbours(x, y):
         if cell in actual.mines:
             actual.mines.remove(cell)
@@ -141,6 +144,13 @@ def react(x, y):
             hero[actual.player_objects[cell]] += 1
             del actual.player_objects[cell]
             actual.board[cell[1]][cell[0]] = ' '
+        else:
+            for box in boxes:
+                if not box.opened:
+                    for pos in box.position:
+                        if box.place == actual and pos == cell:
+                            box.open()
+            print(actual.player_objects)
 
 
 def put(item, x, y):
@@ -184,14 +194,15 @@ def boom(x, y, power=5):
     global actual
     field_of_fire = calc_neighbours(x, y, power)
     field_of_fire.append((x, y))
-    print(field_of_fire, actual.player_position)
+    board_copy = [item[:] for item in actual.board]
     for i in range(power):
         for cell in calc_neighbours(x, y, i):
-            actual.board[cell[1]][cell[0]] = '#'
-        print_board(actual.board)
+            board_copy[cell[1]][cell[0]] = '#'
+        print_board(board_copy)
         sleep(0.05)
     for cell in field_of_fire:
-        actual.board[cell[1]][cell[0]] = ' '
+        if actual.board[cell[1]][cell[0]] not in BOOM_PROOF:
+            actual.board[cell[1]][cell[0]] = ' '
         if cell in actual.mines:
             actual.mines.remove(cell)
     if actual.player_position in field_of_fire:
@@ -251,18 +262,26 @@ def main():
     global actual
     global maps_instantions
     global hero
+    global boxes
 #    height, width = 39, 100
 #    actual = maps_instantions[0]
 #    hero = create_hero()
 #    actual.player_position = 36, 13
     actual, hero, actual.player_position = starter()
     footer = create_footer(hero)
+
+
+    eq = ['flag', 'flag', 'flag']
+    for item in eq:
+        boxes.append(Box(item))
+
     print_board(actual.board)
     while game_on:
         actual = insert_player(detector=True)
         footer = create_footer(hero)
         print_board(actual.board)
-        print(hero, actual, actual.player_position, actual.player_objects)
+        for box in boxes:
+            print(box.position)
         move()
     endgame()
 
