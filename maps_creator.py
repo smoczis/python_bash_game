@@ -3,14 +3,16 @@ import sys
 import os
 
 
-COLOURS = {'X': '\x1b[0;37;41m' + ' ' + '\x1b[0m',
-           'G': '\x1b[0;37;42m' + ' ' + '\x1b[0m',
-           'N': '\x1b[0;37;44m' + ' ' + '\x1b[0m',
-           'C': '\x1b[0;37;40m' + ' ' + '\x1b[0m',
-           'F': '\x1b[0;30;47m' + ' ' + '\x1b[0m',
-           'T': '\x1b[0;37;43m' + ' ' + '\x1b[0m',
-           'S': '\x1b[0;37;46m' + ' ' + '\x1b[0m'}
-           #  \x1b is a single char!
+COLOURS = {'X': '\x1b[0;37;41m' + ' ' + '\x1b[0m',  # red
+           'G': '\x1b[0;37;42m' + ' ' + '\x1b[0m',  # green
+           'N': '\x1b[0;37;44m' + ' ' + '\x1b[0m',  # blue
+           'C': '\x1b[0;37;40m' + ' ' + '\x1b[0m',  # black
+           'F': '\x1b[0;30;47m' + ' ' + '\x1b[0m',  # white
+           'T': '\x1b[0;37;43m' + ' ' + '\x1b[0m',  # gold
+           'V': '\x1b[5;30;42m' + ' ' + '\x1b[0m',  # green BOOM_PROOF
+           'S': '\x1b[0;37;46m' + ' ' + '\x1b[0m'
+           }
+# \x1b is a single char!
 footer = []
 
 
@@ -37,7 +39,6 @@ def create_footer(hero):
     #    for j, char in enumerate(str(hero[item])):
     #        footer[3][line_length + 2 + j] = char
     #    line_length += len(str(hero[item])) + 1
-
 
 
 def print_board(board):
@@ -69,7 +70,7 @@ class Maps:
         while len(self.mines) < quantity:
             y = random.randint(0, len(self.board)-1)
             x = random.randint(0, len(self.board[0])-1)
-            if self.board[y][x] == ' ':
+            if self.board[y][x] == ' ' and (x, y) != (28, 5):
                 self.mines.append((x, y))
 
     def start_position(self, portal, previous):
@@ -81,7 +82,7 @@ class Maps:
             for char_i in range(len(self.board[portal[1]])):
                 if self.board[portal[1]][char_i] == previous:
                     self.player_position = char_i, portal[1]
-                    
+
     def import_map(self, map_file):
         with open(map_file, 'r', newline='\n') as map_file:
             for line in map_file:

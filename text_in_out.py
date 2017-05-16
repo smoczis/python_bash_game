@@ -32,7 +32,7 @@ def print_text(board, x, y, text, background=None):
     return board
 
 
-def get_input(board, x, y, text, background=None):
+def get_input(board, x, y, text, ans_len=False, background=None):
     global COLOURS
     input_text = []
     line_length = 0
@@ -46,11 +46,20 @@ def get_input(board, x, y, text, background=None):
     else:
         prefix = background[:10]
         suffix = background[-4:]
-    while key != ' ':
-        key = getch()
-        if key != ' ':
-            board[y][x + line_length] = prefix + key + suffix
-            line_length += 1
-            input_text.append(key)
-        print_board(board)
+    if not ans_len:
+        while key != ' ':
+            key = getch()
+            if key != ' ':
+                board[y][x + line_length] = prefix + key + suffix
+                line_length += 1
+                input_text.append(key)
+            print_board(board)
+    else:
+        for i in range(ans_len):
+            key = getch()
+            if key != ' ':
+                board[y][x + line_length] = prefix + key + suffix
+                line_length += 1
+                input_text.append(key)
+            print_board(board)
     return ''.join(input_text)
