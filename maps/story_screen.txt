@@ -1,0 +1,17 @@
+Feel like a real sapper!                                             
+You have been dropped into a hazardous area in the center of Berlin. 
+You are about to face whole lots of dangerous tasks to save the world
+Try to find a way to disarm several types of bombs and mines and     
+defeat the boss - The Nuke Bomb.                                     
+Collect items that help you survive and destroy as many bombs as you 
+can. Feel free to explore area and search for clues to guess the key 
+disarming bombs and mines. ██╗  ██████╔╝██╔████╔██║███████║██╔██╗ ██║
+╚════██║██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══██║██║╚██╗██║
+███████║██║  ██║██║     ███████╗██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║
+╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+                                                                     
+                                                                     
+                            created by                               
+                          Błażej Pierzak                             
+                        Mateusz Romanowski                           
+                          Cyprian Szwajka                            
