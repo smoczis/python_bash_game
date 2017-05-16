@@ -8,7 +8,7 @@ from time import sleep
 
 
 def getch():
-    """read users input without pressing 'return'. returns one (first) char of input"""
+    """read users input without pressing 'enter'. returns one (first) char of input"""
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
     try:

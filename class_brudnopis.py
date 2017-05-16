@@ -29,6 +29,7 @@ class Maps:
                 self.mines.append((x, y))
 
     def import_map(self, mapa):
+        # maybe using try and finally?
         with open(mapa, 'r', newline='\n') as map_file:
             for line in map_file:
                 self.board.append([char for char in line[:-1]])
