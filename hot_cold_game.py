@@ -2,20 +2,20 @@
 start menue
 win/lose screen
 map!!!
-
+hot_cold
 """
 from random import randint, choice
 
 
-def generate_number(number_length=3, binary=False, even=False):
+def generate_number(number_length=3, is_binary=False, is_even=False):
     random_number = []
     digits = 9
-    if binary:
+    if is_binary:
         digits = 1
-    even_nums = [0, 2, 4, 6, 8]
+    even_numbers = [0, 2, 4, 6, 8]
     while len(random_number) != number_length:
-        if even:
-            num = choice(even_nums)
+        if is_even:
+            num = choice(even_numbers)
             if num not in random_number:
                 random_number.append(str(num))
         else:
@@ -49,7 +49,7 @@ def guessing_number(random_number, attempts, number_length=3):
         if not printing_result:
             printing_result = ['cold']
 
-        if all([i == 'hot' for i in printing_result]) and len(printing_result) == 3:
+        if all([i == 'hot' for i in printing_result]) and len(printing_result) == number_length:
             pop_up_list = ['You guessed the number']
             break
         attempts -= 1
