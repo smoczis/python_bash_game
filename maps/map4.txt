@@ -1,33 +1,33 @@
-V888888888888XX888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 
-V            XX                                                                                          5
-V            XX                                                                     XXXXXXXXXXXXXXXXXXXXXX
-V        F   XX                                                                     XXXXXXXXXXXXXXXXXXXXXX
-V   F  F F   XX                                        G  G                         XX                   5
-V            XX                             G G        GG G                         XX                   5
-V            XX                             GGGG      GGGG     G                    XX      F     F      5
-VDDDDDDDDDDDDXX                            GGGGG       GG     GGG                   XX                   5
-V            XX                             GGGGG           GGGGGG                  XX                F  5
-V       F    XX                             GG    XXXXX    GGGGGGGG                 XXXXXXXXXXXXXXXXXXXXXX
-V            XX                                XXXNNNNNXXX   GGGGG                  XXXXXXXXXXXXXXXXXXXXXX
-V            XX                      G G     XXXNNNNNNNNNXXX   GG                                        5
-V            XX                      GGGG   XXNNNNNNNNNNNNNXX   G                                        5
-V  F         XX                   GGGGGGG   XNNNNNNXXXNNNNNNX                                            5
-V            XX                     GGGGG   XNNNNNNXXXNNNNNNX                                         XXXX
-V                                  GGGGGG   XXNNNNNNNNNNNNNXX G                                       XXXX
-V                                    GG      XXXNNNNNNNNNXXX GG                                  G G  XX 5
-V     XXXXXXXXX                                XXXNNNNNXXX  GGGG                                 GG   XX 5
-V     F      XX                             G     XXXXX    GGGGG                              GG G    XX 5
-V            XX                            GGG              GG                                GGGG    XX 5
-V            XX                           GGGGG     G G G   G                                   GG    XX 5
-V            XXG                          GGGGG    GGGGGGGG                                    GGG    XX 5
-V            XXGGG                         GGG     GGGGGGGG                                  GGGG     XX 5
-V            XXGG                           G       GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 5
-V      F     XXG                                      G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 5
-V            XXGGG                                                    XX           F                     5
-VXXXXXXXXX   XXGGGGG                                                  XX     F                 F         5
-V            XXGGGG                                                   XX            F                    5
-V            XXGGG            G                                       XX                              FF 5
-V            XXGG           GGGGG     GG     GG        GGGG           XX              F                  5
-V            XXGGGG  GGGGGGGGGGGGGGGGGGGGG GGGGGG    GGGGGGGGGG       XX                    F            5
-V            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG     XX                                 5
-X000000000000XXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV00000XX0000000000000000000000000000000000
+ 77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777 
+3              D                                                                    D                    5
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+3                                              D               F             F      XX                   5
+3          F                         F         D   F                                XX                   5
+3                   F F  F                     D                                    XX                   5
+3    F          F F                            D                                    XX                   5
+3                                F             D                       F F F        XX     FF            5
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX       F        F     F             XX                   5
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX                                    XX                   5
+3             D                          GGGGGXX                                    XX      F            5
+3             D                            GGGXX  FF                      F         XX      FF           5
+3             D                           GGGGXX                                    XX                   5
+XXXXXXXXXXXXXXX                             GGXX                                    XX                   5
+XXXXXXXXXXXXXXX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXDDDDDDDDDDDDDDDDDDDD
+3      F     XX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                   5
+3            XX                                                          GGGGGGGGG  XX     F    F        5
+3            XX                                                           GGGGGG    XX             F     5
+3            XX                                                             GGGGG   XX                   5
+3      F     XX                                                            GGGG     XX                   5
+3  F F       XX                                                          GG   GG    XX        F          5
+3            XX                                     G                               XX       F           5
+3            XX                                    GGG                              XX                   5
+3            XX                                   GGGGG                             XXX        F         5
+3            XX                                     GGGG                            XXXX                 5
+3            XX                                     GGG                             XX XX                5
+3        FF                                         GGGGG                               XX          F    5
+3     FF                      G                        GG                                XX              5
+3            XX             GGGGG     GG     GG        GGGG  GG  GG       G         XX    XX             5
+3            XX              GGGG     GGGG GGGGGG    GGGGGGGG  GG GGG    GGG        XX     XX            5
+3            XX                      GGGGGGGGGGGGG                GGGGGGGG          XX      XX           5
+V111111111111XX111111111111111111111VVVVVVVVVVVVVVV111111111111111VVVVVVVV1111111111XX1111111XX1111111111X
