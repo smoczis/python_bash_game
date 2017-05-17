@@ -6,8 +6,8 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 4          F                         F         D   F                                XX                   6
 4                   F F  F                     D                                    XX                   6
 4    F          F F                            D                                    XX                   6
-4                             AA F             D                       F F F        XX     FF            6
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXAAXXXXXXXXXXXXXXXX       F        F     F             XX                   6
+4                                F             D                       F F F        XX     FF            6
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX       F        F     F             XX                   6
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX                                    XX                   6
 4             D                          GGGGGXX                                    XX      F            6
 4             D                            GGGXX  FF                      F         XX      FF           6
@@ -25,8 +25,8 @@ XXXXXXXXXXXXXXX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 4            XX                                   GGGGG                             XXX        F         6
 4            XX                                     GGGG                            XXXX                 6
 4            XX                                     GGG                             XX XX                6
-4        FF BB                                      GGGGG                            CC XX          F    6
-4     FF    BB                G                        GG                            CC  XX              6
+4        FF                                         GGGGG                               XX          F    6
+4     FF                      G                        GG                                XX              6
 4            XX             GGGGG     GG     GG        GGGG  GG  GG       G         XX    XX             6
 4            XX              GGGG     GGGG GGGGGG    GGGGGGGG  GG GGG    GGG        XX     XX            6
 4            XX                      GGGGGGGGGGGGG                GGGGGGGG          XX      XX           6

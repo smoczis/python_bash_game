@@ -13,8 +13,8 @@ V            XX                      G G     XXXNNNNNNNNNXXX   GG               
 V            XX                      GGGG   XXNNNNNNNNNNNNNXX   G                                        5
 V  F         XX                   GGGGGGG   XNNNNNNXXXNNNNNNX                                            5
 V            XX                     GGGGG   XNNNNNNXXXNNNNNNX                                         XXXX
-V           AA                     GGGGGG   XXNNNNNNNNNNNNNXX G                                       XXXX
-V           AA                       GG      XXXNNNNNNNNNXXX GG                                  G G  XX 5
+V                                  GGGGGG   XXNNNNNNNNNNNNNXX G                                       XXXX
+V                                    GG      XXXNNNNNNNNNXXX GG                                  G G  XX 5
 V     XXXXXXXXX                                XXXNNNNNXXX  GGGG                                 GG   XX 5
 V     F      XX                             G     XXXXX    GGGGG                              GG G    XX 5
 V            XX                            GGG              GG                                GGGG    XX 5
@@ -30,4 +30,4 @@ V            XXGGG            G                                       XX        
 V            XXGG           GGGGG     GG     GG        GGGG           XX              F                  5
 V            XXGGGG  GGGGGGGGGGGGGGGGGGGGG GGGGGG    GGGGGGGGGG       XX                    F            5
 V            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG     XX                                 5
-VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV00000XX0000000000000000000000000000000000
+X000000000000XXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV00000XX0000000000000000000000000000000000
