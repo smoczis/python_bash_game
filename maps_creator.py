@@ -3,15 +3,31 @@ import sys
 import os
 
 
+def insert_text(board, x, y, text, background=None):
+    if background is None:
+        prefix = ''
+        suffix = ''
+    else:
+        prefix = background[:10]
+        suffix = background[-4:]
+    for i, char in enumerate(str(text)):
+        board[y][x + i] = prefix + char + suffix
+    return board
+
+
 def create_footer(player):
     footer = []
-    for line in range(3):
+    for line in range(5):
         footer.append([' ' for i in range(106)])
     if player:
         line_length = 0
-        for item in ['1 - BACKPACK', '2 - INSTRUCTIONS', '3 - CONTROLS', '4 - EXIT GAME', player.name, player.score]:
+        for item in ['1 - BACKPACK', '2 - INSTRUCTIONS', '3 - CONTROLS', '4 - EXIT GAME']:
             insert_text(footer, line_length + 3, 1, item)
-            line_length += len(item) + 3
+            line_length += len(item) + 15
+        line_length = 0
+        for item in ['PLAYER: ' + player.name, 'EXP: ' + str(player.exp), 'SCORE: ' + str(player.score)]:
+            insert_text(footer, line_length + 3, 3, item)
+            line_length += len(item) + 10
     return footer
 
 
@@ -28,9 +44,10 @@ def print_board(board, player=None):
         print(''.join(line))
 
 
-def calc_neighbours((x, y), distance=1):
+def calc_neighbours(position, distance=1):
     """calculating and set to list all board cells in given distance (default 1) from x, y"""
     neighbours = []
+    x, y = position
     for delta_y in range(-distance, distance + 1):
         for delta_x in range(-distance, distance + 1):
             if y + delta_y in range(33) and x + delta_x in range(106):
@@ -43,6 +60,7 @@ def load_maps(catalog):
        and storing it to list of instances"""
     map_files = [f for f in os.listdir("maps")]
     map_files = sorted(map_files)
+    maps_instantions = []
     for map_file in map_files:
         if map_file.endswith(".txt"):
             maps_instantions.append(Maps(catalog + '/' + map_file))
@@ -71,6 +89,7 @@ class Maps:
         self.file = map_file
         self.board = []
         self.mines = []
+        self.objects = []
         self.import_map(map_file)
         self.colour_map(self.board)
         self.put_mines(20)
@@ -98,5 +117,5 @@ class Maps:
     def colour_map(self, board):
         for line_i in range(len(self.board)):
             for char_i in range(len(self.board[line_i])):
-                if self.board[line_i][char_i] in COLOURS.keys():
-                    self.board[line_i][char_i] = COLOURS[self.board[line_i][char_i]]
+                if self.board[line_i][char_i] in Maps.COLOURS.keys():
+                    self.board[line_i][char_i] = Maps.COLOURS[self.board[line_i][char_i]]

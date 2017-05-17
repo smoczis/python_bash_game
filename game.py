@@ -8,20 +8,21 @@ from text_in_out import *
 from items import *
 
 
-def action(player):
+def action(player, key):
     game_on = True
-    key = getch().lower()
     if key == '1':
-        browse_backpack(player)
+        player.browse_backpack()
     elif key == '2':
         pass  # INSTRUCTIONS
-    elif key == '3'":
+    elif key == '3':
         pass  # CONTROLS
     elif key == '4':
         pop_up(player.place.board, ['You have exited a game'], auto_hide=1)
         game_on = False
     elif key == 'e':
-        react_with_object()
+        player.react_with_object()
+    else:
+        player.move(key)
     return game_on
 
 
@@ -31,14 +32,13 @@ def end_game(board):
 
 
 def main():
-    player = Hero(load_maps('maps'))
+    player = Hero()
     game_on = True
     while player.alive and game_on:
-        player.insert_on_board
+        player.insert_on_board()
         print_board(player.place.board, player)
         key = getch().lower()
-        player.move(key)
-        game_on = action(key)
+        game_on = action(player, key)
     end_game(player.place.board)
 
 

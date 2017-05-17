@@ -1,10 +1,11 @@
 import random
 from maps_creator import *
+from text_in_out import *
 
 
 class Item:
 
-    info = load_info(equipment)
+    info = load_info('equipment')
 
     def set_position(self, large):
         ready = False
@@ -20,7 +21,11 @@ class Item:
 
     def put_on_board(self):
         self.place.objects.append(self)
-        for x, y in self.position:
+        if self.large > 0:
+            for x, y in self.position:
+                self.place.board[y][x] = self.char
+        else:
+            x, y = self.position
             self.place.board[y][x] = self.char
 
 
@@ -56,18 +61,18 @@ class Equipment(Item):
         self.info = Item.info[self.type]
 
     def set_char_look(self):
-        if self.type = 'dynamite':
+        if self.type == 'dynamite':
             self.char = '⌫'
-        elif self.type = 'metal_detector':
+        elif self.type == 'metal_detector':
             self.char = '♩'
-        elif self.type = 'chemical_suit':
+        elif self.type == 'chemical_suit':
             self.char = 'C'
-        elif self.type = 'armour':
+        elif self.type == 'armour':
             self.char = 'A'
-        elif self.type = 'flag':
+        elif self.type == 'flag':
             self.char = '⚑'
-        elif self.type = 'vaccine':
+        elif self.type == 'vaccine':
             self.char = '💉'
 
     def hide_on_board(self):
-        self.place[self.position[1]][self.position[0]] = ' '
+        self.place.board[self.position[1]][self.position[0]] = ' '

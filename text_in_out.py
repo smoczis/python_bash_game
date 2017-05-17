@@ -49,18 +49,6 @@ def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=Maps
     return result
 
 
-def insert_text(board, x, y, text, background=None):
-    if background is None:
-        prefix = ''
-        suffix = ''
-    else:
-        prefix = background[:10]
-        suffix = background[-4:]
-    for i, char in enumerate(str(text)):
-        board[y][x + i] = prefix + char + suffix
-    return board
-
-
 def get_input(board, x, y, text, ans_len=False, background=None):
     input_text = []
     line_length = 0
