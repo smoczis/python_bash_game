@@ -2,61 +2,72 @@ import random
 from maps_creator import *
 
 
-dupa.set_position(range)
+class Item:
 
-class Items:
+    info = load_info(equipment)
 
-    def set_position(self):
+    def set_position(self, large):
         ready = False
         while not ready:
             start = (random.randint(2, (len(self.place.board[0]) - 4)),
                      random.randint(2, (len(self.place.board) - 4)))
-            self.position = []
-            for delta_y in range(2):
-                for delta_x in range(2):
-                    if self.place.board[start[1] + delta_y][start[0] + delta_x] == ' ':
-                        self.position.append((start[0] + delta_x, start[1] + delta_y))
-                        ready = True
-                    else:
-                        ready = False
+            self.position = calc_neighbours(self.place, start[0], start[1], distance=large)
+            if all([self.place.board[y][x] == ' ' for x, y in self.position]):
+                ready = True
+
+#        elif self.item_type = 'bomb':
+#            self.char = COLOURS['F']
+
+    def put_on_board(self):
+        self.place.objects.append(self)
+        for x, y in self.position:
+            self.place.board[y][x] = self.char
 
 
-class Box(Items):
+class Box(Item):
     """docstring for Item ."""
 
-    def __init__(self, equipment):
+    def __init__(self, content):
+        self.type = 'box'
+        self.char = COLOURS['T']
+        self.large = 1
         self.place = maps_instantions[random.randint(0, (len(maps_instantions)-1))]
-        self.set_position()
+        self.set_position(self.large)
         self.opened = False
-        self.equipment = equipment
-        self.insert()
-
-    def set_position(self, range):
-        ready = False
-        while not ready:
-            start = (random.randint(2, (len(self.place.board[0]) - 4)),
-                     random.randint(2, (len(self.place.board) - 4)))
-            self.position = []
-            for delta_y in range(2):
-                for delta_x in range(2):
-                    if self.place.board[start[1] + delta_y][start[0] + delta_x] == ' ':
-                        self.position.append((start[0] + delta_x, start[1] + delta_y))
-                        ready = True
-                    else:
-                        ready = False
-
-    def insert(self):
-        for x, y in self.position:
-            self.place.board[y][x] = COLOURS['T']
+        self.content = Equipment(content)
+        self.put_on_board()
 
     def open(self):
-        for x, y in self.position:
-            self.place.board[y][x] = ' '
-        self.place.board[self.position[0][1]][self.position[0][0]] = 'E'
-        self.place.player_objects[self.position[0]] = self.equipment
-        self.opened = True
+        if not self.opened:
+            for x, y in self.position:
+                self.place.board[y][x] = ' '
+            self.content.place = self.place
+            self.content.position = self.position[1]
+            self.content.put_on_board()
+            self.opened = True
 
 
-#class Equipment(self, type_of_item):
+class Equipment(Item):
+    def __init__(self, content):
+        self.type = content
+        self.large = 0
+        self.set_char_look()
+        self.info
+        self.info = Item.info[self.type]
 
-    #def __init__(self, type_of_item):
+    def set_char_look(self):
+        if self.type = 'dynamite':
+            self.char = '⌫'
+        elif self.type = 'metal_detector':
+            self.char = '♩'
+        elif self.type = 'chemical_suit':
+            self.char = 'C'
+        elif self.type = 'armour':
+            self.char = 'A'
+        elif self.type = 'flag':
+            self.char = '⚑'
+        elif self.type = 'vaccine':
+            self.char = '💉'
+
+    def hide_on_board(self):
+        self.place[self.position[1]][self.position[0]] = ' '

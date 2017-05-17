@@ -19,8 +19,7 @@ def getch():
     return ch.lower()
 
 
-def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=COLOURS['C']):
-    global COLOURS
+def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=Maps.COLOURS['C']):
     board_copy = []
     pop_width = 0
     if ask:
@@ -37,7 +36,7 @@ def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=COLO
     for line in range(5, 5 + pop_height):
         board_copy[line][x_start:x_end] = [colour for column in range(pop_width+2)]
     for i, item in enumerate(text_lines):
-        print_text(board_copy, x_start + 3, 7 + i, item, background=colour)
+        insert_text(board_copy, x_start + 3, 7 + i, item, background=colour)
     print_board(board_copy)
     if auto_hide > 0:
         sleep(auto_hide)
@@ -50,8 +49,7 @@ def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=COLO
     return result
 
 
-def print_text(board, x, y, text, background=None):
-    global COLOURS
+def insert_text(board, x, y, text, background=None):
     if background is None:
         prefix = ''
         suffix = ''
@@ -64,10 +62,9 @@ def print_text(board, x, y, text, background=None):
 
 
 def get_input(board, x, y, text, ans_len=False, background=None):
-    global COLOURS
     input_text = []
     line_length = 0
-    print_text(board, x, y, text, background)
+    insert_text(board, x, y, text, background)
     print_board(board)
     line_length += len(str(text))
     key = None
@@ -94,3 +91,16 @@ def get_input(board, x, y, text, ans_len=False, background=None):
                 input_text.append(key)
             print_board(board)
     return ''.join(input_text)
+
+
+def load_info(info_file):
+    with open('texts/' + info_file + '.txt', 'r', newline='\n') as text_file:
+        text_file = text_file.readlines()
+        dynamite_info = [line[:-1] for line in text_file[18:26]]
+        metal_detector_info = [line[:-1] for line in text_file[28:34]]
+        chemical_suit_info = [line[:-1] for line in text_file[36:43]]
+        armour_info = [line[:-1] for line in text_file[45:49]]
+        flag_info = [line[:-1] for line in text_file[51:54]]
+        vaccine_info = [line[:-1] for line in text_file[56:59]]
+    return {'dynamite': dynamite_info, 'metal_detector': metal_detector_info, 'chemical_suit': chemical_suit_info,
+            'armour': armour_info, 'flag': flag_info, 'vaccine': vaccine_info}

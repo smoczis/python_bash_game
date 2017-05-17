@@ -4,46 +4,190 @@ from time import sleep
 from text_in_out import *
 
 
-def choose_eq(actual, backpack_capicity):
+class Hero:
+
     EQUIPMENT = ['dynamite', 'metal_detector', 'chemical_suit', 'armour', 'flag', 'vaccine']
-    EQUIPMENT_WEIGHT = {'dynamite': 2, 'metal_detector': 4, 'chemical_suit': 8, 'armour': 5, 'flag': 1, 'vaccine': 2}
-    with open('texts/equipment.txt', 'r', newline='\n') as text_file:
-        text_file = text_file.readlines()
-        equipment_intro = [line[:-1] for line in text_file[:6]]
-        equipment_menu = [line[:-1] for line in text_file[8:16]]
-        dynamite_info = [line[:-1] for line in text_file[18:26]]
-        metal_detector_info = [line[:-1] for line in text_file[28:34]]
-        chemical_suit_info = [line[:-1] for line in text_file[36:43]]
-        armour_info = [line[:-1] for line in text_file[45:49]]
-        flag_info = [line[:-1] for line in text_file[51:54]]
-        vaccine_info = [line[:-1] for line in text_file[56:59]]
-    for_more_info = {'q': dynamite_info, 'w': metal_detector_info,
-                     'e': chemical_suit_info, 'r': armour_info,
-                     't': flag_info, 'y': vaccine_info}
-    pop_up(actual.board, equipment_intro)
-    backpack = []
-    backpack_space = backpack_capicity
-    ready = False
-    while not ready:
-        choose = pop_up(actual.board, equipment_menu +
-                                      [' ', "You've taken: ", ' ', *backpack, ' ',
-                                      'You still can pack ' + str(backpack_space) + ' kg'])
-        if choose.lower() in for_more_info:
-            pop_up(actual.board, for_more_info[choose.lower()])
-        elif choose in ['1', '2', '3', '4', '5', '6']:
-            index = int(choose) - 1
-            if EQUIPMENT[index] in backpack:
-                backpack.remove(EQUIPMENT[index])
-                backpack_space += EQUIPMENT_WEIGHT[EQUIPMENT[index]]
-            elif EQUIPMENT_WEIGHT[EQUIPMENT[index]] <= backpack_space:
-                backpack.append(EQUIPMENT[index])
-                backpack_space -= EQUIPMENT_WEIGHT[EQUIPMENT[index]]
+    EQUIPMENT_WEIGHT = {'dynamite': 2, 'metal_detector': 4, 'chemical_suit': 8,
+                        'armour': 5, 'flag': 1, 'vaccine': 2}
+
+    def __init__(self, maps_instantions):
+        self.place = maps_instantions[0]
+        self.position = 5, 10
+        self.exp = 0
+        self.level = 1
+        self.detect_range = 1
+        self.backpack_capicity = 10
+        self.choose_equipment()
+
+    def choose_equipment(self):
+        with open('texts/equipment.txt', 'r', newline='\n') as text_file:
+            text_file = text_file.readlines()
+            equipment_intro = [line[:-1] for line in text_file[:6]]
+            equipment_menu = [line[:-1] for line in text_file[8:16]]
+        for_more_info = {'q': dynamite_info, 'w': metal_detector_info,
+                         'e': chemical_suit_info, 'r': armour_info,
+                         't': flag_info, 'y': vaccine_info}
+        pop_up(self.place.board, equipment_intro)
+        backpack = []
+        self.backpack_space = self.backpack_capicity
+        ready = False
+        while not ready:
+            choose = pop_up(self.place.board, equipment_menu +
+                            [' ', "You've taken: ", ' ', *backpack, ' ',
+                             'You still can pack ' + str(self.backpack_space) + ' kg'])
+            if choose.lower() in for_more_info:
+                pop_up(self.place.board, Item.info[for_more_info[choose.lower()]])
+            elif choose in ['1', '2', '3', '4', '5', '6']:
+                index = int(choose) - 1
+                if EQUIPMENT[index] in backpack:
+                    backpack.remove(EQUIPMENT[index])
+                    self.backpack_space += EQUIPMENT_WEIGHT[EQUIPMENT[index]]
+                elif EQUIPMENT_WEIGHT[EQUIPMENT[index]] <= self.backpack_space:
+                    backpack.append(EQUIPMENT[index])
+                    self.backpack_space -= EQUIPMENT_WEIGHT[EQUIPMENT[index]]
+                else:
+                    pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
+            elif choose == ' ':
+                ready = True
             else:
-                pop_up(actual.board, ["You don't have so much space for that item!"], auto_hide=1)
-        elif choose == ' ':
-            ready = True
-        elif choose == '.':
-            raise KeyboardInterupt
+                pop_up(self.place.board, ['Wrong choose!'], auto_hide=1)
+        self.backpack = [Equipment(item) for item in backpack]
+
+    def insert_on_board(self):
+        """inserting player on board on given position. set see distance and makes visible hidden objects in that range
+           also starts a reaction to players steping on / into sth"""
+        numbers = [str(x) for x in range(10)]
+        self.place.hide_mines()
+        detect_mines()
+        if self.position in self.place.mines:
+            self.alive = boom(self.place.board, self.position)
+        elif self.place.board[self.position[1]][self.position[0]] in numbers:
+            actual = change_actual(actual)
         else:
-            pop_up(actual.board, ['Wrong choose!'], auto_hide=1)
-    return backpack
+            self.place.board[self.position[1]][self.position[0]] = "@"
+
+    def move(self, key):
+        """moving player basing on previous position on board, using getch()"""
+        numbers = [str(x) for x in range(10)]
+        if self.place.board[self.position[1]][self.position[0]] not in numbers:
+            self.place.board[self.position[1]][self.position[0]] = " "
+        if key == "a" and self.place.board[self.position[1]][self.position[0] - 1] not in BLOCKERS:
+            self.position[0] += 1
+        elif key == "d" and self.place.board[self.position[1]][self.position[0] + 1] not in BLOCKERS:
+            self.position[0] += 1
+        elif key == "w" and self.place.board[self.position[1] - 1][self.position[0]] not in BLOCKERS:
+            self.position[1] -= 1
+        elif key == "s" and self.place.board[self.position[1] + 1][self.position[0]] not in BLOCKERS:
+            self.position[1] += 1
+
+    def browse_backpack(self):
+        keys = [str(i + 1) for i in range(len(self.backpack))]
+        backpack = {key: item for key, item in zip(keys, self.bacpack)}
+        browser_header = ['Your backpack:', ' ']
+        browser_footer = [' ', 'Press item number for further actions', 'SPACE to go back to game']
+        browsing_backpack = True
+        while browsing_backpack:
+
+            key = pop_up(self.place.board,
+                         browser_header + [key + ' - ' + backpack[key].type for key in backback] + browser_footer)
+            if key in keys:
+                action = pop_up(self.place.board, backpack[key].info + [' ', 'press E to put item on filed'])
+                if action.upper() == 'E':
+                    self.put_item(backpack[key])
+            elif key == ' ':
+                browsing_backpack = False
+            else:
+                pop_up(self.place.board, ['Wrong key!'], auto_hide=1)
+
+    def detect_mines(self):
+        """showing on board all hidden objects in distance
+           (calculated by calc_neighbours) of player's position. return board"""
+        detect_range = self.detect_range
+        for item in self.backpack:
+            if item.type == 'metal_detector':
+                detect_range = 5
+        neighbours = calc_neighbours(self.position, detect_range)
+        for (x, y) in neighbours:
+            if (x, y) in self.position.mines:
+                self.position.board[y][x] = "X"
+
+    def detonate_dynamite(self):
+        """detonating all dynamite put before"""
+        objects_to_remove = []
+        for cell in self.place.player_objects:
+            if self.place.player_objects[cell] == 'dynamite':
+                self.alive = boom(self.place.board, cell)
+                objects_to_remove.append(cell)
+        for objects in objects_to_remove:
+            del self.place.player_objects[objects]
+
+    def set_position(self, coordinate, side):
+        if side == 'N':
+            self.position = coordinate, 31
+        elif side == 'S':
+            self.position = coordinate, 1
+        elif side == 'W':
+            self.position = 104, coordinate
+        elif side == 'E':
+            self.position = 1, coordinate
+
+    def change_map(self):
+        if self.position[0] in [0, 105]:
+            if self.position[0] == 0:
+                side = 'W'
+            else:
+                side = 'E'
+            coordinate = (self.position[1])
+        else:
+            if self.position[1] == 0:
+                side = 'N'
+            else:
+                side = 'S'
+        self.place = maps_instantions[int(self.place.board[self.position[1]][self.position[0]])]
+        self.set_position(coordinate, side)
+
+    def disarm_mine(self):
+        for cell in calc_neighbours(self.position):
+            if cell in self.place.mines:
+                self.place.mines.remove(cell)
+                self.exp += 0
+
+    def pick_item(self, item):
+        if self.backpack_space < EQUIPMENT_WEIGHT[item.type]:
+            pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
+        else:
+            self.backpack.append(item)
+            self.backpack_space -= EEQUIPMENT_WEIGHT[item.type]
+            item.hide_on_board()
+
+    def put_item(self, item):
+        self.place.board[self.position[1]][self.position[0]] = item.char
+        item.place = self.place
+        item.position = 0, 0
+        if item in self.backpack:
+            while self.place.board[item.position[1]][item.position[0]]item.position =! ' ':
+                key = getch().lower()
+                if key == 'a':
+                    item.position = self.position[0] - 1, self.position[1]
+                elif key == 'd':
+                    item.position = self.position[0] + 1, self.position[1]
+                elif key == 'w':
+                    item.position = self.position[0], self.position[1] - 1
+                elif key == 's':
+                    item.position = self.position[0], self.position[1] + 1
+            self.backpack.remove(item)
+            self.backpack_space += EQUIPMENT_WEIGHT[item.type]
+            item.put_on_board()
+        else:
+            pop_up(self.place.board, ["You cannot put something you don't have!"], auto_hide=1)
+
+    def react_with_object(self):
+        objects_to_react = [item for item in self.place.objects if any([object_position
+                            in calc_neighbours(self.position) for object_position in item.position])]
+        if objects_to_react:
+            if objects_to_react[0].type == 'bomb':
+                objects_to_react[0].disarm()
+            elif objects_to_react[0].type == 'box':
+                objects_to_react[0].open()
+            else:
+                pick_item(objects_to_react[0])
