@@ -7,13 +7,12 @@ from hero import *
 from files_operations import *
 from text_in_out import *
 from items import *
-
+from hot_cold_game import *
 
 PLAYER_OBJ_COLOURS = {'dynamite': COLOURS['C'], 'flag': COLOURS['F']}
 BOOM_PROOF = [COLOURS['N'], COLOURS['V']]
 BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'],
             COLOURS['T'], COLOURS['S'], COLOURS['N'], COLOURS['V']]
-
 
 
 boxes = []
