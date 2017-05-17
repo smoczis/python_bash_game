@@ -2,7 +2,26 @@ import random
 from maps_creator import *
 
 
-class Box:
+dupa.set_position(range)
+
+class Items:
+
+    def set_position(self):
+        ready = False
+        while not ready:
+            start = (random.randint(2, (len(self.place.board[0]) - 4)),
+                     random.randint(2, (len(self.place.board) - 4)))
+            self.position = []
+            for delta_y in range(2):
+                for delta_x in range(2):
+                    if self.place.board[start[1] + delta_y][start[0] + delta_x] == ' ':
+                        self.position.append((start[0] + delta_x, start[1] + delta_y))
+                        ready = True
+                    else:
+                        ready = False
+
+
+class Box(Items):
     """docstring for Item ."""
 
     def __init__(self, equipment):
@@ -12,7 +31,7 @@ class Box:
         self.equipment = equipment
         self.insert()
 
-    def set_position(self):
+    def set_position(self, range):
         ready = False
         while not ready:
             start = (random.randint(2, (len(self.place.board[0]) - 4)),
