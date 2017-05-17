@@ -5,64 +5,67 @@ map!!!
 hot_cold with pop_up
 """
 from random import randint, choice
+from text_in_out import *
+
+
+def hot_cold(board, number_length, attempts, is_binary=False, is_even=False):
+    number = generate_number(number_length, is_binary, is_even)
+    win = guess_number(board, number, attempts, number_length)
+    return win
 
 
 def generate_number(number_length=3, is_binary=False, is_even=False):
-    random_number = []
+    generated_number = []
     digits = 9
     if is_binary:
         digits = 1
     even_numbers = [0, 2, 4, 6, 8]
-    while len(random_number) != number_length:
+    while len(generated_number) != number_length:
         if is_even:
             num = choice(even_numbers)
-            if num not in random_number:
-                random_number.append(str(num))
+            if num not in generated_number:
+                generated_number.append(str(num))
         else:
             num = randint(0, digits)
-            if num not in random_number:
-                random_number.append(str(num))
-    return random_number
+            if num not in generated_number:
+                generated_number.append(str(num))
+    return generated_number
 
 
-def guessing_number(random_number, attempts, number_length=3):
-    printing_result = []
+def guess_number(board, generated_number, attempts, number_length=3):
+    guess_result = []
+    guess_number = []
     while attempts:
-        pop_up_list = ['You got {} attempts'.format(attempts), '\n', *printing_result]
-        print (*pop_up_list)
-        guess_number = input("pick {} digit number: ".format(number_length))
-
-        while not guess_number.isdigit() or len(guess_number) != number_length:
-            guess_number = input("It is not an integer!")
+        pop_up_list = ['You got {} attempts'.format(attempts), ' ', ' '.join(guess_number), ' '.join(guess_result)]
+        pop_up(board, pop_up_list)
+        correct_input = False
+        while not correct_input:
+            guess_number = pop_up(board, ["pick {} digit number: ".format(number_length)], ask=True, ans_len=number_length)
+            if guess_number.isdigit():
+                guess_number = list(guess_number)
+                correct_input = True
+            else:
+                pop_up(board, ["It is not an integer!"], auto_hide=2)
 
         # print ("You got {} attempts".format(attempts))
-        guess_number = list(guess_number)
         # print (guess_number)
-        printing_result = []
+        guess_result = []
         for i, elem in enumerate(guess_number):
-            if elem in random_number:
-                if elem == random_number[i]:
-                    printing_result.insert(0, 'hot')
+            if elem in generated_number:
+                if elem == generated_number[i]:
+                    guess_result.append('h')
                 else:
-                    printing_result.append('warm')
+                    guess_result.append('w')
+            else:
+                guess_result.append('c')
 
-        if not printing_result:
-            printing_result = ['cold']
-
-        if all([i == 'hot' for i in printing_result]) and len(printing_result) == number_length:
-            pop_up_list = ['You guessed the number']
+        if all([i == 'h' for i in guess_result]):
+            result_print = ['You guessed the number']
+            win = True
             break
         attempts -= 1
     else:
-        pop_up_list = ['You lose']
-    return pop_up_list
-
-
-def main():
-    number = generate_number(number_length=5)
-    print (number)
-    print (guessing_number(number, 10, number_length=5))
-
-
-if __name__ == "__main__":
-    main()
+        result_print = ['You lose']
+        win = False
+    pop_up(board, result_print, auto_hide=2)
+    return win

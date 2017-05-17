@@ -44,7 +44,7 @@ def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=COLO
         result = None
     else:
         if ask:
-            result = get_input(board_copy, x_start + 3, 17 + len(text_lines), '', ans_len=ans_len, background=colour)
+            result = get_input(board_copy, x_start + 3, 7 + len(text_lines), '', ans_len=ans_len, background=colour)
         else:
             result = getch()
     return result

@@ -199,8 +199,7 @@ def move(actual):
     elif key == "b":
         detonate_dynamite(actual)
     elif key == "p":
-        zero = get_input(actual.board, x, y, 'WPISZ COŚ: ')
-        print_text(actual.board, x, y+5, zero)
+        zero = hot_cold(actual.board, 10, 15, is_even=True)
     elif key == "m":
         menu(actual)
     actual.player_position = x, y

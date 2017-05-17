@@ -4,7 +4,6 @@ from maps_creator import *
 
 class Box:
     """docstring for Item ."""
-    global maps_instantions
 
     def __init__(self, equipment):
         self.place = maps_instantions[random.randint(0, (len(maps_instantions)-1))]
@@ -37,3 +36,8 @@ class Box:
         self.place.board[self.position[0][1]][self.position[0][0]] = 'E'
         self.place.player_objects[self.position[0]] = self.equipment
         self.opened = True
+
+
+#class Equipment(self, type_of_item):
+
+    #def __init__(self, type_of_item):
