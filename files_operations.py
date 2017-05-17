@@ -3,9 +3,10 @@ from maps_creator import *
 from hero import *
 import csv
 
+# module not in use
 
 def starter():
-    global maps_instantions
+    maps_instantions = load_maps('maps')
     action = input('N for new game, L to load:')
     if action.upper() == 'N':
         actual = maps_instantions[0]

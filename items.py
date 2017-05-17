@@ -5,7 +5,6 @@ from maps_creator import *
 class Box:
     """docstring for Item ."""
     global maps_instantions
-    global COLOURS
 
     def __init__(self, equipment):
         self.place = maps_instantions[random.randint(0, (len(maps_instantions)-1))]

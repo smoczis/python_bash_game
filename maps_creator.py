@@ -13,7 +13,7 @@ COLOURS = {'X': '\x1b[0;37;41m' + ' ' + '\x1b[0m',  # red
            'S': '\x1b[0;37;46m' + ' ' + '\x1b[0m'
            }
 # \x1b is a single char!
-footer = []
+maps_instantions = []
 
 
 def print_text(board, x, y, text):
@@ -22,27 +22,19 @@ def print_text(board, x, y, text):
     return board
 
 
-def create_footer(hero):
-    global footer
+def create_footer():
     footer = []
-    for line in range(6):
+    for line in range(3):
         footer.append([' ' for i in range(106)])
-    line_length = 1
-    print_text(footer, 2, 2, 'flag')
-    print_text(footer, 10, 2, str(hero['flag']))
-    #print_text(footer, 10, 3, maps_instantions[0].player_objects)
+    line_length = 0
+    for item in ['1 - BACKPACK', '2 - INSTRUCTIONS', '3 - CONTROLS', '4 - EXIT GAME']:
+        print_text(footer, line_length + 3, 1, item)
+        line_length += len(item) + 3
     return footer
-    #for item in hero:
-    #    for j, char in enumerate(item):
-    #        footer[3][line_length + 2 + j] = char
-    #    line_length += len(item) + 1
-    #    for j, char in enumerate(str(hero[item])):
-    #        footer[3][line_length + 2 + j] = char
-    #    line_length += len(str(hero[item])) + 1
 
 
 def print_board(board):
-    global footer
+    footer = create_footer()
     """printing given board on screen. before that adjust screen size, and clear previous prints"""
     sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=40, cols=106))
     os.system('clear')
@@ -89,16 +81,17 @@ class Maps:
                 self.board.append([char for char in line[:-1]])
 
     def colour_map(self, board):
-        global COLOURS
         for line_i in range(len(self.board)):
             for char_i in range(len(self.board[line_i])):
                 if self.board[line_i][char_i] in COLOURS.keys():
                     self.board[line_i][char_i] = COLOURS[self.board[line_i][char_i]]
 
 
-maps_instantions = []
-"""making maps as Map class instances using every file in /maps directotry which is .txt
-   and storing it to list of instances"""
-for f in os.listdir("maps"):
-    if f.endswith(".txt"):
-        maps_instantions.append(Maps('maps/' + f))
+
+def load_maps(catalog):
+    """making maps as Map class instances using every file in /maps directotry which is .txt
+       and storing it to list of instances"""
+    for map_file in os.listdir("maps"):
+        if map_file.endswith(".txt"):
+            maps_instantions.append(Maps(catalog + '/' + map_file))
+    return maps_instantions

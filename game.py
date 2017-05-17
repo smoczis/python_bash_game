@@ -2,17 +2,20 @@ import os
 import sys
 import random
 import time
-from re import match
 from maps_creator import *
 from hero import *
 from files_operations import *
 from text_in_out import *
-from items import Box
+from items import *
 
 
 PLAYER_OBJ_COLOURS = {'dynamite': COLOURS['C'], 'flag': COLOURS['F']}
-BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'], COLOURS['T'], COLOURS['S']]
 BOOM_PROOF = [COLOURS['N'], COLOURS['V']]
+BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'],
+            COLOURS['T'], COLOURS['S'], COLOURS['N'], COLOURS['V']]
+
+
+
 boxes = []
 
 HINTS = {
@@ -22,58 +25,18 @@ HINTS = {
         '2': ['What the \'int\' abbreviate for?', 'integer']
 }
 
-game_on = True
-actual = None
 
 
-def pop_up(text_lines, auto_hide=0, ask=False, ans_len=False, colour=COLOURS['C']):
-    global actual
-    global COLOURS
-    board_copy = []
-    pop_width = 0
-    if ask:
-        pop_height = 5 + len(text_lines)
-    else:
-        pop_height = 4 + len(text_lines)
-    for item in actual.board:
-        board_copy.append(item[:])
-    for item in text_lines:
-        if len(str(item)) > pop_width:
-            pop_width = len(str(item)) + 4
-    x_start = 50 - pop_width//2
-    x_end = x_start+pop_width+2
-    for line in range(15, 15 + pop_height):
-        board_copy[line][x_start:x_end] = [colour for column in range(pop_width+2)]
-    for i, item in enumerate(text_lines):
-        print_text(board_copy, x_start + 3, 17 + i, item, background=colour)
-    print_board(board_copy)
-    if auto_hide > 0:
-        sleep(auto_hide)
-        result = None
-    else:
-        if ask:
-            result = get_input(board_copy, x_start + 3, 17 + len(text_lines), '', ans_len=ans_len, background=colour)
-        else:
-            result = getch()
-    return result
-
-
-def menu():
-    global game_on
-    global actual
-    global hero
-    key = pop_up(['to save press S', 'to exit press Q'])
-    if key == 's':
-        save(actual, hero)
-    elif key == 'q':
+def menu(actual):
+    key = pop_up(actual.board, ['to save press S', 'to exit press Q'])
+    if key == 'q':
         game_on = False
     else:
-        pop_up(['wrong!'], auto_hide=1)
+        pop_up(actual.board, ['wrong!'], auto_hide=1)
 
 
-def hide_mines():
+def hide_mines(actual):
     """hiding all mines, that were printed before by show_neighbours()"""
-    global actual
     for line_i in range(len(actual.board)):
         for char_i in range(len(actual.board[line_i])):
             if actual.board[line_i][char_i] == 'X':
@@ -81,9 +44,8 @@ def hide_mines():
     return actual.board
 
 
-def calc_neighbours(x, y, distance=1):
+def calc_neighbours(actual, x, y, distance=1):
     """calculating and set to list all board cells in given distance (default 1) from x, y"""
-    global actual
     neighbours = []
     for delta_y in range(-distance, distance + 1):
         for delta_x in range(-distance, distance + 1):
@@ -92,50 +54,51 @@ def calc_neighbours(x, y, distance=1):
     return neighbours
 
 
-def show_neighbours(neighbours):
+def show_neighbours(actual, neighbours):
     """showing on board all hidden objects in distance
        (calculated by calc_neighbours) of player's position. return board"""
-    global actual
     for (x, y) in neighbours:
         if (x, y) in actual.mines:
             actual.board[y][x] = "X"
     return actual.board
 
 
-def insert_player(detector=False):
+def insert_player(actual, detector=False):
     """inserting player on board on given position. set see distance and makes visible hidden objects in that range
        also starts a reaction to players steping on / into sth"""
-    global COLOURS
-    global actual
     numbers = [str(x) for x in range(10)]
     if detector:
         see_distance = 5
     else:
         see_distance = 1
-    hide_mines()
-    neighbours = calc_neighbours(actual.player_position[0], actual.player_position[1], see_distance)
-    show_neighbours(neighbours)
+    hide_mines(actual)
+    neighbours = calc_neighbours(actual, actual.player_position[0], actual.player_position[1], see_distance)
+    show_neighbours(actual, neighbours)
     if actual.player_position in actual.mines:
-        boom(actual.player_position[0], actual.player_position[1])
+        game_on = boom(actual, actual.player_position[0], actual.player_position[1])
     elif actual.board[actual.player_position[1]][actual.player_position[0]] in numbers:
-        if actual.player_position[0] in [0, 105]:
-            portal = ('y', actual.player_position[1])
-        else:
-            portal = ('x', actual.player_position[0])
-        previous = str(maps_instantions.index(actual))
-        actual = maps_instantions[int(actual.board[actual.player_position[1]][actual.player_position[0]])]
-        actual.start_position(portal, previous)
+        game_on = True
+        change_actual()
     else:
         actual.board[actual.player_position[1]][actual.player_position[0]] = "@"
+        game_on = True
+    return game_on
+
+
+def change_actual(actual):
+    if actual.player_position[0] in [0, 105]:
+        portal = ('y', actual.player_position[1])
+    else:
+        portal = ('x', actual.player_position[0])
+    previous = str(maps_instantions.index(actual))
+    actual = maps_instantions[int(actual.board[actual.player_position[1]][actual.player_position[0]])]
+    actual.start_position(portal, previous)
     return actual
 
 
-def react(x, y):
+def react(actual, x, y):
     """reacting to neighbour item"""
-    global hero
-    global actual
-    global boxes
-    for cell in calc_neighbours(x, y):
+    for cell in calc_neighbours(actual, x, y):
         if cell in actual.mines:
             actual.mines.remove(cell)
             hero['exp'] += 1
@@ -150,12 +113,10 @@ def react(x, y):
                     for pos in box.position:
                         if box.place == actual and pos == cell:
                             box.open()
-            print(actual.player_objects)
 
 
-def put(item, x, y):
+def put(actual, item, x, y):
     """droping item from equipment next to players actual position"""
-    global actual
     item = item.lower()
     if hero[item] > 0:
         actual.board[y][x] = PLAYER_OBJ_COLOURS[item]
@@ -176,27 +137,25 @@ def put(item, x, y):
         pass
 
 
-def detonate_dynamite():
+def detonate_dynamite(actual):
     """detonating all dynamite put before"""
-    global actual
-    obj_to_remove = []
+    objects_to_remove = []
     for cell in actual.player_objects:
         if actual.player_objects[cell] == 'dynamite':
-            boom(cell[0], cell[1])
-            obj_to_remove.append(cell)
-    for obj in obj_to_remove:
-        del actual.player_objects[obj]
+            game_on = boom(actual, cell[0], cell[1])
+            objects_to_remove.append(cell)
+    for objects in objects_to_remove:
+        del actual.player_objects[objects]
+    return game_on
 
 
-def boom(x, y, power=5):
+def boom(actual, x, y, power=5):
     """making explosion in given position, power is radius of near fields to be destroyed"""
-    global game_on
-    global actual
-    field_of_fire = calc_neighbours(x, y, power)
+    field_of_fire = calc_neighbours(actual, x, y, power)
     field_of_fire.append((x, y))
     board_copy = [item[:] for item in actual.board]
     for i in range(power):
-        for cell in calc_neighbours(x, y, i):
+        for cell in calc_neighbours(actual, x, y, i):
             board_copy[cell[1]][cell[0]] = '#'
         print_board(board_copy)
         sleep(0.05)
@@ -209,13 +168,11 @@ def boom(x, y, power=5):
         print('yes')
         game_on = False
     print_board(actual.board)
+    return game_on
 
 
-def move():
+def move(actual):
     """moving player basing on previous position on board, using getch()"""
-    global BLOCKERS
-    global actual
-    global hero
     numbers = [str(x) for x in range(10)]
     key = getch()
     x, y = actual.player_position[:]
@@ -230,60 +187,49 @@ def move():
     elif key == "s" and actual.board[y+1][x] not in BLOCKERS:
         y += 1
     elif key == "h":
-        sero = pop_up(['jajca jak berety, jak zadziała to superekstra zajebiście', 'kamaz', 'dupa', 'bazary czy prokreacja?'], ask=True)
-        pop_up([sero])
+        sero = pop_up(actual.board, ['jajca jak berety, jak zadziała to superekstra zajebiście', 'kamaz', 'dupa', 'bazary czy prokreacja?'], ask=True)
+        pop_up(actual.board, [sero])
     elif key == "n":
         sys.exit()
     elif key == "e":
-        react(x, y)
+        react(actual, x, y)
     elif key == "q":
-        put('dynamite', x, y)
+        put(actual, 'dynamite', x, y)
     elif key == "f":
-        put('flag', x, y)
+        put(actual, 'flag', x, y)
     elif key == "b":
-        detonate_dynamite()
+        detonate_dynamite(actual)
     elif key == "p":
         zero = get_input(actual.board, x, y, 'WPISZ COŚ: ')
         print_text(actual.board, x, y+5, zero)
     elif key == "m":
-        menu()
+        menu(actual)
     actual.player_position = x, y
-    return actual.player_position
 
 
-def endgame():
-    pop_up(['konec'], auto_hide=2)
+def endgame(actual):
+    pop_up(actual.board, ['konec'], auto_hide=2)
     os.system('clear')
 
 
 def main():
-    global game_on
-    global footer
-    global actual
-    global maps_instantions
-    global hero
     global boxes
-#    height, width = 39, 100
-#    actual = maps_instantions[0]
-#    hero = create_hero()
-#    actual.player_position = 36, 13
-    actual, hero, actual.player_position = starter()
-    footer = create_footer(hero)
-
-
+    maps_instantions = load_maps('maps')
+    actual = maps_instantions[0]
+    actual.player_position = 28, 5
+    backpack = choose_eq(actual, 12)
     eq = ['flag', 'flag', 'flag']
     for item in eq:
         boxes.append(Box(item))
-
     print_board(actual.board)
+    game_on = True
     while game_on:
-        actual = insert_player(detector=True)
-        footer = create_footer(hero)
+        game_on = insert_player(actual, detector=True)
         print_board(actual.board)
         for box in boxes:
-            print(box.position)
-        move()
-    endgame()
+            print(actual, box.position)
+        move(actual)
+    endgame(actual)
 
 
 if __name__ == '__main__':
