@@ -77,80 +77,94 @@ class Bomb(Item):
         'C': (5, False, False)
     }
 
-    def __init__(self, bomb_type, is_disarmed=False):
-        self.place = random.choice(Item.maps_instantions)
-        self.set_position()
-        self.insert()
-        self.attempts = 10
-        self.bomb_type = bomb_type
-        self.is_armed = is_armed
-        self.disarm_code = []
-        self.generate_disarm_code(*BOMB_DISARMING_VALUES[self.bomb_type])
+    POINTS_FOR_DISARMING = {'A': 10, 'B': 20, 'C': 30, 'N': 100}
 
+    def __init__(self, bomb_type):
+        self.type = 'bomb'
+        self.bomb_type = bomb_type
+        self.attempts = 10
+        self.is_armed = True
+        self.generate_disarm_code(*Bomb.BOMB_DISARMING_VALUES[self.bomb_type])
+        self.char = Maps.COLOURS['F']
+        self.large = 2
+        self.choose_random_map()
+        self.set_position()
+        self.put_on_board()
 
     def generate_disarm_code(self, number_length=3, is_binary=False, is_even=False):
         digits = 9
+        self.disarm_code = []
         if is_binary:
             digits = 1
         even_numbers = [0, 2, 4, 6, 8]
         while len(self.disarm_code) != number_length:
             if is_even:
-                num = choice(even_numbers)
+                num = random.choice(even_numbers)
                 if num not in self.disarm_code:
                     self.disarm_code.append(str(num))
             else:
-                num = randint(0, digits)
+                num = random.randint(0, digits)
                 if num not in self.disarm_code:
                     self.disarm_code.append(str(num))
 
-    def guess_number(self):
+    def guess_number(self, player):
         guess_result = []
         guess_number = []
         is_playing = True
         while self.attempts and is_playing:
-            pop_up(self.place.board, ['You got {} attempts'.format(self.attempts), ' ', ' '.join(guess_number), ' '.join(guess_result)])
+            pop_up(self.place.board, ['You got {} attempts'.format(self.attempts), ' ', ' '.join(guess_number), ' '.join(guess_result)], auto_hide=2)
             correct_input = False
             while not correct_input:
                 guess_number = pop_up(self.place.board, ["pick {} digit number: ".format(len(self.disarm_code))], ask=True, ans_len=len(self.disarm_code))
+                print(guess_number)
                 if guess_number.isdigit():
                     guess_number = list(guess_number)
                     correct_input = True
-                elif guess_number == ' ':
+                elif guess_number == '\r':
                     is_playing = False
+                    break
                 else:
                     pop_up(self.place.board, ["It is not an integer!"], auto_hide=2)
-
-            # print ("You got {} attempts".format(attempts))
-            # print (guess_number)
             guess_result = []
             for i, elem in enumerate(guess_number):
                 if elem in self.disarm_code:
                     if elem == self.disarm_code[i]:
-                        guess_result.append('h')
+                        guess_result.append('H')
                     else:
-                        guess_result.append('w')
+                        guess_result.append('W')
                 else:
-                    guess_result.append('c')
+                    guess_result.append('C')
 
             if all([i == 'h' for i in guess_result]):
                 result_print = ['You guessed the number']
-                self.is_disarmed = True
+                self.is_armed = False
                 is_playing = False
+                player.exp += Bomb.POINTS_FOR_DISARMING[self.bomb_type]
                 break
             self.attempts -= 1
         if not self.attempts:
-            result_print = ['You lose']
+            pop_up(self.place.board, ['You lose'], auto_hide=2)
             is_playing = False
+            self.explode(player)
         else:
-            result_print = ['You abort disarming. Remaining attempts: {}'.format(self.attempts)]
-        pop_up(self.place.board, result_print, auto_hide=2)
+            pop_up(self.place.board, ['You abort disarming. Remaining attempts: {}'.format(self.attempts)], auto_hide=2)
 
-
-    def disarm_bomb(self, board, bomb_type, is_disarmed):
-        is_disarmed = hot_cold(board, *BOMB_DISARMING_VALUES[bomb_type])
-        if not is_disarmed:
-            pass
-            # boom(actual, x, y)
+    def explode(self, player):
+        print(self.position[0])
+        sleep(3)
+        if self.bomb_type == 'A':
+            player.make_boom(self.position[12], power=10)
+        elif self.bomb_type == 'B':
+            player.make_boom(self.position[12], power=10, is_deadly=False)
+            for x, y in calc_neighbours(self.position[0], distance=10):
+                self.place.board[y][x] = '☣'
+        elif self.bomb_type == 'C':
+            player.make_boom(self.position[12], power=15, is_deadly=False)
+            for x, y in calc_neighbours(self.position[0], distance=15):
+                self.place.board[y][x] = '~'
+        elif self.bomb_type == 'N':
+            player.make_boom(self.position[12], power=10, is_deadly=False)
+            pop_up(self.place.board, ['GAME OVER'], auto_hide=2)
 
 
 class Equipment(Item):

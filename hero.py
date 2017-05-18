@@ -8,9 +8,11 @@ from maps_creator import *
 
 class Hero:
 
-    items_in_boxes = [] + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
+    items_to_boxes = [] + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
+    boxes = [Box(item) for item in items_to_boxes]
+    bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C']
+    bombs = [Bomb(item) for item in bombs_to_put]
 
-    boxes = [Box(item) for item in items_in_boxes]
 
     def __init__(self):
         self.place = Item.maps_instantions['map0']
@@ -100,7 +102,8 @@ class Hero:
         keys = [str(i + 1) for i in range(len(self.backpack))]
         backpack = {key: item for key, item in zip(keys, self.backpack)}
         browser_header = ['Your backpack:', ' ']
-        browser_footer = [' ', 'Press item number for further actions', 'ENTER to go back to game']
+        browser_footer = [' ', 'You have got ' + str(self.backpack_space) + ' kg free space in backpack', ' ',
+                          'Press item number for further actions', 'ENTER to go back to game']
         browsing_backpack = True
         while browsing_backpack:
             key = pop_up(self.place.board,
@@ -208,7 +211,7 @@ class Hero:
         print(objects_to_react)
         if objects_to_react:
             if objects_to_react[0].type == 'bomb':
-                objects_to_react[0].disarm()
+                self.disarm_bomb(objects_to_react[0])
             elif objects_to_react[0].type == 'box':
                 objects_to_react[0].open()
             else:
@@ -217,9 +220,13 @@ class Hero:
         else:
             self.disarm_mine()
 
-    def make_boom(self, position, power=5):
+    def disarm_bomb(self, bomb):
+        if bomb.is_armed:
+            bomb.guess_number(self)
+
+    def make_boom(self, position, power=5, is_deadly=True):
         """making explosion in given position, power is radius of near fields to be destroyed"""
-        field_of_fire = calc_neighbours(position, power)
+        field_of_fire = calc_neighbours(position, distance=power)
         board_copy = [item[:] for item in self.place.board]
         for i in range(power):
             for cell in calc_neighbours(position, i):
@@ -231,6 +238,12 @@ class Hero:
                 self.place.board[cell[1]][cell[0]] = ' '
             if cell in self.place.mines:
                 self.place.mines.remove(cell)
-        if self.position in field_of_fire:
+        if self.position in field_of_fire and is_deadly:
+            for item in self.backpack:
+                if item.type == 'armour':
+                    self.backpack.remove(item)
+                    self.place.board[self.position[1]][self.position[0]] = '@'
+                    print_board(self.place.board)
+                    break
             self.alive = False
         print_board(self.place.board)

@@ -62,14 +62,16 @@ def get_input(board, x, y, text, ans_len=False, background=None):
     else:
         prefix = background[:10]
         suffix = background[-4:]
-    while key != '\r' or len(input_text) == ans_len:
+    while key != '\r' and len(input_text) != ans_len:
         key = getch()
         if key == '\r':
-            pass
+            input_text.append(key)
         elif key == '\x7f':  # backspace ramoves last char
+            if line_length == 0:
+                break
             board[y][x + line_length - 1] = prefix + ' ' + suffix
             line_length -= 1
-            input_text.remove(key)
+            del input_text[-1]
         else:
             board[y][x + line_length] = prefix + key + suffix
             line_length += 1

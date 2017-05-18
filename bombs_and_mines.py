@@ -14,10 +14,6 @@ bomb2 = {}
 bomb3 = {}
 
 
-
-
-
-
 class Bomb():
 
     BOMB_DISARMING_VALUES = {
