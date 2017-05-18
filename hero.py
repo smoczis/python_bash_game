@@ -26,7 +26,7 @@ class Hero:
 
     def get_player_name(self):
         self.name = pop_up(self.place.board,
-                           ['Enter your name', 'Press space to finish typing:', ' '], ask=True, ans_len=10).upper()
+                           ['Enter your name', 'Press space to finish typing:', ' '], ask=True).upper()
 
     def choose_equipment(self):
         with open('texts/equipment.txt', 'r', newline='\n') as text_file:
