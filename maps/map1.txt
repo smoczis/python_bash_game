@@ -1,4 +1,4 @@
-X555555555555XX55555555555555555555VVVVVVVVVVVVVVV555555555555555VVVVVVVV5555555555XX55555555XX5555555555X
+X444444444444XX44444444444444444444VVVVVVVVVVVVVVV444444444444444VVVVVVVV4444444444XX44444444XX4444444444X
 0            XX                     GGGG GG GGGGG                 GGGG GG          XX         XX         2
 0            XX                      G G  G  GGG                  G     G          XX          XX        2
 0   FF       XX       FFF                                            G             XX      F F  XX       2
