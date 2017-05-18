@@ -63,9 +63,9 @@ def get_input(board, x, y, text, ans_len=False, background=None):
         prefix = background[:10]
         suffix = background[-4:]
     if not ans_len:
-        while key != ' ':
+        while key != '\r':
             key = getch()
-            if key != ' ':
+            if key != '\r':
                 board[y][x + line_length] = prefix + key + suffix
                 line_length += 1
                 input_text.append(key)
@@ -73,7 +73,7 @@ def get_input(board, x, y, text, ans_len=False, background=None):
     else:
         for i in range(ans_len):
             key = getch()
-            if key != ' ':
+            if key != '\r':
                 board[y][x + line_length] = prefix + key + suffix
                 line_length += 1
                 input_text.append(key)

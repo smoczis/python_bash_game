@@ -62,7 +62,7 @@ class Hero:
                     self.backpack_space += Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
                 else:
                     pop_up(self.place.board, ["You can not drop something you don't have!"], auto_hide=1)
-            elif choose == ' ':
+            elif choose == '\r':
                 ready = True
             else:
                 pop_up(self.place.board, ['Wrong choose!'], auto_hide=1)
@@ -75,7 +75,7 @@ class Hero:
         self.place.hide_mines()
         self.detect_mines()
         if self.position in self.place.mines:
-            self.alive = boom(self.place.board, self.position)
+            self.make_boom(self.position)
         elif self.place.board[self.position[1]][self.position[0]] in numbers:
             self.change_map()
         else:
@@ -133,7 +133,7 @@ class Hero:
         objects_to_remove = []
         for cell in self.place.player_objects:
             if self.place.player_objects[cell] == 'dynamite':
-                self.alive = boom(self.place.board, cell)
+                self.make_boom(cell)
                 objects_to_remove.append(cell)
         for objects in objects_to_remove:
             del self.place.player_objects[objects]
@@ -218,3 +218,21 @@ class Hero:
                 self.pick_item(objects_to_react[0])
         else:
             self.disarm_mine()
+
+    def make_boom(self, position, power=5):
+        """making explosion in given position, power is radius of near fields to be destroyed"""
+        field_of_fire = calc_neighbours(position, power)
+        board_copy = [item[:] for item in self.place.board]
+        for i in range(power):
+            for cell in calc_neighbours(position, i):
+                board_copy[cell[1]][cell[0]] = '#'
+            print_board(board_copy)
+            sleep(0.05)
+        for cell in field_of_fire:
+            if self.place.board[cell[1]][cell[0]] not in Maps.BOOM_PROOF:
+                self.place.board[cell[1]][cell[0]] = ' '
+            if cell in self.place.mines:
+                self.place.mines.remove(cell)
+        if self.position in field_of_fire:
+            self.alive = False
+        print_board(self.place.board)
