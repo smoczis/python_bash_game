@@ -71,18 +71,18 @@ def show_intro(player):
         with open(file_path, 'r', newline='\n') as fo:
             for line in fo:
                 board_to_print.append(line[:-1])
-        pop_up(player.place.board, board_to_print, ask=True)
+        pop_up(player.place.board, board_to_print)
 
 
 def main():
     player = Hero()
     show_intro(player)
+    player.get_player_name()
     player.choose_equipment()
     game_on = True
     start_time = time.time()
     player.insert_on_board()
     while player.alive and game_on:
-        player.insert_on_board()
         print_board(player.place.board, player)
         key = getch().lower()
         game_on = action(player, key)

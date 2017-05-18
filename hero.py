@@ -14,7 +14,6 @@ class Hero:
 
     def __init__(self):
         self.place = Item.maps_instantions['map0']
-        self.get_player_name()
         self.background_char = ' '
         self.position = 1, 12
         self.exp = 0
