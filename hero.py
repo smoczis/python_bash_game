@@ -8,13 +8,12 @@ from maps_creator import *
 
 class Hero:
 
-    EQUIPMENT = ['dynamite', 'metal_detector', 'chemical_suit', 'armour', 'flag', 'vaccine']
-    EQUIPMENT_WEIGHT = {'dynamite': 2, 'metal_detector': 4, 'chemical_suit': 8,
-                        'armour': 5, 'flag': 1, 'vaccine': 2}
-    maps_instantions = load_maps('maps')
+    items_in_boxes = [] + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
+
+    boxes = [Box(item) for item in items_in_boxes]
 
     def __init__(self):
-        self.place = Hero.maps_instantions['map0']
+        self.place = Item.maps_instantions['map0']
         self.get_player_name()
         self.background_char = ' '
         self.position = 1, 12
@@ -28,7 +27,7 @@ class Hero:
 
     def get_player_name(self):
         self.name = pop_up(self.place.board,
-                           ['Enter your name', 'Press space to finish typing:', ' '], ask=True).upper()
+                           ['Enter your name', 'Press space to finish typing:', ' '], ask=True, ans_len=10).upper()
 
     def choose_equipment(self):
         with open('texts/equipment.txt', 'r', newline='\n') as text_file:
@@ -51,16 +50,16 @@ class Hero:
                 pop_up(self.place.board, Item.info[for_more_info[choose.lower()]])
             elif choose in shift_to_numbers.values():
                 index = int(choose) - 1
-                if Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]] <= self.backpack_space:
-                    backpack.append(Hero.EQUIPMENT[index])
-                    self.backpack_space -= Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
+                if Item.EQUIPMENT_WEIGHT[Item.EQUIPMENT[index]] <= self.backpack_space:
+                    backpack.append(Item.EQUIPMENT[index])
+                    self.backpack_space -= Item.EQUIPMENT_WEIGHT[Item.EQUIPMENT[index]]
                 else:
                     pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
             elif choose in shift_to_numbers:
                 index = int(shift_to_numbers[choose]) - 1
-                if Hero.EQUIPMENT[index] in backpack:
-                    backpack.remove(Hero.EQUIPMENT[index])
-                    self.backpack_space += Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
+                if Item.EQUIPMENT[index] in backpack:
+                    backpack.remove(Item.EQUIPMENT[index])
+                    self.backpack_space += Item.EQUIPMENT_WEIGHT[Item.EQUIPMENT[index]]
                 else:
                     pop_up(self.place.board, ["You can not drop something you don't have!"], auto_hide=1)
             elif choose == '\r':
@@ -112,6 +111,7 @@ class Hero:
                 if action.upper() == 'E':
                     self.put_item(backpack[key])
                     del backpack[key]
+                    browsing_backpack = False
             elif key == '\r':
                 browsing_backpack = False
             else:
@@ -162,10 +162,10 @@ class Hero:
         elif self.position[1] == 32:
             side = 'S'
             coordinate = (self.position[0])
-        for maps in list(Hero.maps_instantions):
+        for maps in list(Item.maps_instantions):
             print(self.place.name)
             if maps == self.place.neighbour_maps[side]:
-                self.place = Hero.maps_instantions[maps]
+                self.place = Item.maps_instantions[maps]
                 break
         self.set_position(coordinate, side)
 
@@ -176,35 +176,26 @@ class Hero:
                 self.exp += 1
 
     def pick_item(self, item):
-        if self.backpack_space < Hero.EQUIPMENT_WEIGHT[item.type]:
+        print("ZBIERAM")
+        if self.backpack_space < Item.EQUIPMENT_WEIGHT[item.type]:
             pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
         else:
             self.backpack.append(item)
-            self.backpack_space -= Hero.EQUIPMENT_WEIGHT[item.type]
+            self.backpack_space -= Item.EQUIPMENT_WEIGHT[item.type]
             item.hide_on_board()
 
     def put_item(self, item):
         self.place.board[self.position[1]][self.position[0]] = item.char
+        self.background_char = item.char
         print_board(self.place.board, self)
         item.place = self.place
-        item.position = 0, 0
         if item in self.backpack:
-            while self.place.board[item.position[1]][item.position[0]] != ' ':
-                key = getch().lower()
-                if key == 'a':
-                    item.position = self.position[0] - 1, self.position[1]
-                elif key == 'd':
-                    item.position = self.position[0] + 1, self.position[1]
-                elif key == 'w':
-                    item.position = self.position[0], self.position[1] - 1
-                elif key == 's':
-                    item.position = self.position[0], self.position[1] + 1
+            item.position = self.position
             self.backpack.remove(item)
-            self.backpack_space += Hero.EQUIPMENT_WEIGHT[item.type]
+            self.backpack_space += Item.EQUIPMENT_WEIGHT[item.type]
             item.put_on_board()
         else:
             pop_up(self.place.board, ["You cannot put something you don't have!"], auto_hide=1)
-        self.place.board[self.position[1]][self.position[0]] = '@'
 
     def react_with_object(self):
         objects_to_react = []
@@ -215,12 +206,14 @@ class Hero:
             else:
                 if item.position in calc_neighbours(self.position):
                     objects_to_react.append(item)
+        print(objects_to_react)
         if objects_to_react:
             if objects_to_react[0].type == 'bomb':
                 objects_to_react[0].disarm()
             elif objects_to_react[0].type == 'box':
                 objects_to_react[0].open()
             else:
+                print('picking')
                 self.pick_item(objects_to_react[0])
         else:
             self.disarm_mine()

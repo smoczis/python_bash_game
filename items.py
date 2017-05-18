@@ -1,21 +1,27 @@
 import random
 from maps_creator import *
+from hero import *
 from text_in_out import *
 
 
 class Item:
 
+    EQUIPMENT = ['dynamite', 'metal_detector', 'chemical_suit', 'armour', 'flag', 'vaccine']
+    EQUIPMENT_WEIGHT = {'dynamite': 2, 'metal_detector': 4, 'chemical_suit': 8,
+                        'armour': 5, 'flag': 1, 'vaccine': 2}
+
     info = load_info('equipment')
+    maps_instantions = load_maps('maps')
 
     def choose_random_map(self):
-        self.place = maps_instantions[random.choice(list(maps_instantions))]
+        self.place = Item.maps_instantions[random.choice(list(Item.maps_instantions))]
 
     def set_position(self):
         ready = False
         while not ready:
             start = (random.randint(2, (len(self.place.board[0]) - 4)),
                      random.randint(2, (len(self.place.board) - 4)))
-            self.position = calc_neighbours(self.place, start[0], start[1], distance=self.large)
+            self.position = calc_neighbours(start, distance=self.large)
             if all([self.place.board[y][x] == ' ' for x, y in self.position]):
                 ready = True
 
@@ -44,7 +50,7 @@ class Box(Item):
 
     def __init__(self, content):
         self.type = 'box'
-        self.char = COLOURS['T']
+        self.char = Maps.COLOURS['T']
         self.large = 1
         self.choose_random_map()
         self.set_position()
@@ -58,6 +64,7 @@ class Box(Item):
                 self.place.board[y][x] = ' '
             self.content.place = self.place
             self.content.position = self.position[1]
+            self.place.objects.remove(self)
             self.content.put_on_board()
             self.opened = True
 

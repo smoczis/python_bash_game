@@ -82,6 +82,7 @@ def main():
     start_time = time.time()
     player.insert_on_board()
     while player.alive and game_on:
+        player.insert_on_board()
         print_board(player.place.board, player)
         key = getch().lower()
         game_on = action(player, key)
