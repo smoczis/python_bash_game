@@ -21,6 +21,8 @@ def action(player, key):
         game_on = False
     elif key == 'e':
         player.react_with_object()
+    elif key == 'b':
+        player.detonate_dynamite()
     else:
         player.move(key)
     return game_on
@@ -34,11 +36,12 @@ def end_game(board):
 def main():
     player = Hero()
     game_on = True
+    player.insert_on_board()
     while player.alive and game_on:
-        player.insert_on_board()
         print_board(player.place.board, player)
         key = getch().lower()
         game_on = action(player, key)
+        player.insert_on_board()
     end_game(player.place.board)
 
 

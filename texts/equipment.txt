@@ -1,12 +1,12 @@
 First, choose an equipment you would like to take with you.
-But remember, that parachuting with heavy load is dangerous.
+But remember, that parachuting with heavy load is dangerous.    
  
 You can take equipment of maximum weight not higher than 12 kg.
-Choose wisely, rest of items we'll provide you in airdrop,
+Choose wisely, rest of items we'll provide you in airdrop,      
 and you can find it in boxes around the field.
  
  
-Press once to take or again to leave (SPACE when you finish):
+Press number to take or SHIFT number to drop (SPACE when you finish):
  
 1 - TNT - pack of 10 (Q for more ifo)     - 2 kg
 2 - Metal detector (W for more info)      - 4 kg
@@ -28,32 +28,32 @@ and detonate it at once.
  
 Metal detector is very helpful in that job you need to do.
 It lets you see mines in field in wider range than one step around you.
-Without it you'll need to be very careful, while walking,
+Without it you'll need to be very careful while walking,
 so your mission will take much more time.
  
-Using metal detector you'll see all mines in range of five steps.
+Metal detector allows to see all mines in range of five steps.
  
  
-Chemical suit lets you step in chemicaly or biologicaly hazarded area.
+Chemical suit lets you step in chemically or biologicaly hazarded area.
 In some parts of field you can find that places signed with ~.
 Beware or steping there without that suit, if you want to go home safe.
  
 Of course, being careless while disarming B or C type bombs will also
-made some part of field hazarded, so if you're not sure how to do it,
+made some part of hazardous field, so if you're not sure how to do it,
 you better start it with chemical suit on.
  
  
 Kevlar armour is a must have when you're not so experienced miner.
-It lets you survive one explosion, but unfortunatelly its become
-trash after that. So it's not a immortal warranty, but, yeah,
+It lets you survive one explosion, but unfortunatelly it becomes
+trash after that. So it's not an immortality warranty, but, yeah,
 we all make mistakes, aren't we?
  
  
 Flag is a very simple miner equipment, which lets you indicate some palces.
-It depends to you, what you want to indicate, and why you are doing it.
-They are multiple use, so you can take them again after placing somwhere.
+It depends on you, what you want to indicate, and why you are doing it.
+They are multiple usege, so you can take them again after placing somwhere.
  
  
 Vaccine is live saving stuff when you find in range of explosion from B bomb.
-used just after that fail, it lets you move out safely from hazarded area.
+used just after that fail, it lets you move out safely from hazardous area.
 Not so heavy, its better to have one whith you. Just in case.

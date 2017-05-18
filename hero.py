@@ -16,11 +16,11 @@ class Hero:
     def __init__(self):
         self.place = Hero.maps_instantions[0]
         self.get_player_name()
-        self.position = 5, 10
+        self.position = 1, 12
         self.exp = 0
         self.level = 1
         self.detect_range = 1
-        self.backpack_capicity = 10
+        self.backpack_capicity = 12
         self.choose_equipment()
         self.alive = True
         self.score = 0
@@ -41,23 +41,28 @@ class Hero:
         backpack = []
         self.backpack_space = self.backpack_capicity
         ready = False
+        shift_to_numbers = {'!': '1', '@': '2', '#': '3', '$': '4', '%': '5', '^': '6'}
         while not ready:
             choose = pop_up(self.place.board, equipment_menu +
                             [' ', "You've taken: ", ' ', *backpack, ' ',
                              'You still can pack ' + str(self.backpack_space) + ' kg'])
             if choose.lower() in for_more_info:
                 pop_up(self.place.board, Item.info[for_more_info[choose.lower()]])
-            elif choose in ['1', '2', '3', '4', '5', '6']:
+            elif choose in shift_to_numbers.values():
                 index = int(choose) - 1
-                if Hero.EQUIPMENT[index] in backpack:
-                    backpack.remove(Hero.EQUIPMENT[index])
-                    self.backpack_space += Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
-                elif Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]] <= self.backpack_space:
+                if Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]] <= self.backpack_space:
                     backpack.append(Hero.EQUIPMENT[index])
                     self.backpack_space -= Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
                 else:
                     pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
-            elif choose == ' ':
+            elif choose in shift_to_numbers:
+                index = int(shift_to_numbers[choose]) - 1
+                if Hero.EQUIPMENT[index] in backpack:
+                    backpack.remove(Hero.EQUIPMENT[index])
+                    self.backpack_space += Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
+                else:
+                    pop_up(self.place.board, ["You can not drop something you don't have!"], auto_hide=1)
+            elif choose == '\r':
                 ready = True
             else:
                 pop_up(self.place.board, ['Wrong choose!'], auto_hide=1)
@@ -70,7 +75,7 @@ class Hero:
         self.place.hide_mines()
         self.detect_mines()
         if self.position in self.place.mines:
-            self.alive = boom(self.place.board, self.position)
+            self.make_boom(self.position)
         elif self.place.board[self.position[1]][self.position[0]] in numbers:
             self.change_map()
         else:
@@ -96,7 +101,7 @@ class Hero:
         keys = [str(i + 1) for i in range(len(self.backpack))]
         backpack = {key: item for key, item in zip(keys, self.backpack)}
         browser_header = ['Your backpack:', ' ']
-        browser_footer = [' ', 'Press item number for further actions', 'SPACE to go back to game']
+        browser_footer = [' ', 'Press item number for further actions', 'ENTER to go back to game']
         browsing_backpack = True
         while browsing_backpack:
             key = pop_up(self.place.board,
@@ -106,7 +111,7 @@ class Hero:
                 if action.upper() == 'E':
                     self.put_item(backpack[key])
                     del backpack[key]
-            elif key == ' ':
+            elif key == '\r':
                 browsing_backpack = False
             else:
                 pop_up(self.place.board, ['Wrong key!'], auto_hide=1)
@@ -126,12 +131,12 @@ class Hero:
     def detonate_dynamite(self):
         """detonating all dynamite put before"""
         objects_to_remove = []
-        for cell in self.place.player_objects:
-            if self.place.player_objects[cell] == 'dynamite':
-                self.alive = boom(self.place.board, cell)
-                objects_to_remove.append(cell)
+        for item in self.place.objects:
+            if item.type == 'dynamite':
+                self.make_boom(item.position)
+                objects_to_remove.append(item)
         for objects in objects_to_remove:
-            del self.place.player_objects[objects]
+            self.place.objects.remove(objects)
 
     def set_position(self, coordinate, side):
         if side == 'N':
@@ -155,6 +160,7 @@ class Hero:
                 side = 'N'
             else:
                 side = 'S'
+            coordinate = (self.position[0])
         self.place = Hero.maps_instantions[int(self.place.board[self.position[1]][self.position[0]])]
         self.set_position(coordinate, side)
 
@@ -213,3 +219,21 @@ class Hero:
                 self.pick_item(objects_to_react[0])
         else:
             self.disarm_mine()
+
+    def make_boom(self, position, power=5):
+        """making explosion in given position, power is radius of near fields to be destroyed"""
+        field_of_fire = calc_neighbours(position, power)
+        board_copy = [item[:] for item in self.place.board]
+        for i in range(power):
+            for cell in calc_neighbours(position, i):
+                board_copy[cell[1]][cell[0]] = '#'
+            print_board(board_copy)
+            sleep(0.05)
+        for cell in field_of_fire:
+            if self.place.board[cell[1]][cell[0]] not in Maps.BOOM_PROOF:
+                self.place.board[cell[1]][cell[0]] = ' '
+            if cell in self.place.mines:
+                self.place.mines.remove(cell)
+        if self.position in field_of_fire:
+            self.alive = False
+        print_board(self.place.board)

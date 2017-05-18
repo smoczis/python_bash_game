@@ -15,27 +15,7 @@ bomb3 = {}
 
 
 
-def boom(actual, x, y, power=5):
-    """making explosion in given position, power is radius of near fields to be destroyed"""
-    game_on = True
-    field_of_fire = calc_neighbours(actual, x, y, power)
-    field_of_fire.append((x, y))
-    board_copy = [item[:] for item in actual.board]
-    for i in range(power):
-        for cell in calc_neighbours(actual, x, y, i):
-            board_copy[cell[1]][cell[0]] = '#'
-        print_board(board_copy)
-        sleep(0.05)
-    for cell in field_of_fire:
-        if actual.board[cell[1]][cell[0]] not in BOOM_PROOF:
-            actual.board[cell[1]][cell[0]] = ' '
-        if cell in actual.mines:
-            actual.mines.remove(cell)
-    if actual.player_position in field_of_fire:
-        print('yes')
-        game_on = False
-    print_board(actual.board)
-    return game_on
+
 
 
 class Bomb():
