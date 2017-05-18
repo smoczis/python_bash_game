@@ -16,7 +16,7 @@ class Hero:
     def __init__(self):
         self.place = Hero.maps_instantions[0]
         self.get_player_name()
-        self.position = 2, 12
+        self.position = 1, 12
         self.exp = 0
         self.level = 1
         self.detect_range = 1
@@ -101,7 +101,7 @@ class Hero:
         keys = [str(i + 1) for i in range(len(self.backpack))]
         backpack = {key: item for key, item in zip(keys, self.backpack)}
         browser_header = ['Your backpack:', ' ']
-        browser_footer = [' ', 'Press item number for further actions', 'SPACE to go back to game']
+        browser_footer = [' ', 'Press item number for further actions', 'ENTER to go back to game']
         browsing_backpack = True
         while browsing_backpack:
             key = pop_up(self.place.board,
@@ -111,7 +111,7 @@ class Hero:
                 if action.upper() == 'E':
                     self.put_item(backpack[key])
                     del backpack[key]
-            elif key == ' ':
+            elif key == '\r':
                 browsing_backpack = False
             else:
                 pop_up(self.place.board, ['Wrong key!'], auto_hide=1)
@@ -131,12 +131,12 @@ class Hero:
     def detonate_dynamite(self):
         """detonating all dynamite put before"""
         objects_to_remove = []
-        for cell in self.place.player_objects:
-            if self.place.player_objects[cell] == 'dynamite':
-                self.make_boom(cell)
-                objects_to_remove.append(cell)
+        for item in self.place.objects:
+            if item.type == 'dynamite':
+                self.make_boom(item.position)
+                objects_to_remove.append(item)
         for objects in objects_to_remove:
-            del self.place.player_objects[objects]
+            self.place.objects.remove(objects)
 
     def set_position(self, coordinate, side):
         if side == 'N':
@@ -160,6 +160,7 @@ class Hero:
                 side = 'N'
             else:
                 side = 'S'
+            coordinate = (self.position[0])
         self.place = Hero.maps_instantions[int(self.place.board[self.position[1]][self.position[0]])]
         self.set_position(coordinate, side)
 
