@@ -8,4 +8,5 @@ KEYBOARD:
 * '1' opens backpack                                                 
 * '2' shows instructions                                             
 * '3' shows controls                                                 
-* '4' exits game                                                     
+* '4' exits game
+* '5' shows credits                                                     
