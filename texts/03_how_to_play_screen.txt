@@ -1,0 +1,12 @@
+                        How to play:                                 
+                                                                     
+KEYBOARD:                                                            
+                                                                     
+* use 'W' 'A' 'S' 'D' to move your character                         
+* use 'E' key to interact with surroundings (e.g. disarm mines, pick 
+  up items, open boxes, drop or use item form inventory)             
+* '1' opens backpack                                                 
+* '2' shows instructions                                             
+* '3' shows controls                                                 
+* '4' exits game
+* '5' shows credits                                                     

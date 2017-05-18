@@ -15,7 +15,7 @@ V  F         XX                   GGGGGGG   XNNNNNNXXXNNNNNNX
 V            XX                     GGGGG   XNNNNNNXXXNNNNNNX                                         XXXX
 V                                  GGGGGG   XXNNNNNNNNNNNNNXX G                                       XXXX
 V                                    GG      XXXNNNNNNNNNXXX GG                                  G G  XX  
-V     XXXXXXXXX                                XXXNNNNNXXX  GGGG                                 GG   XX  
+V     DDDDDDDDD                                XXXNNNNNXXX  GGGG                                 GG   XX  
 V     F      XX                             G     XXXXX    GGGGG                              GG G    XX  
 V            XX                            GGG              GG                                GGGG    XX  
 V            XX                           GGGGG     G G G   G                                   GG    XX  
@@ -24,7 +24,7 @@ V            XXGGG                         GGG     GGGGGGGG                     
 V            XXGG                           G       GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
 V      F     XXG                                      G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
 V            XXGGG                                                    XX           F                      
-VXXXXXXXXX   XXGGGGG                                                  XX     F                 F          
+VDDDDDDDDD   XXGGGGG                                                  XX     F                 F          
 V            XXGGGG                                                   XX            F                     
 V            XXGGG            G                                       XX                              FF  
 V            XXGG           GGGGG     GG     GG        GGGG           XX              F                   

@@ -52,9 +52,13 @@ def end_game(player, start_time):
             fw.write(saved_scores[iterator])
             iterator += 1
     score_list = open('texts/scores.txt').readlines()
-    score_list.insert(0, 'HIGHSCORES')
-    score_list.insert(1, 'SCORE - GAME TIME - NAME')
-    pop_up(player.place.board, score_list, auto_hide=4)
+    new_list = []
+    for score in score_list:
+        score = score[:-1]
+        new_list.append(score)
+    new_list.insert(0, 'HIGHSCORES')
+    new_list.insert(1, 'SCORE - GAME TIME - NAME')
+    pop_up(player.place.board, new_list, auto_hide=4)
     os.system('clear')
 
 
@@ -62,12 +66,13 @@ def main():
     player = Hero()
     game_on = True
     start_time = time.time()
+    player.insert_on_board()
     while player.alive and game_on:
         player.insert_on_board()
         print_board(player.place.board, player)
         key = getch().lower()
         game_on = action(player, key)
-        print(player.place.objects)
+        player.insert_on_board()
     end_game(player, start_time)
 
 

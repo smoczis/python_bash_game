@@ -23,12 +23,12 @@ V            XX                                    GGGGGGGG                     
 V            XX                                    GGGGGGGG                                  GGGG         
 V            XX                                     GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
 V      F     XX                                       G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
-V            XX                                                       XX           F                 X    
-VXXXXXXXXX   XX                                                       XX     F                 F     X    
-VXXXXXXXXX   XX                                                       XX            F                X    
-V            XX                                                       XX                             XFF  
-V            XX                                                       XX              F              X    
-V            XX                                                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
+V            XX                                                       XX           F                 D    
+VXXXXXXXXX   XX                                                       XX     F                 F     D    
+VXXXXXXXXX   XX                                                       XX            F                D    
+V            XX                                                       XX                             D F  
+V            XX                                                       XX              F              D    
+V            XX                                                       XXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD    
 V            XX                                                                                           
 V            XX                                                                                           
 E:map7,S:map3
