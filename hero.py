@@ -20,7 +20,7 @@ class Hero:
         self.exp = 0
         self.level = 1
         self.detect_range = 1
-        self.backpack_capicity = 10
+        self.backpack_capicity = 12
         self.choose_equipment()
         self.alive = True
         self.score = 0
@@ -41,22 +41,27 @@ class Hero:
         backpack = []
         self.backpack_space = self.backpack_capicity
         ready = False
+        shift_to_numbers = {'!': '1', '@': '2', '#': '3', '$': '4', '%': '5', '^': '6'}
         while not ready:
             choose = pop_up(self.place.board, equipment_menu +
                             [' ', "You've taken: ", ' ', *backpack, ' ',
                              'You still can pack ' + str(self.backpack_space) + ' kg'])
             if choose.lower() in for_more_info:
                 pop_up(self.place.board, Item.info[for_more_info[choose.lower()]])
-            elif choose in ['1', '2', '3', '4', '5', '6']:
+            elif choose in shift_to_numbers.values():
                 index = int(choose) - 1
-                if Hero.EQUIPMENT[index] in backpack:
-                    backpack.remove(Hero.EQUIPMENT[index])
-                    self.backpack_space += Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
-                elif Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]] <= self.backpack_space:
+                if Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]] <= self.backpack_space:
                     backpack.append(Hero.EQUIPMENT[index])
                     self.backpack_space -= Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
                 else:
                     pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
+            elif choose in shift_to_numbers:
+                index = int(shift_to_numbers[choose]) - 1
+                if Hero.EQUIPMENT[index] in backpack:
+                    backpack.remove(Hero.EQUIPMENT[index])
+                    self.backpack_space += Hero.EQUIPMENT_WEIGHT[Hero.EQUIPMENT[index]]
+                else:
+                    pop_up(self.place.board, ["You can not drop something you don't have!"], auto_hide=1)
             elif choose == ' ':
                 ready = True
             else:
