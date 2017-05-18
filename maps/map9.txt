@@ -31,3 +31,4 @@ X                        XX                                                    X
 X                        XX                                                    XX                        X
 X                        XX                                                    XX                        X
 XVVVVVVVVVVVVVVVVVVVVVVVVXX7777777777777777777777777777777777777777777777777777XXVVVVVVVVVVVVVVVVVVVVVVVVX
+S:map7
