@@ -1,0 +1,33 @@
+X55555555555555555XX55555555555555555555VVVVVVVVVV5555555555555555555555555555555555NNNNNNNNNNNNNNNNNNNNNN
+1                  XX                    GG GGGGG                                   NNNNNNNNNNNNNNNNNNNNNN
+1                   XX                    G  GGG                                     NNNNNNNNNNNNNNNNNNNNN
+1                    XX                                                               NNNNNNNNNNNNNNNNNNNN
+1                     XX                                             GGGG               NNNNNNNNNNNNNNNNNN
+1                      XX                             FFF           GGGGGG               NNNNNNNNNNNNNNNNN
+1                       XXXXXXXXXXXXXXXX                            GGGGG               NNNNNNNNNNNNNNNNNN
+1                        XXXXXXXXXXXXXXX                             GGGG      FF       NNNNNNNNNNNNNNNNNN
+1                                     XX                               G FF                NNNNNNNNNNNNNNN
+1                                     XX                                                     NNNNNNNNNNNNN
+X                                     XX                                   FF     FF            NNNNNNNNNN
+X                                     XX                 FF                                       NNNN  NN
+1                                     XX                                  FFFF               FFFFF       V
+1                                     XX                                          FF          FFF        V
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                   FF                                            V
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         GG                                      V
+1                                                                GGGG                                    V
+1                                                             GGGGG                                      V
+1                                                                GGGGG                                   V
+1     GGGG                                                        GGG                 XXXXXXXXXXXXXXXXXXXX
+1       GGGG                                                                        XX X                 X
+1         GGG                                                                     XX    X                X
+1       GGGGG                                                                   XX       X               X
+1          GGGGG                                                               XX         X              X
+1                                                    G                        XX           XXXXXXXXXXXXXXX
+1                                                 G  GGG                     X XXX       XXXXGGGGGGGGGGGGV
+1                                            G    GG GGGG            G       X    XXXX XXXGGGGGGGGGGGGGGGV
+1    FF                                    GGGG   GGGG             GGGGG     X        XXGGGGGGGGGGGGGGGGGV
+1         FF                                GGG  GGG              GGGGGGG    X         XGGGGGGGGGGGGGGGGGV
+1  FF                                        GGGGGG                GGGGGG    X         XGGGGGGGGGGGGGGGGGV
+1       FF         FF                          GGG                   GGG     X         XGGGGGGGGGGGGGGGGGV
+1                FF                             G                            X         XGGGGGGGGGGGGGGGGGV
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVXXXXXXXXXXXVVVVVVVVVVVVVVVVVV
