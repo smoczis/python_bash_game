@@ -1,34 +1,34 @@
-V333333333333XXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV33333XX333333333333333333333333333333333 
-V            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG     XX                                 1
-V            XX    GGGGGGGG      GGGGGGGGG    GGGGGGGG   G GGGGG      XX                                 1
-V            XX     GGGGG          GGGGG       GGGGG      GGGGG       XX                                 1
-V            XX                      GG                               XX                                 1
-V            XX                                                       XX                                 1
-VXXXXXXXXXXXXXX                                                       XX                                 1
-VXXXXXXXXXXXXXX                                                       XX                                 1
-VVVV                                                                  XX                                 1
-VVVV                                                                  XX                                 1
-VVV                        ()                                                                            1
-VVV                                                                                                      1
+             XXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV     XX                                  
+V            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG     XX                                  
+V            XX    GGGGGGGG      GGGGGGGGG    GGGGGGGG   G GGGGG      XX                                  
+V            XX     GGGGG          GGGGG       GGGGG      GGGGG       XX                                  
+V            XX                      GG                               XX                                  
+V            XX                                                       XX                                  
+VXXXXXXXXXXXXXX                                                       XX                                  
+VXXXXXXXXXXXXXX                                                       XX                                  
+VVVV                                                                  XX                                  
+VVVV                                                                  XX                                  
+VVV                        ()                                                                             
+VVV                                                                                                       
 V                                                                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 VVVV                                                                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 VV                                                                                                NNNNNNNN
 VVV                                                                                        NNNNNNNNNNNNNNN
 VVVV                                                                                  NNNNNNNNNNNNNNNNNNNN
 VV                                                      NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-VV                                                  NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 1
-VVV                                               NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN        1
-VV                                              NNNNNNNNNNNNNNNNNNNNNNNNNNNNN                            1
-VV       X     X                NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                               1
-NNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                                1
-NNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                         GG G     1
-NNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                            GGGGGGG   1
-NNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                    GGGG        GGGG        GGGGGGGGGGXXX
-NNNNNNNNNX     XNNNNNNNNNNNNNNNNNNNNNNN                            GGGGGG       GGGGGG        GGGGGGGGXXXX
-VVV      X     X                                                  GGGGGGGG     GGGGGGGG        GGGGGGXX  1
-VV                                                                 GGGGGG        GGGG           GGGGXX   1
-VV                                                                   GGG           G               XX    1
-VV                                                                                                XX     1
-VVVVV                            VVVVVVVVVVVVVVVVVVVVVVVV                            VVVVVV              1
+VV                                                  NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN  
+VVV                                               NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN         
+VV                                              NNNNNNNNNNNNNNNNNNNNNNNNNNNNN                             
+VV      XX     XX               NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                                
+NNNNNNNNXX     XXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                                 
+NNNNNNNNXX     XXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                         GG G      
+NNNNNNNNXX     XXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                            GGGGGGG    
+NNNNNNNNXX     XXNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN                    GGGG        GGGG        GGGGGGGGGGXXX
+NNNNNNNNXX     XXNNNNNNNNNNNNNNNNNNNNNN                            GGGGGG       GGGGGG        GGGGGGGGXXXX
+VVV     XX     XX                                                 GGGGGGGG     GGGGGGGG        GGGGGGXX   
+VV                                                                 GGGGGG        GGGG           GGGGXX    
+VV                                                                   GGG           G               XX     
+VV                                                                                                XX      
+VVVVV                            VVVVVVVVVVVVVVVVVVVVVVVV                            VVVVVV               
 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 N:map3,E:map1

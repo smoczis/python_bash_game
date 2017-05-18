@@ -1,34 +1,34 @@
- 77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777 
-3              D                                                                    D                    5
+                                                                                                          
+                                                                                                          
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-3                                              D               F             F      XX                   5
-3          F                         F         D   F                                XX                   5
-3                   F F  F                     D                                    XX                   5
-3    F          F F                            D                                    XX                   5
-3                                F             D                       F F F        XX     FF            5
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX       F        F     F             XX                   5
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX                                    XX                   5
-3             D                          GGGGGXX                                    XX      F            5
-3             D                            GGGXX  FF                      F         XX      FF           5
-3             D                           GGGGXX                                    XX                   5
-XXXXXXXXXXXXXXX                             GGXX                                    XX                   5
+                                               D               F             F      XX                    
+           F                         F         D   F                                XX                    
+                    F F  F                     D                                    XX                    
+     F          F F                            D                                    XX                    
+                                 F             D                       F F F        XX     FF             
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX       F        F     F             XX                    
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  XXXXXXXXXXXXXXXX                                    XX                    
+              D                          GGGGGXX                                    XX      F             
+              D                            GGGXX  FF                      F         XX      FF            
+              D                           GGGGXX                                    XX                    
+XXXXXXXXXXXXXXX                             GGXX                                    XX                    
 XXXXXXXXXXXXXXX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXDDDDDDDDDDDDDDDDDDDD
-3      F     XX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                   5
-3            XX                                                          GGGGGGGGG  XX     F    F        5
-3            XX                                                           GGGGGG    XX             F     5
-3            XX                                                             GGGGG   XX                   5
-3      F     XX                                                            GGGG     XX                   5
-3  F F       XX                                                          GG   GG    XX        F          5
-3            XX                                     G                               XX       F           5
-3            XX                                    GGG                              XX                   5
-3            XX                                   GGGGG                             XXX        F         5
-3            XX                                     GGGG                            XXXX                 5
-3            XX                                     GGG                             XX XX                5
-3        FF                                         GGGGG                               XX          F    5
-3     FF                      G                        GG                                XX              5
-3            XX             GGGGG     GG     GG        GGGG  GG  GG       G         XX    XX             5
-3            XX              GGGG     GGGG GGGGGG    GGGGGGGG  GG GGG    GGG        XX     XX            5
-3            XX                      GGGGGGGGGGGGG                GGGGGGGG          XX      XX           5
-V111111111111XX111111111111111111111VVVVVVVVVVVVVVV111111111111111VVVVVVVV1111111111XX1111111XX1111111111X
-N:map7,E:map5,W:map3,N:map1
+       F     XX                               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                    
+             XX                                                          GGGGGGGGG  XX     F    F         
+             XX                                                           GGGGGG    XX             F      
+             XX                                                             GGGGG   XX                    
+       F     XX                                                            GGGG     XX                    
+   F F       XX                                                          GG   GG    XX        F           
+             XX                                     G                               XX       F            
+             XX                                    GGG                              XX                    
+             XX                                   GGGGG                             XXX        F          
+             XX                                     GGGG                            XXXX                  
+             XX                                     GGG                             XX XX                 
+         FF                                         GGGGG                               XX          F     
+      FF                      G                        GG                                XX               
+             XX             GGGGG     GG     GG        GGGG  GG  GG       G         XX    XX              
+             XX              GGGG     GGGG GGGGGG    GGGGGGGG  GG GGG    GGG        XX     XX             
+             XX                      GGGGGGGGGGGGG                GGGGGGGG          XX      XX            
+             XX                     VVVVVVVVVVVVVVV               VVVVVVVV          XX       XX           
+N:map7,E:map5,W:map3,S:map1

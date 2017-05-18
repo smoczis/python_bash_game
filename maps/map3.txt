@@ -1,34 +1,34 @@
-V666666666666XX666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 
-V            XX                                                                                          4
+V            XX                                                                                           
+V            XX                                                                                           
 V            XX                                                                     XXXXXXXXXXXXXXXXXXXXXX
 V        F   XX                                                                     XXXXXXXXXXXXXXXXXXXXXX
-V   F  F F   XX                                        G  G                         XX                   4
-V            XX                             G G        GG G                         XX                   4
-V            XX                             GGGG      GGGG     G                    XX      F     F      4
-VDDDDDDDDDDDDXX                            GGGGG       GG     GGG                   XX                   4
-V            XX                             GGGGG           GGGGGG                  XX                F  4
+V   F  F F   XX                                        G  G                         XX                    
+V            XX                             G G        GG G                         XX                    
+V            XX                             GGGG      GGGG     G                    XX      F     F       
+VDDDDDDDDDDDDXX                            GGGGG       GG     GGG                   XX                    
+V            XX                             GGGGG           GGGGGG                  XX                F   
 V       F    XX                             GG    XXXXX    GGGGGGGG                 XXXXXXXXXXXXXXXXXXXXXX
 V            XX                                XXXNNNNNXXX   GGGGG                  XXXXXXXXXXXXXXXXXXXXXX
-V            XX                      G G     XXXNNNNNNNNNXXX   GG                                        4
-V            XX                      GGGG   XXNNNNNNNNNNNNNXX   G                                        4
-V  F         XX                   GGGGGGG   XNNNNNNXXXNNNNNNX                                            4
+V            XX                      G G     XXXNNNNNNNNNXXX   GG                                         
+V            XX                      GGGG   XXNNNNNNNNNNNNNXX   G                                         
+V  F         XX                   GGGGGGG   XNNNNNNXXXNNNNNNX                                             
 V            XX                     GGGGG   XNNNNNNXXXNNNNNNX                                         XXXX
 V                                  GGGGGG   XXNNNNNNNNNNNNNXX G                                       XXXX
-V                                    GG      XXXNNNNNNNNNXXX GG                                  G G  XX 4
-V     XXXXXXXXX                                XXXNNNNNXXX  GGGG                                 GG   XX 4
-V     F      XX                             G     XXXXX    GGGGG                              GG G    XX 4
-V            XX                            GGG              GG                                GGGG    XX 4
-V            XX                           GGGGG     G G G   G                                   GG    XX 4
-V            XXG                          GGGGG    GGGGGGGG                                    GGG    XX 4
-V            XXGGG                         GGG     GGGGGGGG                                  GGGG     XX 4
-V            XXGG                           G       GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 4
-V      F     XXG                                      G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 4
-V            XXGGG                                                    XX           F                     4
-VXXXXXXXXX   XXGGGGG                                                  XX     F                 F         4
-V            XXGGGG                                                   XX            F                    4
-V            XXGGG            G                                       XX                              FF 4
-V            XXGG           GGGGG     GG     GG        GGGG           XX              F                  4
-V            XXGGGG  GGGGGGGGGGGGGGGGGGGGG GGGGGG    GGGGGGGGGG       XX                    F            4
-V            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG     XX                                 4
-X000000000000XXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV00000XX0000000000000000000000000000000000
+V                                    GG      XXXNNNNNNNNNXXX GG                                  G G  XX  
+V     XXXXXXXXX                                XXXNNNNNXXX  GGGG                                 GG   XX  
+V     F      XX                             G     XXXXX    GGGGG                              GG G    XX  
+V            XX                            GGG              GG                                GGGG    XX  
+V            XX                           GGGGG     G G G   G                                   GG    XX  
+V            XXG                          GGGGG    GGGGGGGG                                    GGG    XX  
+V            XXGGG                         GGG     GGGGGGGG                                  GGGG     XX  
+V            XXGG                           G       GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
+V      F     XXG                                      G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  
+V            XXGGG                                                    XX           F                      
+VXXXXXXXXX   XXGGGGG                                                  XX     F                 F          
+V            XXGGGG                                                   XX            F                     
+V            XXGGG            G                                       XX                              FF  
+V            XXGG           GGGGG     GG     GG        GGGG           XX              F                   
+V            XXGGGG  GGGGGGGGGGGGGGGGGGGGG GGGGGG    GGGGGGGGGG       XX                    F             
+V            XXGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG     XX                                  
+X            XXVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV     XX                                  
 N:map6,E:map4,S:map0

@@ -42,6 +42,7 @@ def main():
         key = getch().lower()
         game_on = action(player, key)
         player.insert_on_board()
+        print(player.position, list(Hero.maps_instantions), player.place)
     end_game(player.place.board)
 
 

@@ -1,4 +1,4 @@
- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X                                                                                                        X
 X                                                 MMMM                                                   X
 X                                                MMMMMM                                                  X
@@ -30,5 +30,5 @@ X     FF                 XX                                                    X
 X                        XX                                                    XX                        X
 X                        XX                                                    XX                        X
 X                        XX                                                    XX                        X
-XVVVVVVVVVVVVVVVVVVVVVVVVXX7777777777777777777777777777777777777777777777777777XXVVVVVVVVVVVVVVVVVVVVVVVVX
+XVVVVVVVVVVVVVVVVVVVVVVVVXX                                                    XXVVVVVVVVVVVVVVVVVVVVVVVVX
 S:map7
