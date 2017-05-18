@@ -162,7 +162,9 @@ class Hero:
             else:
                 side = 'S'
             coordinate = (self.position[0])
-        self.place = Hero.maps_instantions[next_map]
+        for maps in Hero.maps_instantions:
+            if maps == self.place.neighbour_maps[side]:
+                self.place = Hero.maps_instantions[self.place.neighbour_maps[side]]
         self.set_position(coordinate, side)
 
     def disarm_mine(self):

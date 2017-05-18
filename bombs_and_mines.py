@@ -27,7 +27,7 @@ class Bomb():
     }
 
     def __init__(self, bomb_type, is_disarmed=False):
-        self.place = maps_instantions[random.randint(0, (len(maps_instantions)-1))]
+        self.place = random.choice(maps_instantions)
         self.set_position()
         self.insert()
         self.attempts = 10
