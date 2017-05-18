@@ -97,9 +97,9 @@ class Maps:
     def put_mines(self, quantity):
         """randomly selecting positions of given quantity of mines. returns a list of tuples (x, y)"""
         while len(self.mines) < quantity:
-            y = random.randint(0, len(self.board)-1)
-            x = random.randint(0, len(self.board[0])-1)
-            if self.board[y][x] == ' ' and (x, y) != (28, 5):
+            y = random.randint(2, len(self.board)-3)
+            x = random.randint(2, len(self.board[0])-3)
+            if self.board[y][x] == ' ':
                 self.mines.append((x, y))
 
     def hide_mines(self):
