@@ -22,7 +22,7 @@ class Hero:
         self.level = 1
         self.detect_range = 1
         self.backpack_capicity = 12
-        self.choose_equipment()
+        # self.choose_equipment()
         self.alive = True
         self.score = 0
 

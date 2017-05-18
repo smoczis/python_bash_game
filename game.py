@@ -30,7 +30,7 @@ def action(player, key):
 
 def end_game(player, start_time):
     game_time = round(time.time() - start_time)
-    final_score = 1000 - game_time
+    final_score = 1000 - game_time + player.exp
     saved_scores = open('texts/scores.txt').readlines()
     new_score = "{} - {} - {}\n".format(final_score, game_time, player.name)
     if not saved_scores:
@@ -62,8 +62,22 @@ def end_game(player, start_time):
     os.system('clear')
 
 
+def show_intro(player):
+    intro_screens = [files for files in os.listdir('texts') if files.endswith('screen.txt')]
+    intro_screens = sorted(intro_screens)
+    for screen in intro_screens:
+        board_to_print = []
+        file_path = 'texts/' + screen
+        with open(file_path, 'r', newline='\n') as fo:
+            for line in fo:
+                board_to_print.append(line[:-1])
+        pop_up(player.place.board, board_to_print, ask=True)
+
+
 def main():
     player = Hero()
+    show_intro(player)
+    player.choose_equipment()
     game_on = True
     start_time = time.time()
     player.insert_on_board()
