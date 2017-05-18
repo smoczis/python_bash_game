@@ -31,3 +31,4 @@ V            XX                                                       XX        
 V            XX                                                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   7
 V            XX                                                                                          7
 X333333333333XX333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333V
+E:map7,S:map3

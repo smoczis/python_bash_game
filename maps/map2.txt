@@ -31,3 +31,4 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                         GG             
 1       FF         FF                          GGG                   GGG     X         XGGGGGGGGGGGGGGGGGV
 1                FF                             G                            X         XGGGGGGGGGGGGGGGGGV
 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVXXXXXXXXXXXVVVVVVVVVVVVVVVVVV
+N:map5,W:map1

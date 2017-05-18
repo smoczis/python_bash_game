@@ -31,3 +31,4 @@ XX               MMM         MMM                         XX                     
 7       FF      GGGG                       GGGGGGG       XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
 7                                       GGGGGGGGG        XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
 V55555555555555555555555555555555555555555555555555555555XX55555555555555XX55555555NNNNNNNNNNNNNNNNNNNNNNN
+W:map7,S:map5

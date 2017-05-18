@@ -31,3 +31,4 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         GNNNNNNNNNN
 0       FF         FF                                     XX         GGGXXXXXXXXXXXXX                   GX
 0                FF                                                                                      2
 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+N:map4,E:map2,W:map0
