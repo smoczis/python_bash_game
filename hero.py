@@ -16,7 +16,7 @@ class Hero:
     def __init__(self):
         self.place = Hero.maps_instantions[0]
         self.get_player_name()
-        self.position = 5, 10
+        self.position = 2, 12
         self.exp = 0
         self.level = 1
         self.detect_range = 1
