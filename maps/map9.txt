@@ -7,7 +7,7 @@ X                  XXXXXXXX          F            MMMM                         X
 X            XXXXXXXXXXXX     MMMM                                    MMMM       XXXXXXXXXXXX            X
 X    F   XXXXXX F F          MMMMMM                                  MMMMMM                XXXXXX        X
 X     XXXXXX                 MMMMMM                                  MMMMMM                   XXXXXX     X
-X  XXXXX 1                    MMMM                     F        F     MMMM                        XXXXX  X
+X  XXXXX                      MMMM                     F        F     MMMM                        XXXXX  X
 X XXX                                                                                                XXX X
 X X                                                                                         F          X X
 X                                                                         F                 FF           X
