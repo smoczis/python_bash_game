@@ -1,7 +1,7 @@
                       GAME INSTRUCTIONS                              
                                                                      
 -> DISARMING MINES 'X' - stand next to the mine and press 'E'        
--> DETONATING DYNAMITES '⌫' - choose dynamite from backpack and press 'B'
+-> DETONATING DYNAMITES '⌫  ' - choose dynamite from backpack and press 'B'
 -> DISARMING BOMBS - guess the code based on hot-warm-cold game   
     'A' - standard bomb, explodes in random radius                  
     'B' - biological bomb, infects area with a virus                 
