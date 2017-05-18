@@ -6,5 +6,5 @@
     'A' - standard bomb, explodes in random radius                  
     'B' - biological bomb, infects area with a virus                 
     'C' - chemical bomb, creates a toxic fog in range of few meters  
-    'NUKE BOMB' - BOSS, destroys entire world and
-* some kind of walls can be destroyed, try to find them
+    'NUKE BOMB' - destroys entire world and whole human kind
+* some kind of walls can be destroyed by dynamite, try to find them
