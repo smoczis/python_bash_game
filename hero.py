@@ -14,7 +14,7 @@ class Hero:
     maps_instantions = load_maps('maps')
 
     def __init__(self):
-        self.place = Hero.maps_instantions[0]
+        self.place = Hero.maps_instantions['map0']
         self.get_player_name()
         self.position = 1, 12
         self.exp = 0
@@ -79,6 +79,7 @@ class Hero:
         elif self.place.board[self.position[1]][self.position[0]] in numbers:
             self.change_map()
         else:
+            self.background_char = self.place.board[self.position[1]][self.position[0]]
             self.place.board[self.position[1]][self.position[0]] = "@"
 
     def move(self, key):
@@ -86,7 +87,7 @@ class Hero:
         numbers = [str(x) for x in range(10)]
         x, y = self.position
         if self.place.board[y][x] not in numbers:
-            self.place.board[y][self.position[0]] = " "
+            self.place.board[y][self.position[0]] = self.background_char
         if key == "a" and self.place.board[y][x - 1] not in Maps.BLOCKERS:
             x -= 1
         elif key == "d" and self.place.board[y][x + 1] not in Maps.BLOCKERS:
@@ -161,7 +162,7 @@ class Hero:
             else:
                 side = 'S'
             coordinate = (self.position[0])
-        self.place = Hero.maps_instantions[int(self.place.board[self.position[1]][self.position[0]])]
+        self.place = Hero.maps_instantions[next_map]
         self.set_position(coordinate, side)
 
     def disarm_mine(self):

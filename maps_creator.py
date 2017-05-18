@@ -60,10 +60,10 @@ def load_maps(catalog):
        and storing it to list of instances"""
     map_files = [f for f in os.listdir("maps")]
     map_files = sorted(map_files)
-    maps_instantions = []
+    maps_instantions = {}
     for map_file in map_files:
         if map_file.endswith(".txt"):
-            maps_instantions.append(Maps(catalog + '/' + map_file))
+            maps_instantions[map_file.split('.')[0]] = Maps(catalog + '/' + map_file)
     return maps_instantions
 
 
@@ -86,10 +86,11 @@ class Maps:
     BOOM_PROOF = [COLOURS['N'], COLOURS['V']]
 
     def __init__(self, map_file):
-        self.file = map_file
+        self.name = map_file
         self.board = []
         self.mines = []
         self.objects = []
+        self.neighbour_maps = {}
         self.import_map(map_file)
         self.colour_map(self.board)
         self.put_mines(20)
@@ -111,8 +112,11 @@ class Maps:
 
     def import_map(self, map_file):
         with open(map_file, 'r', newline='\n') as map_file:
-            for line in map_file:
+            map_file = map_file.readlines()
+            for line in map_file[:-1]:
                 self.board.append([char for char in line[:-1]])
+            for item in map_file[-1].split(','):
+                self.neighbour_maps[item.split(':')[0]] = item.split(':')[1]
 
     def colour_map(self, board):
         for line_i in range(len(self.board)):
