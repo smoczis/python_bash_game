@@ -1,34 +1,34 @@
-VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 
-V                                                                                                        7
-V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                            7
-V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                            7
-V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                            7
-V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                            7
-V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                               F     F      7
-V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                            7
-V                                                                                                     F  7
-V                                                                                                        7
-V     MMMMM     MMMMM     MMMMM                                                                          7
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+V                                                                                                         
+V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                             
+V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                             
+V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                             
+V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                             
+V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                               F     F       
+V     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM     MMMMM                                             
+V                                                                                                     F   
+V                                                                                                         
+V     MMMMM     MMMMM     MMMMM                                                                           
 V     MMMMM     MMMMM     MMMMM                                                                          X
 V     MMMMM     MMMMM     MMMMM                                                                         XX
-V  F  MMMMM     MMMMM     MMMMM                                                                        XX7
-V     MMMMM     MMMMM     MMMMM                                                                       XX 7
-V     MMMMM     MMMMM     MMMMM                                                                      XX  7
-V                                                                                                G G XX  7
-XXXXXXXXXXXXXXX                                                                                  GG XX   7
-XXXXXXXXXXXXXXX                                                                               GG G  XX   7
-V            XX                                             GG                                GGGG       7
-V            XX                                     G G G   G                                   GG       7
-V            XX                                    GGGGGGGG                                    GGG       7
-V            XX                                    GGGGGGGG                                  GGGG        7
-V            XX                                     GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   7
-V      F     XX                                       G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   7
-V            XX                                                       XX           F                 X   7
-VXXXXXXXXX   XX                                                       XX     F                 F     X   7
-V            XX                                                       XX            F                X   7
-V            XX                                                       XX                             XFF 7
-V            XX                                                       XX              F              X   7
-V            XX                                                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   7
-V            XX                                                                                          7
-X333333333333XX333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333V
+V  F  MMMMM     MMMMM     MMMMM                                                                        XX 
+V     MMMMM     MMMMM     MMMMM                                                                       XX  
+V     MMMMM     MMMMM     MMMMM                                                                      XX   
+V                                                                                                G G XX   
+XXXXXXXXXXXXXXX                                                                                  GG XX    
+XXXXXXXXXXXXXXX                                                                               GG G  XX    
+V            XX                                             GG                                GGGG        
+V            XX                                     G G G   G                                   GG        
+V            XX                                    GGGGGGGG                                    GGG        
+V            XX                                    GGGGGGGG                                  GGGG         
+V            XX                                     GGGGG             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
+V      F     XX                                       G               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
+V            XX                                                       XX           F                 X    
+VXXXXXXXXX   XX                                                       XX     F                 F     X    
+VXXXXXXXXX   XX                                                       XX            F                X    
+V            XX                                                       XX                             XFF  
+V            XX                                                       XX              F              X    
+V            XX                                                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX    
+V            XX                                                                                           
+V            XX                                                                                           
 E:map7,S:map3

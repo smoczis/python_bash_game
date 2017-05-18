@@ -16,6 +16,7 @@ class Hero:
     def __init__(self):
         self.place = Hero.maps_instantions['map0']
         self.get_player_name()
+        self.background_char = ' '
         self.position = 1, 12
         self.exp = 0
         self.level = 1
@@ -76,18 +77,16 @@ class Hero:
         self.detect_mines()
         if self.position in self.place.mines:
             self.make_boom(self.position)
-        elif self.place.board[self.position[1]][self.position[0]] in numbers:
+        elif self.position[0] in [0, 105] or self.position[1] in [0, 32]:
             self.change_map()
         else:
-            self.background_char = self.place.board[self.position[1]][self.position[0]]
             self.place.board[self.position[1]][self.position[0]] = "@"
 
     def move(self, key):
         """moving player basing on previous position on board, using getch()"""
         numbers = [str(x) for x in range(10)]
         x, y = self.position
-        if self.place.board[y][x] not in numbers:
-            self.place.board[y][self.position[0]] = self.background_char
+        self.place.board[y][x] = self.background_char
         if key == "a" and self.place.board[y][x - 1] not in Maps.BLOCKERS:
             x -= 1
         elif key == "d" and self.place.board[y][x + 1] not in Maps.BLOCKERS:
@@ -96,6 +95,7 @@ class Hero:
             y -= 1
         elif key == "s" and self.place.board[y + 1][x] not in Maps.BLOCKERS:
             y += 1
+        self.background_char = self.place.board[y][x]
         self.position = x, y
 
     def browse_backpack(self):
@@ -141,28 +141,32 @@ class Hero:
 
     def set_position(self, coordinate, side):
         if side == 'N':
-            self.position = coordinate, 31
+            self.position = coordinate, 32
         elif side == 'S':
-            self.position = coordinate, 1
+            self.position = coordinate, 0
         elif side == 'W':
-            self.position = 104, coordinate
+            self.position = 105, coordinate
         elif side == 'E':
-            self.position = 1, coordinate
+            self.position = 0, coordinate
 
     def change_map(self):
-        if self.position[0] in [0, 105]:
-            if self.position[0] == 0:
-                side = 'W'
-            else:
-                side = 'E'
+        if self.position[0] == 105:
+            side = 'E'
             coordinate = (self.position[1])
-        else:
-            if self.position[1] == 0:
-                side = 'N'
-            else:
-                side = 'S'
+        elif self.position[0] == 0:
+            side = 'W'
+            coordinate = (self.position[1])
+        elif self.position[1] == 0:
+            side = 'N'
             coordinate = (self.position[0])
-        self.place = Hero.maps_instantions[next_map]
+        elif self.position[1] == 32:
+            side = 'S'
+            coordinate = (self.position[0])
+        for maps in list(Hero.maps_instantions):
+            print(self.place.name)
+            if maps == self.place.neighbour_maps[side]:
+                self.place = Hero.maps_instantions[maps]
+                break
         self.set_position(coordinate, side)
 
     def disarm_mine(self):

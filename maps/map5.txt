@@ -1,34 +1,34 @@
-X888888888888888888888888888888888888888VVVVVVVVVV8888888XX88888888888888XX8888888NNNNNNNNNNNNNNNNNNNNNNNN
-4                                        GG GGGGG        XX              XX      NNNNNNNNNNNNNNNNNNNNNNNNN
+                                        VVVVVVVVVV       XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
+                                         GG GGGGG        XX              XX      NNNNNNNNNNNNNNNNNNNNNNNNN
 XXXXXXXXXXXX                              G  GGG         XX              XX     NNNNNNNNNNNNNNNNNNNNNNNNNN
 XXXXXXXXXXXX                                             XXXXXXXXXXXXXXXXXX     NNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                             XXXXXXXXXXXXXXXXXX     NNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                          FFF                       NNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                                                   NNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                     GG                                           NNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                    GGGGG                                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                    GGGGG                                 MM    NNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                     GGG                                 MMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                      G                      FF         MMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                                         MMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                    GG                   NNNNMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                  GGGGG        FF      NNNNNNNNNMMMMMMMMMMMNNNNNNNNNNNNNNNNNNN
+          XX                                             XXXXXXXXXXXXXXXXXX     NNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                                          FFF                       NNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                                                                   NNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                     GG                                           NNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                    GGGGG                                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                    GGGGG                                 MM    NNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                     GGG                                 MMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                      G                      FF         MMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                                                         MMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                                    GG                   NNNNMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNN
+          XX                                  GGGGG        FF      NNNNNNNNNMMMMMMMMMMMNNNNNNNNNNNNNNNNNNN
 DDDDDDDDDDXX               GG                 GGGGG               NNNNNNNNNNNNNMMMMMMMMMMMNNNNNNNNNNNNNNNN
-4         XX              GGGGG                GGG                GNNNNNNNNNNNNNNNMMMMMMMMMMMNNNNNNNNNNNNN
-4         XX              GGGGG                 G              GGGGGGNNNNNNNNNNNNNNNNMMMMMMMNNNNNNNNNNNNNN
-4         XX               GGG       GG                         GGGGNNNNNNNNNNNNNNNNNNNNMMMNNNNNNNNNNNNNNN
-4         XX                G       GGGGG                       GGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                        GGGGG                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                         GGG                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                          G                         NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                                    NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         XX                                         G           NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4          XX                                     G  GGG           NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4           XX                               G    GG GGGG            NNNGGGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4    FF      XX                            GGGG   GGGG             GGGGGGGGGGGGNNNNNNNNNNNNNNNNNNNNNNNNNNN
-4         FF  XX                            GGGG GGG              GGGGGGG GGGG  NNNNNNNNNNNNNNNNNNNNNNNNNN
-4  FF          XX                            GGGGGG                GGGGGG   GG    NNNNNNNNNNNNNNNNNNNNNNNN
-4       FF      XX FF                      GGGGGGG                   GGG           NNNNNNNNNNNNNNNNNNNNNNN
-4                XX                     GGGGGGGGG                                   NNNNNNNNNNNNNNNNNNNNNN
-V22222222222222222XX22222222222222222222VVVVVVVVVV2222222222222222222222222222222222NNNNNNNNNNNNNNNNNNNNNN
+          XX              GGGGG                GGG                GNNNNNNNNNNNNNNNMMMMMMMMMMMNNNNNNNNNNNNN
+          XX              GGGGG                 G              GGGGGGNNNNNNNNNNNNNNNNMMMMMMMNNNNNNNNNNNNNN
+          XX               GGG       GG                         GGGGNNNNNNNNNNNNNNNNNNNNMMMNNNNNNNNNNNNNNN
+          XX                G       GGGGG                       GGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                        GGGGG                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                         GGG                        NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                          G                         NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                                                    NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          XX                                         G           NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+           XX                                     G  GGG           NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+            XX                               G    GG GGGG            NNNGGGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+     FF      XX                            GGGG   GGGG             GGGGGGGGGGGGNNNNNNNNNNNNNNNNNNNNNNNNNNN
+          FF  XX                            GGGG GGG              GGGGGGG GGGG  NNNNNNNNNNNNNNNNNNNNNNNNNN
+   FF          XX                            GGGGGG                GGGGGG   GG    NNNNNNNNNNNNNNNNNNNNNNNN
+        FF      XX FF                      GGGGGGG                   GGG           NNNNNNNNNNNNNNNNNNNNNNN
+                 XX                     GGGGGGGGG                                   NNNNNNNNNNNNNNNNNNNNNN
+                  XX                    VVVVVVVVVV                                  NNNNNNNNNNNNNNNNNNNNNN
 N:map8,W:map4,S:map2

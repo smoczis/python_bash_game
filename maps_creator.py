@@ -77,13 +77,15 @@ class Maps:
                'F': '\x1b[0;30;47m' + ' ' + '\x1b[0m',  # white
                'T': '\x1b[0;37;43m' + ' ' + '\x1b[0m',  # gold
                'V': '\x1b[5;30;42m' + ' ' + '\x1b[0m',  # green BOOM_PROOF
-               'S': '\x1b[0;37;46m' + ' ' + '\x1b[0m'
+               'S': '\x1b[0;37;46m' + ' ' + '\x1b[0m',
+               'D': '\x1b[5;37;41m' + ' ' + '\x1b[0m',   # destroyable green
+               'M': '\x1b[0;36;46m' + ' ' + '\x1b[0m'
                }
 
     BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'],
                 COLOURS['T'], COLOURS['S'], COLOURS['N'], COLOURS['V']]
 
-    BOOM_PROOF = [COLOURS['N'], COLOURS['V']]
+    BOOM_PROOF = [COLOURS['N'], COLOURS['V'], COLOURS['X']]
 
     def __init__(self, map_file):
         self.name = map_file
@@ -115,7 +117,7 @@ class Maps:
             map_file = map_file.readlines()
             for line in map_file[:-1]:
                 self.board.append([char for char in line[:-1]])
-            for item in map_file[-1].split(','):
+            for item in map_file[-1][:-1].split(','):
                 self.neighbour_maps[item.split(':')[0]] = item.split(':')[1]
 
     def colour_map(self, board):

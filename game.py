@@ -28,9 +28,11 @@ def action(player, key):
     return game_on
 
 
-def end_game(board, name, game_time, score):
+def end_game(player, start_time):
+    game_time = round(time.time() - time_start)
+    final_score = 1000 - game_time
     saved_scores = open('texts/scores.txt').readlines()
-    new_score = "{} - {} - {}\n".format(score, game_time, name)
+    new_score = "{} - {} - {}\n".format(final_score, game_time, player.name)
     if not saved_scores:
         saved_scores.append(new_score)
     else:
@@ -52,7 +54,7 @@ def end_game(board, name, game_time, score):
     score_list = open('texts/scores.txt').readlines()
     score_list.insert(0, 'HIGHSCORES')
     score_list.insert(1, 'SCORE - GAME TIME - NAME')
-    pop_up(board, score_list, auto_hide=4)
+    pop_up(player.place.board, score_list, auto_hide=4)
     os.system('clear')
 
 
@@ -66,9 +68,7 @@ def main():
         key = getch().lower()
         game_on = action(player, key)
         player.insert_on_board()
-    game_time = round(time.time() - time_start)
-    final_score = 1000 - game_time
-    end_game(player.place.board, player.name, game_time, final_score)
+    end_game(player, time_start)
 
 
 if __name__ == '__main__':

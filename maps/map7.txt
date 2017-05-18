@@ -1,34 +1,34 @@
- VVVVVVVVVVVVVVVVVVVVVVVVXX9999999999999999999999999999999999999999999999999999XXVVVVVVVVVVVVVVVVVVVVVVVV 
-6                        XX                                                    XX                        8
-6         GG             XX                                                    XX             GG         8
-6       GGGGG            XX                                                    XX            GGGGG       8
-6       GGGGG            XX                                    F             F XX            GGGGG       8
-6        GGG       XXXXXXXX          F             F                           XXXXXXXX       GGG        8
-6         G  XXXXXXXXXXXX                                                        XXXXXXXXXXXX  G         8
-6    F   XXXXXX F F                                                                        XXXXXX        8
-6     XXXXXX                     F                                     F F F                  XXXXXX     8
-6  XXXXX                                               F        F     F                           XXXXX  8
-6XXXX                                          XXXXXXXX                                              XXXX8
+VVVVVVVVVVVVVVVVVVVVVVVVVXX                                                    XXVVVVVVVVVVVVVVVVVVVVVVVVV
+                         XX                                                    XX                         
+          GG             XX                                                    XX             GG          
+        GGGGG            XX                                                    XX            GGGGG        
+        GGGGG            XX                                    F             F XX            GGGGG        
+         GGG       XXXXXXXX          F             F                           XXXXXXXX       GGG         
+          G  XXXXXXXXXXXX                                                        XXXXXXXXXXXX  G          
+     F   XXXXXX F F                                                                        XXXXXX         
+      XXXXXX                     F                                     F F F                  XXXXXX      
+   XXXXX                                               F        F     F                           XXXXX   
+ XXXX                                          XXXXXXXX                                              XXXX 
 XXX                                      XXXXXXX      XXXXXXX                               F          XXX
 X                                XXXXXXXXX                  XXXXXXXXX     F                 FF           X
-6                           XXXXXXX              XXXX              XXXXXXX                               8
-6                        XXXXXX        G G G    XXXXXX    G G G        XXXXXX                            8
-6                     XXXXX             GGG      XXXX      GGG             XXXXX         F               8
-6      F            XXXX       XXXX      G                  G      XXXX       XXXX                       8
-6                 XXXX        XXXXXX                              XXXXXX        XXXX       F    F        8
-6               XXXX           XXXX                                XXXX           XXXX             F     8
-6              XXX      G G G                                            G G G      XXX                  8
-6      F      XXX        GGG                                              GGG        XXX                 8
-6  F F       XXX          G                                                G          XXX     F          8
-6            XX     XXXX                          GG                          XXXX     XX    F           8
-6            XX    XXXXXX                        GGGG                        XXXXXX    XX                8
-6                   XXXX                        GGGGGG                        XXXX             F         8
-6                                                GGGG                                                    8
-6                                                 GG                                                     8
-6        FF                                       GG                                                F    8
-6     FF                                                                                                 8
-6                                                                                                        8
-6                                                                                                        8
-6                                                                                                        8
-V44444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444X
+                            XXXXXXX              XXXX              XXXXXXX                                
+                         XXXXXX        G G G    XXXXXX    G G G        XXXXXX                             
+                      XXXXX             GGG      XXXX      GGG             XXXXX         F                
+       F            XXXX       XXXX      G                  G      XXXX       XXXX                        
+                  XXXX        XXXXXX                              XXXXXX        XXXX       F    F         
+                XXXX           XXXX                                XXXX           XXXX             F      
+               XXX      G G G                                            G G G      XXX                   
+       F      XXX        GGG                                              GGG        XXX                  
+   F F       XXX          G                                                G          XXX     F           
+             XX     XXXX                          GG                          XXXX     XX    F            
+             XX    XXXXXX                        GGGG                        XXXXXX    XX                 
+                    XXXX                        GGGGGG                        XXXX             F          
+                                                 GGGG                                                     
+                                                  GG                                                      
+         FF                                       GG                                                F     
+      FF                                                                                                  
+                                                                                                          
+                                                                                                          
+                                                                                                          
+                                                                                                          
 N:map9,E:map8,W:map6,S:map4
