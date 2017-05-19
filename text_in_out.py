@@ -62,27 +62,21 @@ def get_input(board, x, y, text, ans_len=False, background=None):
     else:
         prefix = background[:10]
         suffix = background[-4:]
-    if not ans_len:
-        while key != '\r':
-            key = getch()
-            if key.lower() not in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
-                                  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']:
-                pass
-            else:
-                board[y][x + line_length] = prefix + key + suffix
-                line_length += 1
-                input_text.append(key)
-            print_board(board)
-    else:
-        for i in range(ans_len):
-            key = getch()
-            if key != '\r':
-                board[y][x + line_length] = prefix + key + suffix
-                line_length += 1
-                input_text.append(key)
-            else:
+    while key != '\r' and len(input_text) != ans_len:
+        key = getch()
+        if key == '\r':
+            input_text.append(key)
+        elif key == '\x7f':  # backspace ramoves last char
+            if line_length == 0:
                 break
-            print_board(board)
+            board[y][x + line_length - 1] = prefix + ' ' + suffix
+            line_length -= 1
+            del input_text[-1]
+        else:
+            board[y][x + line_length] = prefix + key + suffix
+            line_length += 1
+            input_text.append(key)
+        print_board(board)
     return ''.join(input_text)
 
 
