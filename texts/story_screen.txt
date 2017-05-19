@@ -1,8 +1,8 @@
                     Welcome Soldier!
                                       
-The mission we are sending you at is very hard and extremly dangerous.
-You will be dropped into a hazardous area in the center of fighting area.
-You want you to clear that area from all kind of dangerous materials.
+The mission we are sending you is very hard and extremly dangerous.
+You will be dropped into a hazardous place in the center of fighting area.
+You want you to clear it from all kinds of dangerous materials.
   
 You need to find a way to disarm several types of bombs and mines.
 And last but not least: we got confirmed information, that there is 
@@ -11,6 +11,6 @@ a nuclear bomb left in the field.
 Both biologicaly and chemicaly hazardous areas have been placed on your map.
 You will need vaccine or chemical suit to enter there.
 
-Be careful, try not to kill yourself. And try not to kill us...
+Be careful, try not to die. And try not to kill us...
  
-You will be droped to the are but...         
+You will be droped to the area but...         
