@@ -84,25 +84,30 @@ class Hero:
         elif self.position[0] in [0, 105] or self.position[1] in [0, 32]:
             self.change_map()
         elif self.place.board[self.position[1]][self.position[0]] == '`':
-            for item in self.backpack:
-                if item.type == 'vaccine':
-                    self.place.board[self.position[1]][self.position[0]] = "@"
-                    break
-                else:
-                    pop_up(self.place.board, ['You have been killed by viruses'], auto_hide=1)
-                    pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
-                    self.alive = False
-                    break
+            if any([item.type == 'vaccine' for item in self.backpack]):
+                self.place.board[self.position[1]][self.position[0]] = "@"
+                for item in self.backpack:
+                    if item.type == 'vaccine':
+                        self.backpack.remove(item)
+                        self.backpack_space += Item.EQUIPMENT_WEIGHT[item.type]
+                        break
+            else:
+                pop_up(self.place.board, ['You have been killed by viruses'], auto_hide=1)
+                pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
+                self.alive = False
         elif self.place.board[self.position[1]][self.position[0]] == '~':
-            for item in self.backpack:
-                if item.type == 'chemical_suit':
-                    self.place.board[self.position[1]][self.position[0]] = "@"
-                    break
-                else:
-                    pop_up(self.place.board, ['You have been killed by poisonous gas'], auto_hide=1)
-                    pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
-                    self.alive = False
-                    break
+            if any([item.type == 'chemical_suit' for item in self.backpack]):
+                self.place.board[self.position[1]][self.position[0]] = "@"
+                for item in self.backpack:
+                    if item.type == 'chemical_suit':
+                        self.backpack.remove(item)
+                        self.backpack_space += Item.EQUIPMENT_WEIGHT[item.type]
+                        break
+            else:
+                pop_up(self.place.board, ['You have been killed by poisonous gas'], auto_hide=1)
+                pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
+                self.alive = False
+
         else:
             self.place.board[self.position[1]][self.position[0]] = "@"
 
@@ -276,6 +281,7 @@ class Hero:
                 for item in self.backpack:
                     if item.type == 'armour':
                         self.backpack.remove(item)
+                        self.backpack_space += Item.EQUIPMENT_WEIGHT[item.type]
                         break
                 self.place.board[self.position[1]][self.position[0]] = '@'
                 print_board(self.place.board)

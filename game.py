@@ -65,15 +65,6 @@ def end_game(player, start_time):
     os.system('clear')
 
 
-'''
-def show_intro(player):
-    intro_screens = [files for files in os.listdir('texts') if files.endswith('screen.txt')]
-    intro_screens = sorted(intro_screens)
-    for screen in intro_screens:
-        pop_up(player.place.board, read_from_text(screen))
-'''
-
-
 def main():
     player = Hero()
     pop_up(player.place.board, read_from_text('intro.txt'))
