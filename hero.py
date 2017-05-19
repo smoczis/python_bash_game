@@ -86,11 +86,6 @@ class Hero:
         elif self.place.board[self.position[1]][self.position[0]] == '`':
             if any([item.type == 'vaccine' for item in self.backpack]):
                 self.place.board[self.position[1]][self.position[0]] = "@"
-                for item in self.backpack:
-                    if item.type == 'vaccine':
-                        self.backpack.remove(item)
-                        self.backpack_space += Item.EQUIPMENT_WEIGHT[item.type]
-                        break
             else:
                 pop_up(self.place.board, ['You have been killed by viruses'], auto_hide=1)
                 pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
@@ -98,11 +93,6 @@ class Hero:
         elif self.place.board[self.position[1]][self.position[0]] == '~':
             if any([item.type == 'chemical_suit' for item in self.backpack]):
                 self.place.board[self.position[1]][self.position[0]] = "@"
-                for item in self.backpack:
-                    if item.type == 'chemical_suit':
-                        self.backpack.remove(item)
-                        self.backpack_space += Item.EQUIPMENT_WEIGHT[item.type]
-                        break
             else:
                 pop_up(self.place.board, ['You have been killed by poisonous gas'], auto_hide=1)
                 pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
