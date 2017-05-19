@@ -197,3 +197,21 @@ class Equipment(Item):
             self.char = '💉'
         elif self.type == 'hint':
             self.char = '💴'
+
+
+class Hint(Equipment):
+    HINT_CONTENTS = {
+        'A': 'Disarming code consists of only binary numbers',
+        'B': 'Disarming code consists of only even numbers',
+        'C': 'The number to disarm code includes two equal 3-digits numbers',
+        'N1': 'The number to guess is symmetric',
+        'N2': 'First 3 digits include same digits as 3 last ones',
+        'N3': '4 digits in the middle of code are binary'
+    }
+
+    def __init__(self, hint_type):
+        self.type = 'hint'
+        self.set_char_look()
+        self.hint_type = hint_type
+        self.bomb_type = self.hint_type[0]
+        self.content = ['hint for bomb ' + self.bomb_type, ' ', Hint.HINT_CONTENTS[self.hint_type]]

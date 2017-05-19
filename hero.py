@@ -9,7 +9,7 @@ from maps_creator import *
 
 class Hero:
 
-    items_to_boxes = [] + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
+    items_to_boxes = ['hint'] * 6 + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
     boxes = [Box(item) for item in items_to_boxes]
     bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C']
     bombs = [Bomb(item) for item in bombs_to_put]
@@ -79,7 +79,7 @@ class Hero:
         elif self.position[0] in [0, 105] or self.position[1] in [0, 32]:
             self.change_map()
         elif self.place.board[self.position[1]][self.position[0]] == '`':
-            for item.type in self.backpack:
+            for item in self.backpack:
                 if item.type == 'vaccine':
                     self.place.board[self.position[1]][self.position[0]] = "@"
                     break
@@ -88,7 +88,7 @@ class Hero:
                     pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
                     self.alive = False
         elif self.place.board[self.position[1]][self.position[0]] == '~':
-            for item.type in self.backpack:
+            for item in self.backpack:
                 if item.type == 'chemical_suit':
                     self.place.board[self.position[1]][self.position[0]] = "@"
                     break
