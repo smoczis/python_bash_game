@@ -24,9 +24,9 @@ def generate_code(number_length=3, is_binary=False, is_even=False):
 
 class Item:
 
-    EQUIPMENT = ['dynamite', 'metal_detector', 'chemical_suit', 'armour', 'flag', 'vaccine']
+    EQUIPMENT = ['dynamite', 'metal_detector', 'chemical_suit', 'armour', 'flag', 'vaccine', 'hint']
     EQUIPMENT_WEIGHT = {'dynamite': 2, 'metal_detector': 4, 'chemical_suit': 8,
-                        'armour': 5, 'flag': 1, 'vaccine': 2}
+                        'armour': 5, 'flag': 1, 'vaccine': 2, 'hint': 0}
 
     info = load_info('equipment')
     maps_instantions = load_maps('maps')
@@ -201,3 +201,5 @@ class Equipment(Item):
             self.char = '⚑'
         elif self.type == 'vaccine':
             self.char = '💉'
+        elif self.type == 'hint':
+            self.char = '💴'

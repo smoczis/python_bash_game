@@ -83,9 +83,10 @@ class Maps:
                }
 
     BLOCKERS = [COLOURS['X'], COLOURS['G'], COLOURS['N'], COLOURS['C'], COLOURS['F'],
-                COLOURS['T'], COLOURS['S'], COLOURS['N'], COLOURS['V']]
+                COLOURS['T'], COLOURS['S'], COLOURS['N'], COLOURS['V'], COLOURS['D']]
 
-    BOOM_PROOF = [COLOURS['N'], COLOURS['V'], COLOURS['X'], COLOURS['T'], COLOURS['F']]
+    BOOM_PROOF = [COLOURS['N'], COLOURS['V'], COLOURS['X'], COLOURS['T'], COLOURS['F'], '~', '`', '⌫', '♩', 'C',
+                  'A', '⚑', '💉', '💴']
 
     def __init__(self, map_file):
         self.name = map_file
