@@ -2,31 +2,31 @@ VVVVVVVVVVVVVVVVVVVVVVVVVXX                                                    X
                          XX                                                    XX                         
           GG             XX                                                    XX             GG          
         GGGGG            XX                                                    XX            GGGGG        
-        GGGGG            XX                                    F             F XX            GGGGG        
-         GGG       XXXXXXXX          F             F                           XXXXXXXX       GGG         
+        GGGGG            XX                                                    XX            GGGGG        
+         GGG       XXXXXXXX                                                    XXXXXXXX       GGG         
           G  XXXXXXXXXXXX                                                        XXXXXXXXXXXX  G          
-     F   XXXXXX F F                                                                        XXXXXX         
-      XXXXXX                     F                                     F F F                  XXXXXX      
-   XXXXX                                               F        F     F                           XXXXX   
+         XXXXXX                                                                            XXXXXX         
+      XXXXXX                                                                                  XXXXXX      
+   XXXXX                                                                                          XXXXX   
  XXXX                                          XXXXXXXX                                              XXXX 
-XXX                                      XXXXXXX      XXXXXXX                               F          XXX
-X                                XXXXXXXXX                  XXXXXXXXX     F                 FF           X
+XXX                                      XXXXXXX      XXXXXXX                                          XXX
+X                                XXXXXXXXX                  XXXXXXXXX                                    X
                             XXXXXXX              XXXX              XXXXXXX                                
                          XXXXXX        G G G    XXXXXX    G G G        XXXXXX                             
-                      XXXXX             GGG      XXXX      GGG             XXXXX         F                
-       F            XXXX       XXXX      G                  G      XXXX       XXXX                        
-                  XXXX        XXXXXX                              XXXXXX        XXXX       F    F         
-                XXXX           XXXX                                XXXX           XXXX             F      
+                      XXXXX             GGG      XXXX      GGG             XXXXX                          
+                    XXXX       XXXX      G                  G      XXXX       XXXX                        
+                  XXXX        XXXXXX                              XXXXXX        XXXX                      
+                XXXX           XXXX                                XXXX           XXXX                    
                XXX      G G G                                            G G G      XXX                   
-       F      XXX        GGG                                              GGG        XXX                  
-   F F       XXX          G                                                G          XXX     F           
-             XX     XXXX                          GG                          XXXX     XX    F            
+              XXX        GGG                                              GGG        XXX                  
+             XXX          G                                                G          XXX                 
+             XX     XXXX                          GG                          XXXX     XX                 
              XX    XXXXXX                        GGGG                        XXXXXX    XX                 
-                    XXXX                        GGGGGG                        XXXX             F          
+                    XXXX                        GGGGGG                        XXXX                        
                                                  GGGG                                                     
                                                   GG                                                      
-         FF                                       GG                                                F     
-      FF                                                                                                  
+                                                  GG                                                      
+                                                                                                          
                                                                                                           
                                                                                                           
                                                                                                           

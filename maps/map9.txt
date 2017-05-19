@@ -2,31 +2,31 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X                                                                                                        X
 X                                                 MMMM                                                   X
 X                                                MMMMMM                                                  X
-X                                                MMMMMM        F             F                           X
-X                  XXXXXXXX          F            MMMM                         XXXXXXXX                  X
+X                                                MMMMMM                                                  X
+X                  XXXXXXXX                       MMMM                         XXXXXXXX                  X
 X            XXXXXXXXXXXX     MMMM                                    MMMM       XXXXXXXXXXXX            X
-X    F   XXXXXX F F          MMMMMM                                  MMMMMM                XXXXXX        X
+X        XXXXXX              MMMMMM                                  MMMMMM                XXXXXX        X
 X     XXXXXX                 MMMMMM                                  MMMMMM                   XXXXXX     X
-X  XXXXX                      MMMM                     F        F     MMMM                        XXXXX  X
+X  XXXXX                      MMMM                                    MMMM                        XXXXX  X
 X XXX                                                                                                XXX X
-X X                                                                                         F          X X
-X                                                                         F                 FF           X
+X X                                                                                                    X X
 X                                                                                                        X
 X                                                                                                        X
-X                       MMMM                                                  MMMM       F               X
-X      F               MMMMMM                                                MMMMMM                      X
-X                      MMMMMM                                                MMMMMM        F    F        X
-X                       MMMM                                                  MMMM                 F     X
 X                                                                                                        X
-X      F                                                                                                 X
-X  F F                                                                                        F          X
-X                                                                                            F           X
+X                       MMMM                                                  MMMM                       X
+X                      MMMMMM                                                MMMMMM                      X
+X                      MMMMMM                                                MMMMMM                      X
+X                       MMMM                                                  MMMM                       X
 X                                                                                                        X
-X                            MMMM                                        MMMM                  F         X
+X                                                                                                        X
+X                                                                                                        X
+X                                                                                                        X
+X                                                                                                        X
+X                            MMMM                                        MMMM                            X
 X                           MMMMMM                                      MMMMMM                           X
 X                        XX MMMMMM                                      MMMMMM XX                        X
-X        FF              XX  MMMM                                        MMMM  XX                   F    X
-X     FF                 XX                                                    XX                        X
+X                        XX  MMMM                                        MMMM  XX                        X
+X                        XX                                                    XX                        X
 X                        XX                                                    XX                        X
 X                        XX                                                    XX                        X
 X                        XX                                                    XX                        X

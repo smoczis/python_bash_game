@@ -1,12 +1,12 @@
 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-                                                                     F                                   V
+                                                                                                         V
                                                                                                          V
                       GGGG  GGGG      GGGG  GGGGG                                                        V
-     F              FGGGGGGGGGGGG    GGGGGGGGGGGGG                              F                        V
                      GGGGGGGGGGGG    GGGGGGGGGGGGG                                                       V
-                      GGGG  GGGG      GGGG  GGGGG          F                                             V
-                                                 F                     F                                 V
-            F                          F                                                                 V
+                     GGGGGGGGGGGG    GGGGGGGGGGGGG                                                       V
+                      GGGG  GGGG      GGGG  GGGGG                                                        V
+                                                                                                         V
+                                                                                                         V
                                                          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                       MMMMM                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X                  MMMM   MMMM                           XX                                              X
@@ -14,21 +14,21 @@ XX               MMM         MMM                         XX                     
  XX             M   M       M   M               GG       XX                                              X
   XX           MM     M   M     MM            GGGGG      XX                                              X
    XX          M        M        M            GGGGG      XX                                              X
-   XX          MM     M   M     MM             GGG       XX                                              X
-    XX          M   M       M   M               G        XX              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    XX    F      MMM         MMM     GG                  XX              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                   MMMM   MMMM      GGGGG                XX              XX                              V
-                      MMMMM         GGGGG                                XX   GG                         V
-                                     GGG                                 XX  GGGGG                       V
-                                      G                  XX              XX  GGGGG    NNNNN           NNNN
-                GGGG                                     XX              XX   GGG    NNNNNNNNNNNNNNNNNNNNN
-       F       GGGGGG                                G   XX              XX    G   NNNNNNNNNNNNNNNNNNNNNNN
-               GGGGGG           F                 G  GGG XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
-                GGGG                         G    GG GGG XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
-     FF         GGGG               F       GGGG   GGGG   XX              XX      NNNNNNNNNNNNNNNNNNNNNNNNN
-          FF   GGGGGG                       GGGG GGG     XX              XX      NNNNNNNNNNNNNNNNNNNNNNNNN
-   FF          GGGGGG      F                 GGGGGG      XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
-        FF      GGGG                       GGGGGGG       XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
-                                        GGGGGGGGG        XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
-                                                         XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
+   XX``        MM     M   M     MM             GGG       XX                                              X
+    XX``        M   M       M   M               G        XX              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XX````       MMM         MMM     GG                  XX              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      `````        MMMM   MMMM      GGGGG                XX              XX                              V
+     ```````          MMMMM         GGGGG                                XX   GG                         V
+    `````````                        GGG                                 XX  GGGGG                       V
+     `````````                        G                  XX              XX  GGGGG    NNNNN           NNNN
+        ``````  GGGG                                     XX              XX   GGG    NNNNNNNNNNNNNNNNNNNNN
+          ```` GGGGGG                                G   XX              XX    G   NNNNNNNNNNNNNNNNNNNNNNN
+          `````GGGGGG                             G  GGG XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
+        ````````GGGG                         G    GG GGG XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
+     ```````````GGGG                       GGGG   GGGG   XX              XX      NNNNNNNNNNNNNNNNNNNNNNNNN
+       ````````GGGGGG                       GGGG GGG     XX              XX      NNNNNNNNNNNNNNNNNNNNNNNNN
+          `````GGGGGG                        GGGGGG      XX              XX       NNNNNNNNNNNNNNNNNNNNNNNN
+            `````````                      GGGGGGG       XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
+            `````````                   GGGGGGGGG        XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
+            `````````                                    XX              XX        NNNNNNNNNNNNNNNNNNNNNNN
 W:map7,S:map5
