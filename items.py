@@ -238,4 +238,4 @@ class Hint(Equipment):
         self.set_char_look()
         self.hint_type = hint_type
         self.bomb_type = hint_type[0]
-        self.content = ['hint for bomb ' + self.bomb_type, ' ', Hint.HINT_CONTENTS[self.hint_type]]
+        self.content = ['Hint for bomb ' + self.bomb_type, ' ', Hint.HINT_CONTENTS[self.hint_type]]
