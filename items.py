@@ -135,10 +135,12 @@ class Bomb(Item):
                 else:
                     guess_result.append('C')
 
-            if all([i == 'h' for i in guess_result]):
-                result_print = ['You guessed the number']
+            if all([i == 'H' for i in guess_result]):
+                pop_up(self.place.board, ['You guessed the number'], auto_hide=2)
                 self.is_armed = False
                 is_playing = False
+                self.hide_on_board()
+                self.place.objects.remove(self)
                 player.exp += Bomb.POINTS_FOR_DISARMING[self.bomb_type]
                 break
             self.attempts -= 1
@@ -146,7 +148,7 @@ class Bomb(Item):
             pop_up(self.place.board, ['You lose'], auto_hide=2)
             is_playing = False
             self.explode(player)
-        else:
+        elif self.is_armed:
             pop_up(self.place.board, ['You abort disarming. Remaining attempts: {}'.format(self.attempts)], auto_hide=2)
 
     def explode(self, player):
@@ -158,10 +160,12 @@ class Bomb(Item):
             player.make_boom(self.position[12], power=10, is_deadly=False)
             for x, y in calc_neighbours(self.position[0], distance=10):
                 self.place.board[y][x] = '☣'
+                player.background_char = '☣'
         elif self.bomb_type == 'C':
             player.make_boom(self.position[12], power=15, is_deadly=False)
             for x, y in calc_neighbours(self.position[0], distance=15):
                 self.place.board[y][x] = '~'
+                player.background_char = '~'
         elif self.bomb_type == 'N':
             player.make_boom(self.position[12], power=10, is_deadly=False)
             pop_up(self.place.board, ['GAME OVER'], auto_hide=2)
