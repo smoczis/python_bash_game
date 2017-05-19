@@ -19,7 +19,7 @@ def getch():
     return ch.lower()
 
 
-def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=Maps.COLOURS['C']):
+def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=1000, colour=Maps.COLOURS['C']):
     board_copy = []
     pop_width = 0
     if ask:
@@ -49,7 +49,7 @@ def pop_up(board, text_lines, auto_hide=0, ask=False, ans_len=False, colour=Maps
     return result
 
 
-def get_input(board, x, y, text, ans_len=False, background=None):
+def get_input(board, x, y, text, ans_len=1000, background=None):
     input_text = []
     line_length = 0
     insert_text(board, x, y, text, background)
@@ -68,17 +68,18 @@ def get_input(board, x, y, text, ans_len=False, background=None):
             ready = True
         elif key == '\x7f':  # backspace ramoves last char
             board[y][x + line_length - 1] = prefix + ' ' + suffix
-            line_length -= 1
-            del input_text[-1]
+            if len(input_text) > 0:
+                line_length -= 1
+                del input_text[-1]
+        elif len(input_text) == ans_len:
+            ready = True
         else:
             board[y][x + line_length] = prefix + key + suffix
             line_length += 1
             input_text.append(key)
-        if len(input_text) == ans_len:
-            ready = True
-        elif len(input_text) == 0:
-            input_text = '\r'
         print_board(board)
+    if len(input_text) == 0:
+        input_text = ['\r']
     return ''.join(input_text)
 
 
