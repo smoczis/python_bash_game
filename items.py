@@ -4,6 +4,24 @@ from hero import *
 from text_in_out import *
 
 
+def generate_code(number_length=3, is_binary=False, is_even=False):
+    digits = 9
+    code = []
+    if is_binary:
+        digits = 1
+    even_numbers = [0, 2, 4, 6, 8]
+    while len(code) != number_length:
+        if is_even:
+            num = random.choice(even_numbers)
+            if num not in code:
+                code.append(str(num))
+        else:
+            num = random.randint(0, digits)
+            if num not in code:
+                code.append(str(num))
+    return code
+
+
 class Item:
 
     EQUIPMENT = ['dynamite', 'metal_detector', 'chemical_suit', 'armour', 'flag', 'vaccine']
@@ -24,9 +42,6 @@ class Item:
             self.position = calc_neighbours(start, distance=self.large)
             if all([self.place.board[y][x] == ' ' for x, y in self.position]):
                 ready = True
-
-#        elif self.item_type = 'bomb':
-#            self.char = COLOURS['F']
 
     def put_on_board(self):
         self.place.objects.append(self)
@@ -84,28 +99,25 @@ class Bomb(Item):
         self.bomb_type = bomb_type
         self.attempts = 10
         self.is_armed = True
-        self.generate_disarm_code(*Bomb.BOMB_DISARMING_VALUES[self.bomb_type])
+        self.set_disarm_code()
         self.char = Maps.COLOURS['F']
         self.large = 2
         self.choose_random_map()
         self.set_position()
         self.put_on_board()
 
-    def generate_disarm_code(self, number_length=3, is_binary=False, is_even=False):
-        digits = 9
-        self.disarm_code = []
-        if is_binary:
-            digits = 1
-        even_numbers = [0, 2, 4, 6, 8]
-        while len(self.disarm_code) != number_length:
-            if is_even:
-                num = random.choice(even_numbers)
-                if num not in self.disarm_code:
-                    self.disarm_code.append(str(num))
-            else:
-                num = random.randint(0, digits)
-                if num not in self.disarm_code:
-                    self.disarm_code.append(str(num))
+    def set_disarm_code(self):
+        if self.bomb_type == 'A':
+            self.disarm_code = generate_code(is_binary=True)
+        elif self.bomb_type == 'B':
+            self.disarm_code = generate_code(number_length=4, is_even=True)
+        elif self.bomb_type == 'C':
+            half_of_code = generate_code()
+            self.disarm_code = half_of_code + half_of_code
+        elif self.bomb_type == 'N':
+            half_of_code = generate_code() + generate_code(number_length=2, is_binary=True)
+            self.disarm_code = half_of_code + reversed(half_of_code)
+
 
     def guess_number(self, player):
         guess_result = []
