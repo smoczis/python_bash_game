@@ -52,34 +52,39 @@ class Item:
             x, y = self.position
             self.place.board[y][x] = self.char
 
-    def hide_on_board(self):
+    def hide_on_board(self, char=' '):
+        self.place.objects.remove(self)
         if self.large > 0:
             for x, y in self.position:
-                self.place.board[y][x] = ' '
+                self.place.board[y][x] = char
         else:
-            self.place.board[self.position[1]][self.position[0]] = ' '
+            self.place.board[self.position[1]][self.position[0]] = char
 
 
 class Box(Item):
     """docstring for Item ."""
 
-    def __init__(self, content):
+    def __init__(self, content, specification=None):
         self.type = 'box'
         self.char = Maps.COLOURS['T']
         self.large = 1
         self.choose_random_map()
         self.set_position()
         self.opened = False
-        self.content = Equipment(content)
+        self.set_content()
         self.put_on_board()
+
+    def set_content(self, content, specification=None):
+        if content == 'hint':
+            self.content = Hint(specification)
+        else:
+            self.content = Equipment(content)
 
     def open(self):
         if not self.opened:
-            for x, y in self.position:
-                self.place.board[y][x] = ' '
+            self.hide_on_board()
             self.content.place = self.place
             self.content.position = self.position[1]
-            self.place.objects.remove(self)
             self.content.put_on_board()
             self.opened = True
 
@@ -143,6 +148,7 @@ class Bomb(Item):
             if all([i == 'h' for i in guess_result]):
                 result_print = ['You guessed the number']
                 self.is_armed = False
+                self.hide_on_board(char='#')
                 is_playing = False
                 player.exp += Bomb.POINTS_FOR_DISARMING[self.bomb_type]
                 break

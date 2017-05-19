@@ -11,6 +11,7 @@ class Hero:
 
     items_to_boxes = [] + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
     boxes = [Box(item) for item in items_to_boxes]
+    Hint(types)
     bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C']
     bombs = [Bomb(item) for item in bombs_to_put]
 
@@ -24,6 +25,7 @@ class Hero:
         self.backpack_capicity = 12
         self.alive = True
         self.score = 0
+        self.notepad = []
 
     def get_player_name(self):
         self.name = pop_up(self.place.board,
@@ -195,7 +197,6 @@ class Hero:
                 self.exp += 1
 
     def pick_item(self, item):
-        print("ZBIERAM")
         if self.backpack_space < Item.EQUIPMENT_WEIGHT[item.type]:
             pop_up(self.place.board, ["You don't have so much space for that item!"], auto_hide=1)
         else:
@@ -231,11 +232,21 @@ class Hero:
                 self.disarm_bomb(objects_to_react[0])
             elif objects_to_react[0].type == 'box':
                 objects_to_react[0].open()
+            elif objects_to_react[0].type == 'hint':
+                self.take_hint(objects_to_react[0])
             else:
-                print('picking')
                 self.pick_item(objects_to_react[0])
         else:
             self.disarm_mine()
+
+    def take_hint(self, hint):
+        for item in hint.content:
+            self.notepad.append(item)
+        self.notepad.append(' ')
+        hint.hide_on_board()
+
+    def display_notepad(self):
+        pop_up(self.place.board, ['Hints you have collected:', ' '] + [note for note in self.notepad])
 
     def disarm_bomb(self, bomb):
         if bomb.is_armed:

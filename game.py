@@ -13,12 +13,14 @@ def action(player, key):
     if key == '1':
         player.browse_backpack()
     elif key == '2':
+        player.display_notepad()
+    elif key == '3':
         pop_up(player.place.board, read_from_text('04_game_instructions_screen.txt'))
     elif key == '3':
         pop_up(player.place.board, read_from_text('03_how_to_play_screen.txt'))
-    elif key == '4':
-        pop_up(player.place.board, read_from_text('01_intro_screen.txt'))
     elif key == '5':
+        pop_up(player.place.board, read_from_text('01_intro_screen.txt'))
+    elif key == '6':
         pop_up(player.place.board, ['You have exited a game'], auto_hide=1)
         game_on = False
     elif key == 'e':

@@ -21,9 +21,9 @@ def create_footer(player):
         footer.append([' ' for i in range(106)])
     if player:
         line_length = 0
-        for item in ['1 - BACKPACK', '2 - INSTRUCTIONS', '3 - CONTROLS', '4 - CREDITS', '5 - EXIT GAME']:
+        for item in ['1 - BACKPACK', '2 - NOTEPAD', '3 - INSTRUCTIONS', '4 - CONTROLS', '5 - CREDITS', '6 - EXIT GAME']:
             insert_text(footer, line_length + 3, 1, item)
-            line_length += len(item) + 8
+            line_length += len(item) + 5
         line_length = 0
         for item in ['PLAYER: ' + player.name, 'SCORE: ' + str(player.exp)]:
             insert_text(footer, line_length + 3, 3, item)
