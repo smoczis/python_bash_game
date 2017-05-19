@@ -1,4 +1,5 @@
 import os
+import operator
 from re import match
 from time import sleep
 from text_in_out import *
@@ -13,7 +14,6 @@ class Hero:
     bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C']
     bombs = [Bomb(item) for item in bombs_to_put]
 
-
     def __init__(self):
         self.place = Item.maps_instantions['map0']
         self.background_char = ' '
@@ -22,7 +22,6 @@ class Hero:
         self.level = 1
         self.detect_range = 1
         self.backpack_capicity = 12
-        # self.choose_equipment()
         self.alive = True
         self.score = 0
 
@@ -79,6 +78,24 @@ class Hero:
             self.make_boom(self.position)
         elif self.position[0] in [0, 105] or self.position[1] in [0, 32]:
             self.change_map()
+        elif self.place.board[self.position[1]][self.position[0]] == '`':
+            for item.type in self.backpack:
+                if item.type == 'vaccine':
+                    self.place.board[self.position[1]][self.position[0]] = "@"
+                    break
+                else:
+                    pop_up(self.place.board, ['You have been killed by viruses'], auto_hide=1)
+                    pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
+                    self.alive = False
+        elif self.place.board[self.position[1]][self.position[0]] == '~':
+            for item.type in self.backpack:
+                if item.type == 'chemical_suit':
+                    self.place.board[self.position[1]][self.position[0]] = "@"
+                    break
+                else:
+                    pop_up(self.place.board, ['You have been killed by poisonous gas'], auto_hide=1)
+                    pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
+                    self.alive = False
         else:
             self.place.board[self.position[1]][self.position[0]] = "@"
 
@@ -106,8 +123,9 @@ class Hero:
                           'Press item number for further actions', 'ENTER to go back to game']
         browsing_backpack = True
         while browsing_backpack:
-            key = pop_up(self.place.board,
-                         browser_header + [key + ' - ' + backpack[key].type for key in backpack] + browser_footer)
+            list_from_backpack = [key + ' - ' + backpack[key].type for key in sorted(backpack.items(),
+                                                                                     key=operator.itemgetter(0))]
+            key = pop_up(self.place.board, browser_header + list_from_backpack + browser_footer)
             if key in keys:
                 action = pop_up(self.place.board, backpack[key].info + [' ', 'press E to put item on filed'])
                 if action.upper() == 'E':
@@ -245,5 +263,7 @@ class Hero:
                     self.place.board[self.position[1]][self.position[0]] = '@'
                     print_board(self.place.board)
                     break
+            pop_up(self.place.board, ["You have been killed by exlosion"], auto_hide=1)
+            pop_up(self.place.board, ["GAME OVER"], auto_hide=1)
             self.alive = False
         print_board(self.place.board)

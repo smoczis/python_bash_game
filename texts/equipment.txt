@@ -6,14 +6,14 @@ Choose wisely, rest of items we'll provide you in airdrop,
 and you can find it in boxes around the field.
  
  
-Press number to take or SHIFT number to drop (SPACE when you finish):
+Press number to take or SHIFT number to drop (ENTER when you finish):
  
-1 - TNT - pack of 10 (Q for more ifo)     - 2 kg
-2 - Metal detector (W for more info)      - 4 kg
-3 - Chemical Suit (E for more info)       - 8 kg
-4 - Kevlar armour (R for more info)       - 5 kg
-5 - Flag - pack of 10 (T for more info)   - 1 kg
-6 - Vaccine (Y for more info)             - 2 kg
+1 - TNT                 (Q for more info)         - 2 kg
+2 - Metal detector      (W for more info)         - 4 kg
+3 - Chemical Suit       (E for more info)         - 8 kg
+4 - Kevlar armour       (R for more info)         - 5 kg
+5 - Flag                (T for more info)         - 1 kg
+6 - Vaccine             (Y for more info)         - 2 kg
  
  
 TNT is a light explosive material, which lets you to destroy
