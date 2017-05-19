@@ -16,12 +16,6 @@ bomb3 = {}
 
 class Bomb():
 
-    BOMB_DISARMING_VALUES = {
-        'A': (3, True, False),
-        'B': (4, False, True),
-        'C': (5, False, False)
-    }
-
     def __init__(self, bomb_type, is_disarmed=False):
         self.place = random.choice(Item.maps_instantions)
         self.set_position()

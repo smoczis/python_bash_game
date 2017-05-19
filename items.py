@@ -86,12 +86,6 @@ class Box(Item):
 
 class Bomb(Item):
 
-    BOMB_DISARMING_VALUES = {
-        'A': (3, True, False),
-        'B': (4, False, True),
-        'C': (5, False, False)
-    }
-
     POINTS_FOR_DISARMING = {'A': 10, 'B': 20, 'C': 30, 'N': 100}
 
     def __init__(self, bomb_type):
@@ -117,7 +111,6 @@ class Bomb(Item):
         elif self.bomb_type == 'N':
             half_of_code = generate_code() + generate_code(number_length=2, is_binary=True)
             self.disarm_code = half_of_code + reversed(half_of_code)
-
 
     def guess_number(self, player):
         guess_result = []
@@ -169,7 +162,8 @@ class Bomb(Item):
         elif self.bomb_type == 'B':
             player.make_boom(self.position[12], power=10, is_deadly=False)
             for x, y in calc_neighbours(self.position[0], distance=10):
-                self.place.board[y][x] = '☣'
+                self.place.board[y][x] = '`'
+                player.background_char = '`'
         elif self.bomb_type == 'C':
             player.make_boom(self.position[12], power=15, is_deadly=False)
             for x, y in calc_neighbours(self.position[0], distance=15):

@@ -13,10 +13,12 @@ def action(player, key):
     if key == '1':
         player.browse_backpack()
     elif key == '2':
-        pass  # INSTRUCTIONS
+        pop_up(player.place.board, read_from_text('04_game_instructions_screen.txt'))
     elif key == '3':
-        pass  # CONTROLS
+        pop_up(player.place.board, read_from_text('03_how_to_play_screen.txt'))
     elif key == '4':
+        pop_up(player.place.board, read_from_text('01_intro_screen.txt'))
+    elif key == '5':
         pop_up(player.place.board, ['You have exited a game'], auto_hide=1)
         game_on = False
     elif key == 'e':
@@ -62,16 +64,20 @@ def end_game(player, start_time):
     os.system('clear')
 
 
+def read_from_text(text_file):
+    board_to_print = []
+    file_path = 'texts/' + text_file
+    with open(file_path, 'r', newline='\n') as fo:
+        for line in fo:
+            board_to_print.append(line[:-1])
+    return board_to_print
+
+
 def show_intro(player):
     intro_screens = [files for files in os.listdir('texts') if files.endswith('screen.txt')]
     intro_screens = sorted(intro_screens)
     for screen in intro_screens:
-        board_to_print = []
-        file_path = 'texts/' + screen
-        with open(file_path, 'r', newline='\n') as fo:
-            for line in fo:
-                board_to_print.append(line[:-1])
-        pop_up(player.place.board, board_to_print)
+        pop_up(player.place.board, read_from_text(screen))
 
 
 def main():
