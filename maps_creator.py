@@ -44,6 +44,11 @@ def print_board(board, player=None):
         print(''.join(line))
 
 
+def generate_random_position(board):
+    return (random.randint(2, (len(board[0]) - 4)),
+            random.randint(2, (len(board) - 4)))
+
+
 def calc_neighbours(position, distance=1):
     """calculating and set to list all board cells in given distance (default 1) from x, y"""
     neighbours = []

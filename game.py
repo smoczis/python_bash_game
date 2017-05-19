@@ -16,10 +16,10 @@ def action(player, key):
         player.display_notepad()
     elif key == '3':
         pop_up(player.place.board, read_from_text('04_game_instructions_screen.txt'))
-    elif key == '3':
+    elif key == '4':
         pop_up(player.place.board, read_from_text('03_how_to_play_screen.txt'))
     elif key == '5':
-        pop_up(player.place.board, read_from_text('01_intro_screen.txt'))
+        pop_up(player.place.board, read_from_text('intro.txt'))
     elif key == '6':
         pop_up(player.place.board, ['You have exited a game'], auto_hide=1)
         game_on = False
@@ -34,9 +34,8 @@ def action(player, key):
 
 def end_game(player, start_time):
     game_time = round(time.time() - start_time)
-    final_score = 1000 - game_time + player.exp
     saved_scores = open('texts/scores.txt').readlines()
-    new_score = "{} - {} - {}\n".format(final_score, game_time, player.name)
+    new_score = "{} - {} - {}\n".format(player.exp, game_time, player.name)
     if not saved_scores:
         saved_scores.append(new_score)
     else:
@@ -45,7 +44,7 @@ def end_game(player, start_time):
         for line in saved_scores:
             line_elem = line.strip()
             line_elem = line_elem.split(' - ')
-            if final_score >= int(line_elem[0]):
+            if player.exp >= int(line_elem[0]):
                 new_index = i
                 break
             i += 1
@@ -62,37 +61,30 @@ def end_game(player, start_time):
         new_list.append(score)
     new_list.insert(0, 'HIGHSCORES')
     new_list.insert(1, 'SCORE - GAME TIME - NAME')
-    pop_up(player.place.board, new_list, auto_hide=4)
+    pop_up(player.place.board, new_list)
     os.system('clear')
 
 
-def read_from_text(text_file):
-    board_to_print = []
-    file_path = 'texts/' + text_file
-    with open(file_path, 'r', newline='\n') as fo:
-        for line in fo:
-            board_to_print.append(line[:-1])
-    return board_to_print
-
-
+'''
 def show_intro(player):
     intro_screens = [files for files in os.listdir('texts') if files.endswith('screen.txt')]
     intro_screens = sorted(intro_screens)
     for screen in intro_screens:
-        pop_up(player.place.board, read_from_text(screen), auto_hide=1)
+        pop_up(player.place.board, read_from_text(screen))
+'''
 
 
 def main():
     player = Hero()
-    show_intro(player)
+    pop_up(player.place.board, read_from_text('intro.txt'))
     player.get_player_name()
+    pop_up(player.place.board, read_from_text('story_screen.txt'))
     player.choose_equipment()
     game_on = True
     start_time = time.time()
     player.insert_on_board()
     while player.alive and game_on:
         print_board(player.place.board, player)
-        print(item.disarm_code for item in player.place.objects)
         key = getch().lower()
         game_on = action(player, key)
         player.insert_on_board()

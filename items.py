@@ -37,8 +37,7 @@ class Item:
     def set_position(self):
         ready = False
         while not ready:
-            start = (random.randint(2, (len(self.place.board[0]) - 4)),
-                     random.randint(2, (len(self.place.board) - 4)))
+            start = generate_random_position(self.place.board)
             self.position = calc_neighbours(start, distance=self.large)
             if all([self.place.board[y][x] == ' ' for x, y in self.position]):
                 ready = True
@@ -71,13 +70,15 @@ class Box(Item):
         self.choose_random_map()
         self.set_position()
         self.opened = False
-        self.set_content()
+        self.set_content(content, specification)
         self.put_on_board()
 
-    def set_content(self, content, specification=None):
+    def set_content(self, content, specification):
         if content == 'hint':
+            print(content)
             self.content = Hint(specification)
         else:
+            print(content)
             self.content = Equipment(content)
 
     def open(self):
@@ -101,8 +102,12 @@ class Bomb(Item):
         self.set_disarm_code()
         self.char = Maps.COLOURS['F']
         self.large = 2
-        self.choose_random_map()
-        self.set_position()
+        if bomb_type == 'N':
+            self.place = Item.maps_instantions['map9']
+            self.position = calc_neighbours(53, 16)
+        else:
+            self.choose_random_map()
+            self.set_position()
         self.put_on_board()
 
     def set_disarm_code(self):
@@ -122,11 +127,12 @@ class Bomb(Item):
         guess_number = []
         is_playing = True
         while self.attempts and is_playing:
-            pop_up(self.place.board, ['You got {} attempts'.format(self.attempts), ' ', ' '.join(guess_number), ' '.join(guess_result)], auto_hide=2)
+            intro_text = ['To disarm bomb you need to guess number', ' ', 'You got {} attempts'.format(self.attempts),
+                          ' ', ' '.join(guess_number), ' '.join(guess_result)]
+            pop_up(self.place.board, intro_text)
             correct_input = False
             while not correct_input:
                 guess_number = pop_up(self.place.board, ["pick {} digit number: ".format(len(self.disarm_code))], ask=True, ans_len=len(self.disarm_code))
-                print(guess_number)
                 if guess_number.isdigit():
                     guess_number = list(guess_number)
                     correct_input = True
@@ -144,20 +150,21 @@ class Bomb(Item):
                         guess_result.append('W')
                 else:
                     guess_result.append('C')
-
-            if all([i == 'h' for i in guess_result]):
-                result_print = ['You guessed the number']
+            if all([i == 'H' for i in guess_result]):
+                pop_up(self.place.board, ['You guessed the number', ' ', 'Bomb is now disarmed'], auto_hide=2)
                 self.is_armed = False
                 self.hide_on_board(char='#')
                 is_playing = False
                 player.exp += Bomb.POINTS_FOR_DISARMING[self.bomb_type]
+                if self.bomb_type == 'N':
+                    player.celebrate_win()
                 break
             self.attempts -= 1
         if not self.attempts:
             pop_up(self.place.board, ['You lose'], auto_hide=2)
             is_playing = False
             self.explode(player)
-        else:
+        elif self.is_armed:
             pop_up(self.place.board, ['You abort disarming. Remaining attempts: {}'.format(self.attempts)], auto_hide=2)
 
     def explode(self, player):
@@ -176,6 +183,9 @@ class Bomb(Item):
                 self.place.board[y][x] = '~'
         elif self.bomb_type == 'N':
             player.make_boom(self.position[12], power=10, is_deadly=False)
+            pop_up(self.place.board, ['You have been killed by nuclear bomb explosion'], auto_hide=2)
+            pop_up(self.place.board, ['Hole world have been killed by nuclear bomb explosion'], auto_hide=2)
+            pop_up(self.place.board, ['Shame on you'], auto_hide=2)
             pop_up(self.place.board, ['GAME OVER'], auto_hide=2)
 
 
@@ -217,7 +227,8 @@ class Hint(Equipment):
 
     def __init__(self, hint_type):
         self.type = 'hint'
+        self.large = 0
         self.set_char_look()
         self.hint_type = hint_type
-        self.bomb_type = self.hint_type[0]
+        self.bomb_type = hint_type[0]
         self.content = ['hint for bomb ' + self.bomb_type, ' ', Hint.HINT_CONTENTS[self.hint_type]]

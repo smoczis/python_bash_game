@@ -55,17 +55,17 @@ def get_input(board, x, y, text, ans_len=False, background=None):
     insert_text(board, x, y, text, background)
     print_board(board)
     line_length += len(str(text))
-    key = None
+    ready = False
     if background is None:
         prefix = ''
         suffix = ''
     else:
         prefix = background[:10]
         suffix = background[-4:]
-    while key != '\r' or len(input_text) == ans_len:
+    while not ready:
         key = getch()
         if key == '\r':
-            pass
+            ready = True
         elif key == '\x7f':  # backspace ramoves last char
             board[y][x + line_length - 1] = prefix + ' ' + suffix
             line_length -= 1
@@ -74,8 +74,21 @@ def get_input(board, x, y, text, ans_len=False, background=None):
             board[y][x + line_length] = prefix + key + suffix
             line_length += 1
             input_text.append(key)
+        if len(input_text) == ans_len:
+            ready = True
+        elif len(input_text) == 0:
+            input_text = '\r'
         print_board(board)
     return ''.join(input_text)
+
+
+def read_from_text(text_file):
+    board_to_print = []
+    file_path = 'texts/' + text_file
+    with open(file_path, 'r', newline='\n') as fo:
+        for line in fo:
+            board_to_print.append(line[:-1])
+    return board_to_print
 
 
 def load_info(info_file):
