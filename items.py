@@ -179,12 +179,15 @@ class Bomb(Item):
         elif self.bomb_type == 'B':
             player.make_boom(self.position[12], power=10, is_deadly=False)
             for x, y in calc_neighbours(self.position[0], distance=10):
-                self.place.board[y][x] = '`'
+                if self.place.board[y][x] not in Maps.BOOM_PROOF:
+                    self.place.board[y][x] = '`'
                 player.background_char = '`'
         elif self.bomb_type == 'C':
             player.make_boom(self.position[12], power=15, is_deadly=False)
             for x, y in calc_neighbours(self.position[0], distance=15):
-                self.place.board[y][x] = '~'
+                if self.place.board[y][x] not in Maps.BOOM_PROOF:
+                    self.place.board[y][x] = '~'
+                player.background_char = '~'
         elif self.bomb_type == 'N':
             player.make_boom(self.position[12], power=10, is_deadly=False)
             pop_up(self.place.board, ['You have been killed by nuclear bomb explosion'], auto_hide=2)
