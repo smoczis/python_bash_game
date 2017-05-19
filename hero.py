@@ -79,7 +79,7 @@ class Hero:
         elif self.position[0] in [0, 105] or self.position[1] in [0, 32]:
             self.change_map()
         elif self.place.board[self.position[1]][self.position[0]] == '`':
-            for item.type in self.backpack:
+            for item in self.backpack:
                 if item.type == 'vaccine':
                     self.place.board[self.position[1]][self.position[0]] = "@"
                     break
@@ -88,7 +88,7 @@ class Hero:
                     pop_up(self.place.board, ['GAME OVER'], auto_hide=1)
                     self.alive = False
         elif self.place.board[self.position[1]][self.position[0]] == '~':
-            for item.type in self.backpack:
+            for item in self.backpack:
                 if item.type == 'chemical_suit':
                     self.place.board[self.position[1]][self.position[0]] = "@"
                     break
@@ -123,8 +123,7 @@ class Hero:
                           'Press item number for further actions', 'ENTER to go back to game']
         browsing_backpack = True
         while browsing_backpack:
-            list_from_backpack = [key + ' - ' + backpack[key].type for key in sorted(backpack.items(),
-                                                                                     key=operator.itemgetter(0))]
+            list_from_backpack = [key + ' - ' + backpack[key].type for key in keys]
             key = pop_up(self.place.board, browser_header + list_from_backpack + browser_footer)
             if key in keys:
                 action = pop_up(self.place.board, backpack[key].info + [' ', 'press E to put item on filed'])
