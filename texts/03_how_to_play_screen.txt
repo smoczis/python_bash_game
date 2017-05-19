@@ -9,4 +9,4 @@ KEYBOARD:
 * '2' shows instructions                                             
 * '3' shows controls                                                 
 * '4' shows credits
-* '5' exits game                                                     
+* '6' exits game                                                     
