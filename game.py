@@ -84,6 +84,7 @@ def main():
     player.insert_on_board()
     while player.alive and game_on:
         print_board(player.place.board, player)
+        print(item.disarm_code for item in player.place.objects)
         key = getch().lower()
         game_on = action(player, key)
         player.insert_on_board()
