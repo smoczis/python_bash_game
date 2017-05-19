@@ -15,7 +15,7 @@ class Hero:
     boxes = [Box(item) for item in items_to_boxes]
     boxes += [Box(item, specification) for item, specification in hints_to_boxes]
 
-    bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C']
+    bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C', 'N']
     bombs = [Bomb(item) for item in bombs_to_put]
 
     def __init__(self):
@@ -167,25 +167,25 @@ class Hero:
 
     def set_position(self, coordinate, side):
         if side == 'N':
-            self.position = coordinate, 32
+            self.position = coordinate, 30
         elif side == 'S':
-            self.position = coordinate, 0
+            self.position = coordinate, 2
         elif side == 'W':
-            self.position = 105, coordinate
+            self.position = 103, coordinate
         elif side == 'E':
             self.position = 0, coordinate
 
     def change_map(self):
-        if self.position[0] == 103:
+        if self.position[0] == 105:
             side = 'E'
             coordinate = (self.position[1])
-        elif self.position[0] == 2:
+        elif self.position[0] == 0:
             side = 'W'
             coordinate = (self.position[1])
-        elif self.position[1] == 2:
+        elif self.position[1] == 0:
             side = 'N'
             coordinate = (self.position[0])
-        elif self.position[1] == 30:
+        elif self.position[1] == 32:
             side = 'S'
             coordinate = (self.position[0])
         for maps in list(Item.maps_instantions):

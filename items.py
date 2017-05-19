@@ -104,7 +104,7 @@ class Bomb(Item):
         self.large = 2
         if bomb_type == 'N':
             self.place = Item.maps_instantions['map9']
-            self.position = calc_neighbours(53, 16)
+            self.position = calc_neighbours((53, 16),2)
         else:
             self.choose_random_map()
             self.set_position()
@@ -124,7 +124,7 @@ class Bomb(Item):
             self.disarm_code = half_of_code + half_of_code
         elif self.bomb_type == 'N':
             half_of_code = generate_code() + generate_code(number_length=2, is_binary=True)
-            self.disarm_code = half_of_code + reversed(half_of_code)
+            self.disarm_code = half_of_code + list(reversed(half_of_code))
 
     def guess_number(self, player):
         guess_result = []
