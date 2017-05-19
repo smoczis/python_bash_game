@@ -9,7 +9,7 @@ from maps_creator import *
 
 class Hero:
 
-    items_to_boxes = [] + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
+    items_to_boxes = ['hint'] * 6 + ['flag'] * 10 + ['dynamite'] * 10 + ['armour'] * 2 + ['chemical_suit'] * 1 + ['vaccine'] * 5 + ['metal_detector'] * 1
     boxes = [Box(item) for item in items_to_boxes]
     Hint(types)
     bombs_to_put = ['A', 'A', 'B', 'B', 'C', 'C']
