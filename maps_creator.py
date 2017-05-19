@@ -106,8 +106,8 @@ class Maps:
     def put_mines(self, quantity):
         """randomly selecting positions of given quantity of mines. returns a list of tuples (x, y)"""
         while len(self.mines) < quantity:
-            y = random.randint(2, len(self.board)-3)
-            x = random.randint(2, len(self.board[0])-3)
+            y = random.randint(3, len(self.board)-4)
+            x = random.randint(3, len(self.board[0])-4)
             if self.board[y][x] == ' ':
                 self.mines.append((x, y))
 

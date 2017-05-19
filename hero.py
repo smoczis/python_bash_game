@@ -176,16 +176,16 @@ class Hero:
             self.position = 0, coordinate
 
     def change_map(self):
-        if self.position[0] == 105:
+        if self.position[0] == 103:
             side = 'E'
             coordinate = (self.position[1])
-        elif self.position[0] == 0:
+        elif self.position[0] == 2:
             side = 'W'
             coordinate = (self.position[1])
-        elif self.position[1] == 0:
+        elif self.position[1] == 2:
             side = 'N'
             coordinate = (self.position[0])
-        elif self.position[1] == 32:
+        elif self.position[1] == 30:
             side = 'S'
             coordinate = (self.position[0])
         for maps in list(Item.maps_instantions):
@@ -272,15 +272,17 @@ class Hero:
             if cell in self.place.mines:
                 self.place.mines.remove(cell)
         if self.position in field_of_fire and is_deadly:
-            for item in self.backpack:
-                if item.type == 'armour':
-                    self.backpack.remove(item)
-                    self.place.board[self.position[1]][self.position[0]] = '@'
-                    print_board(self.place.board)
-                    break
-            pop_up(self.place.board, ["You have been killed by exlosion"], auto_hide=1)
-            pop_up(self.place.board, ["GAME OVER"], auto_hide=1)
-            self.alive = False
+            if any([item.type == 'armour' for item in self.backpack]):
+                for item in self.backpack:
+                    if item.type == 'armour':
+                        self.backpack.remove(item)
+                        break
+                self.place.board[self.position[1]][self.position[0]] = '@'
+                print_board(self.place.board)
+            else:
+                pop_up(self.place.board, ["You have been killed by exlosion"], auto_hide=1)
+                pop_up(self.place.board, ["GAME OVER"], auto_hide=1)
+                self.alive = False
         print_board(self.place.board)
 
     def celebrate_win(self):

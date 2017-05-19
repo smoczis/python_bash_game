@@ -109,6 +109,10 @@ class Bomb(Item):
             self.choose_random_map()
             self.set_position()
         self.put_on_board()
+        self.put_name_on_bomb()
+
+    def put_name_on_bomb(self):
+        self.place.board[self.position[12][1]][self.position[12][0]] = self.bomb_type
 
     def set_disarm_code(self):
         if self.bomb_type == 'A':
